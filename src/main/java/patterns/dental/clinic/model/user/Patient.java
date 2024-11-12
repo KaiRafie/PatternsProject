@@ -12,4 +12,13 @@ public class Patient extends User {
         //TODO: Implement id generation method
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patientID=" + patientID +
+                ", dateOfBirth=" + getDateOfBirth() +
+                ", patientFullName" + getFirstName() + " " + getLastName() +
+                '}';
+    }
 }

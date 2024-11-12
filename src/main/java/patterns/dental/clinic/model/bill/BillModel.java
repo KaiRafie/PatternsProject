@@ -10,7 +10,7 @@ public class BillModel {
      * insures that the class is a singleton
      * @return a single instance of the class
      */
-    public BillModel getInsance() {
+    public BillModel getInstance() {
         if (billModel == null) {
             synchronized (BillModel.class) {
                 if (billModel == null) {
