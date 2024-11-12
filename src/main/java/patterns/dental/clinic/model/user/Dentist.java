@@ -1,6 +1,7 @@
-package patterns.dentalclinic;
+package patterns.dental.clinic.model.user;
 
-public abstract class Dentist extends User{
+
+public abstract class Dentist extends User {
     private long dentistID;
 
     private long generateID(){

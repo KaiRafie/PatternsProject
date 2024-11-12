@@ -1,13 +1,14 @@
-package patterns.dental.clinic;
+package patterns.dental.clinic.model.bill;
 
 import lombok.*;
+import patterns.dental.clinic.model.Visit;
 
 import java.sql.Time;
 import java.util.Date;
 
 @Getter
 @Setter
-public class DentistBill extends Bill{
+public class DentistBill extends Bill {
     private String procedureInformation;
     private String patientFullName;
     private String dentistFullName;
