@@ -2,7 +2,7 @@ package patterns.dental.clinic.model.bill;
 
 import lombok.Getter;
 import lombok.Setter;
-import patterns.dental.clinic.model.Visit;
+import patterns.dental.clinic.model.visit.Visit;
 
 import java.sql.Time;
 import java.util.Date;

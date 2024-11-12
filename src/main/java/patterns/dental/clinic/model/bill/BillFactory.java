@@ -1,17 +1,17 @@
 package patterns.dental.clinic.model.bill;
 
 import lombok.Getter;
-import patterns.dental.clinic.model.Visit;
+import patterns.dental.clinic.model.visit.Visit;
 import patterns.dental.clinic.model.user.Patient;
 
 import java.sql.Time;
 import java.util.Date;
 import java.util.InputMismatchException;
 
+@Getter
 public class BillFactory {
-    private BillFactory billFactory;
+    private static BillFactory billFactory;
 
-    @Getter
     private long billId = 0;
 
 
@@ -20,7 +20,7 @@ public class BillFactory {
 
     public BillFactory getInstance() {
         if (billFactory == null) {
-            synchronized (BillModel.class) {
+            synchronized (BillFactory.class) {
                 if (billFactory == null) {
                     billFactory = new BillFactory();
                 }

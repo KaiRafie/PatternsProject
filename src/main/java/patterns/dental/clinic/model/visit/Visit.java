@@ -1,4 +1,4 @@
-package patterns.dental.clinic.model;
+package patterns.dental.clinic.model.visit;
 
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
