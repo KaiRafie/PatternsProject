@@ -10,5 +10,5 @@ public class Visit {
     private Time time;
     //TODO: after creating the classes import them in this class
     //private Patient patient;
-    //private Dentist dentist;
+    //  private Dentist dentist;
 }
