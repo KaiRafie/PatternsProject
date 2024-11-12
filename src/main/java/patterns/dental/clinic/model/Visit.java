@@ -1,4 +1,7 @@
-package patterns.dental.clinic;
+package patterns.dental.clinic.model;
+
+import patterns.dental.clinic.model.user.Dentist;
+import patterns.dental.clinic.model.user.Patient;
 
 import java.sql.Time;
 import java.util.Date;

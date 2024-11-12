@@ -1,7 +1,8 @@
-package patterns.dental.clinic;
+package patterns.dental.clinic.model.bill;
 
 import lombok.Getter;
 import lombok.Setter;
+import patterns.dental.clinic.model.Visit;
 
 import java.sql.Time;
 import java.util.Date;

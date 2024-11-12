@@ -1,6 +1,7 @@
-package patterns.dental.clinic;
+package patterns.dental.clinic.model.user;
 
 import lombok.*;
+
 import java.util.ArrayList;
 
 @Getter

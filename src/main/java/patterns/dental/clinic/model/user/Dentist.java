@@ -1,4 +1,4 @@
-package patterns.dental.clinic;
+package patterns.dental.clinic.model.user;
 
 
 public abstract class Dentist extends User {
