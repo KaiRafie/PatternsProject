@@ -1,4 +1,4 @@
-package patterns.dentalclinic;
+package patterns.dental.clinic;
 
 import java.util.Date;
 

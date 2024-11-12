@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class PatientBill extends Bill{
+public class PatientBill extends Bill {
     private String patientFirstName;
     private String patientLastName;
 

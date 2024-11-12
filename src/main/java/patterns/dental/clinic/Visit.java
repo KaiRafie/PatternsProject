@@ -8,7 +8,6 @@ public class Visit {
     private String visitType;
     private Date date;
     private Time time;
-    //TODO: after creating the classes import them in this class
-    //private Patient patient;
-    //  private Dentist dentist;
+    private Patient patient;
+    private Dentist dentist;
 }
