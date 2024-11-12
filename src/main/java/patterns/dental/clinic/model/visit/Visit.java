@@ -13,4 +13,16 @@ public class Visit {
     private Time time;
     private Patient patient;
     private Dentist dentist;
+
+    public Visit() {
+    }
+
+    public Visit(long visitId, String visitType, Date date, Time time, Patient patient, Dentist dentist) {
+        this.visitId = visitId;
+        this.visitType = visitType;
+        this.date = date;
+        this.time = time;
+        this.patient = patient;
+        this.dentist = dentist;
+    }
 }
