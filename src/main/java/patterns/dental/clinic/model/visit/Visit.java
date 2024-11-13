@@ -4,7 +4,7 @@ import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 public class Visit {
     private long visitId;
@@ -24,5 +24,17 @@ public class Visit {
         this.time = time;
         this.patient = patient;
         this.dentist = dentist;
+    }
+
+    @Override
+    public String toString() {
+        return "Visit{" +
+                "visitId=" + visitId +
+                ", visitType='" + visitType + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+                ", patient=" + patient.getFirstName() +
+                ", dentist=" + dentist.getFirstName() +
+                '}';
     }
 }

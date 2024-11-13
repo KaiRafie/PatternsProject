@@ -4,9 +4,8 @@ import lombok.*;
 
 @Getter
 @Setter
-
 public class Patient extends User {
-    private long patientID;
+    private long patientID = 0;
 
     public long generateID(){
         //TODO: Implement id generation method

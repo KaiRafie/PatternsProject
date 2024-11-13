@@ -18,7 +18,7 @@ public class BillFactory {
     private BillFactory() {
     }
 
-    public BillFactory getInstance() {
+    public static BillFactory getInstance() {
         if (billFactory == null) {
             synchronized (BillFactory.class) {
                 if (billFactory == null) {
@@ -58,6 +58,3 @@ public class BillFactory {
     }
 }
 
-enum BillType {
-    DENTIST_BILL, PATIENT_BILL
-}
