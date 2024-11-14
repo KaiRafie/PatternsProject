@@ -33,7 +33,7 @@ public class Visit {
                 ", visitType='" + visitType + '\'' +
                 ", date=" + date +
                 ", time=" + time +
-                ", patient=" + getPatient().getFirstName() +
+                ", patient=" + patient.getFirstName() +
                 ", dentist=" + dentist.getFirstName() +
                 '}';
     }

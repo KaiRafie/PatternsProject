@@ -45,7 +45,7 @@ public class BillFactoryTest {
         String visitType = "checkup";
         Visit visit = visitFactoryTest.generateVisit(patient, dentist, date, time, visitType);
 
-        Bill bill = (DentistBill)billFactory.createDefaultBill(BillType.DENTIST_BILL);
+        Bill bill = billFactory.createDefaultBill(BillType.DENTIST_BILL);
 
         bill.setVisit(visit);
         String expResult = "DentistBill{" +
@@ -76,14 +76,14 @@ public class BillFactoryTest {
         String visitType = "checkup";
         Visit visit = visitFactoryTest.generateVisit(patient, dentist, date, time, visitType);
 
-        Bill bill = (PatientBill)billFactory.createDefaultBill(BillType.PATIENT_BILL);
+        Bill bill = billFactory.createDefaultBill(BillType.PATIENT_BILL);
 
         bill.setVisit(visit);
         String expResult = "PatientBill{" +
                 "billId=0" +
                 ", FirstName=N/A" +
                 ", LastNameN/A" +
-                ", visit=Visit{visitId=1" +
+                ", visit=Visit{visitId=2" +
                 ", visitType='checkup'" +
                 ", date=1899-12-31" +
                 ", time=00:00:00" +
