@@ -16,7 +16,7 @@ public class VisitFactory {
     private VisitFactory() {
     }
 
-    public VisitFactory getInstance() {
+    public static VisitFactory getInstance() {
         if (visitFactory == null) {
             synchronized (VisitFactory.class) {
                 if (visitFactory == null) {
@@ -28,7 +28,7 @@ public class VisitFactory {
     }
 
     public Visit generateVisit(Patient patient, Dentist dentist, Date date, Time time, String visitType) {
-        visitId++;
+        ++visitId;
         return new Visit(visitId, visitType, date, time, patient, dentist);
     }
 

@@ -9,7 +9,7 @@ public class UserFactory {
     private UserFactory() {
     }
 
-    public UserFactory getInstance() {
+    public static UserFactory getInstance() {
         if (userFactory == null) {
             synchronized (UserFactory.class) {
                 if (userFactory == null) {
@@ -19,4 +19,10 @@ public class UserFactory {
         }
         return userFactory;
     }
+
+    public User createDefaultUser() {
+        return null;
+    }
+
+
 }

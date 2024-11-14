@@ -18,7 +18,7 @@ public class BillFactory {
     private BillFactory() {
     }
 
-    public BillFactory getInstance() {
+    public static BillFactory getInstance() {
         if (billFactory == null) {
             synchronized (BillFactory.class) {
                 if (billFactory == null) {
@@ -33,9 +33,9 @@ public class BillFactory {
         int defaultBillId = 0;
 
         return switch (billType) {
-            case DENTIST_BILL -> new DentistBill(billId, new Visit(), new Date(), new Time(0,0,0),
+            case DENTIST_BILL -> new DentistBill(billId, new Visit(), new Date(0,0,0), new Time(0,0,0),
                     0, 0, 0, "N/A", "N/A", "N/A", "N/A" );
-            case PATIENT_BILL -> new PatientBill(billId, new Visit(), new Date(), new Time(0,0,0),
+            case PATIENT_BILL -> new PatientBill(billId, new Visit(), new Date(0,0,0), new Time(0,0,0),
                     0, 0, 0, "N/A", "N/A");
             default -> throw new InputMismatchException("Bill type not found: " + billType);
         };
@@ -58,6 +58,3 @@ public class BillFactory {
     }
 }
 
-enum BillType {
-    DENTIST_BILL, PATIENT_BILL
-}

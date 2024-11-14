@@ -1,5 +1,16 @@
 package patterns.dental.clinic;
 
+import patterns.dental.clinic.model.bill.*;
+import patterns.dental.clinic.model.user.Dentist;
+import patterns.dental.clinic.model.user.Patient;
+import patterns.dental.clinic.model.user.RegularDentist;
+import patterns.dental.clinic.model.visit.Visit;
+import patterns.dental.clinic.model.visit.VisitFactory;
+
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
 
