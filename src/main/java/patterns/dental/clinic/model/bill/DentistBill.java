@@ -66,7 +66,7 @@ public class DentistBill extends Bill {
     @Override
     public String toString() {
         return "DentistBill{" +
-                ", billId=" + getBillId() +
+                "billId=" + getBillId() +
                 ", visit=" + getVisit() +
                 ", date=" + getDate() +
                 ", time=" + getTime() +

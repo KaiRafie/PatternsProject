@@ -33,8 +33,56 @@ public class Visit {
                 ", visitType='" + visitType + '\'' +
                 ", date=" + date +
                 ", time=" + time +
-                ", patient=" + patient.getFirstName() +
+                ", patient=" + getPatient().getFirstName() +
                 ", dentist=" + dentist.getFirstName() +
                 '}';
+    }
+
+    public long getVisitId() {
+        return visitId;
+    }
+
+    public void setVisitId(long visitId) {
+        this.visitId = visitId;
+    }
+
+    public String getVisitType() {
+        return visitType;
+    }
+
+    public void setVisitType(String visitType) {
+        this.visitType = visitType;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Dentist getDentist() {
+        return dentist;
+    }
+
+    public void setDentist(Dentist dentist) {
+        this.dentist = dentist;
     }
 }

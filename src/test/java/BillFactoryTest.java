@@ -1,9 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
-import patterns.dental.clinic.model.bill.Bill;
-import patterns.dental.clinic.model.bill.BillFactory;
-import patterns.dental.clinic.model.bill.BillType;
-import patterns.dental.clinic.model.bill.DentistBill;
+import patterns.dental.clinic.model.bill.*;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 import patterns.dental.clinic.model.user.RegularDentist;
@@ -27,28 +24,77 @@ public class BillFactoryTest {
     }
 
     @Test
-    public void testCreateDefaultPatientBill() {
+    public void testGetInstance2() {
+        VisitFactory obj1 = VisitFactory.getInstance();
+        VisitFactory obj2 = VisitFactory.getInstance();
+        boolean expResult = true;
+        boolean result = obj1.toString().equals(obj2.toString());
+
+        Assert.assertEquals(expResult, result);
+    }
+
+    //these two tests will be different from a machine to another and the only difference will be the date either 1899 or 1900
+    @Test
+    public void testCreateDefaultPatientBill1() {
         BillFactory billFactory = BillFactory.getInstance();
-//        LocalDate currentDate = LocalDate.now();
-//        Date date = new Date(currentDate.getYear() - 1900,currentDate.getMonthValue(),currentDate.getDayOfMonth());
-//        Time time = new Time(11,59,59);
-//        Patient patient = new Patient();
-//        Dentist dentist = new RegularDentist();
-//        String visitType = "checkup";
-        DentistBill bill = (DentistBill)billFactory.createDefaultBill(BillType.DENTIST_BILL);
+        VisitFactory visitFactoryTest = VisitFactory.getInstance();
+        Date date = new Date(0,0,0);
+        Time time = new Time(0,0,0);
+        Patient patient = new Patient();
+        Dentist dentist = new RegularDentist();
+        String visitType = "checkup";
+        Visit visit = visitFactoryTest.generateVisit(patient, dentist, date, time, visitType);
+
+        Bill bill = (DentistBill)billFactory.createDefaultBill(BillType.DENTIST_BILL);
+
+        bill.setVisit(visit);
         String expResult = "DentistBill{" +
-                ", billId=" + bill.getBillId() +
-                ", visit=" + bill.getVisit() +
-                ", date=" + bill.getDate() +
-                ", time=" + bill.getTime() +
-                ", subTotal=" + bill.getSubTotal() +
-                ", total=" + bill.getTotal() +
-                ", insuranceDeduction=" + bill.getInsuranceDeduction() +
-                ", procedureInformation='" + bill.getProcedureInformation() + '\'' +
-                ", patientFullName='" + bill.getPatientFullName() + '\'' +
-                ", dentistFullName='" + bill.getPatientFullName() + '\'' +
-                ", patientInformation='" + bill.getPatientInformation() + '\'' +
-                '}';
+                "billId=0" +
+                ", visit=Visit{visitId=1" +
+                ", visitType='checkup'" +
+                ", date=1899-12-31, time=00:00:00" +
+                ", patient=null, dentist=null}" +
+                ", date=Sun Dec 31 00:00:00 EST 1899" +
+                ", time=00:00:00, subTotal=0.0, total=0.0" +
+                ", insuranceDeduction=0.0, procedureInformation='N/A'" +
+                ", patientFullName='N/A'" +
+                ", dentistFullName='N/A'" +
+                ", patientInformation='N/A'" +
+                "}";
+        String result = bill.toString();
+
+        Assert.assertEquals(expResult, result);
+    }
+    @Test
+    public void testCreateDefaultPatientBill2() {
+        BillFactory billFactory = BillFactory.getInstance();
+        VisitFactory visitFactoryTest = VisitFactory.getInstance();
+        Date date = new Date(0,0,0);
+        Time time = new Time(0,0,0);
+        Patient patient = new Patient();
+        Dentist dentist = new RegularDentist();
+        String visitType = "checkup";
+        Visit visit = visitFactoryTest.generateVisit(patient, dentist, date, time, visitType);
+
+        Bill bill = (PatientBill)billFactory.createDefaultBill(BillType.PATIENT_BILL);
+
+        bill.setVisit(visit);
+        String expResult = "PatientBill{" +
+                "billId=0" +
+                ", FirstName=N/A" +
+                ", LastNameN/A" +
+                ", visit=Visit{visitId=1" +
+                ", visitType='checkup'" +
+                ", date=1899-12-31" +
+                ", time=00:00:00" +
+                ", patient=null" +
+                ", dentist=null}" +
+                ", date=Sun Dec 31 00:00:00 EST 1899" +
+                ", time=00:00:00" +
+                ", subTotal=0.0" +
+                ", total=0.0" +
+                ", insuranceDeduction=0.0" +
+                "}";
         String result = bill.toString();
 
         Assert.assertEquals(expResult, result);

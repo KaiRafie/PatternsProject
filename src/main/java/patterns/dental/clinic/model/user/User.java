@@ -26,6 +26,17 @@ public abstract class User {
     @Setter
     private Date dateOfBirth;
 
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.loginID = loginID;
+        this.loginPass = loginPass;
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public String getFirstName() {
         return firstName;
     }

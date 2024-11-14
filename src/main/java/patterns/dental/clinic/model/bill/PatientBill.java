@@ -26,4 +26,19 @@ public class PatientBill extends Bill {
         //TODO: implement the generate id after having the full basic structure of the whole project
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "PatientBill{" +
+                "billId=" + getBillId() +
+                ", FirstName=" + patientFirstName +
+                ", LastName" + patientLastName +
+                ", visit=" + getVisit() +
+                ", date=" + getDate() +
+                ", time=" + getTime() +
+                ", subTotal=" + getSubTotal() +
+                ", total=" + getTotal() +
+                ", insuranceDeduction=" + getInsuranceDeduction() +
+                '}';
+    }
 }
