@@ -4,6 +4,10 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> origin/dev
 
 @Getter
 @Setter
@@ -26,5 +30,6 @@ public class ApprenticeDentist extends Dentist {
     public void addOperation(Operations value){
         allowedOperations.add(value.toString());
     }
+
 
 }

@@ -30,4 +30,53 @@ public class DentistBill extends Bill {
         //TODO: implement the generate id after having the full basic structure of the whole project
         return 0;
     }
+
+    public String getProcedureInformation() {
+        return procedureInformation;
+    }
+
+    public void setProcedureInformation(String procedureInformation) {
+        this.procedureInformation = procedureInformation;
+    }
+
+    public String getPatientFullName() {
+        return patientFullName;
+    }
+
+    public void setPatientFullName(String patientFullName) {
+        this.patientFullName = patientFullName;
+    }
+
+    public String getDentistFullName() {
+        return dentistFullName;
+    }
+
+    public void setDentistFullName(String dentistFullName) {
+        this.dentistFullName = dentistFullName;
+    }
+
+    public String getPatientInformation() {
+        return patientInformation;
+    }
+
+    public void setPatientInformation(String patientInformation) {
+        this.patientInformation = patientInformation;
+    }
+
+    @Override
+    public String toString() {
+        return "DentistBill{" +
+                "billId=" + getBillId() +
+                ", visit=" + getVisit() +
+                ", date=" + getDate() +
+                ", time=" + getTime() +
+                ", subTotal=" + getSubTotal() +
+                ", total=" + getTotal() +
+                ", insuranceDeduction=" + getInsuranceDeduction() +
+                ", procedureInformation='" + procedureInformation + '\'' +
+                ", patientFullName='" + patientFullName + '\'' +
+                ", dentistFullName='" + dentistFullName + '\'' +
+                ", patientInformation='" + patientInformation + '\'' +
+                '}';
+    }
 }

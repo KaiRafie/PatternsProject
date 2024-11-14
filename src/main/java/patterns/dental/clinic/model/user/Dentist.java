@@ -16,4 +16,15 @@ public abstract class Dentist extends User {
         //To be possibly changed (implemented in DB or in Java)
         return lastId++;
     }
+    
+    @Override
+    public String toString() {
+        return "Dentist{" +
+                "patientID=" + dentistID +
+                ", dateOfBirth=" + getDateOfBirth() +
+                ", patientFullName" + getFirstName() + " " + getLastName() +
+                '}';
+    }
+
+    
 }
