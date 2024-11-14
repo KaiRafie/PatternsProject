@@ -12,17 +12,19 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <javafx.version>19</javafx.version>
-        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
+        <javafx.version>19</javafx.version>  <!-- Ensure all dependencies use the same version -->
     </properties>
 
     <dependencies>
+        <!-- Lombok Dependency -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- JUnit Dependency for Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -30,6 +32,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- JaCoCo Dependency for Code Coverage -->
         <dependency>
             <groupId>org.jacoco</groupId>
             <artifactId>org.jacoco.core</artifactId>
@@ -37,22 +40,24 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- JavaFX Dependencies -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <version>19</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.2</version>
+            <version>19</version>  <!-- Using the same version for FXML -->
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>17.0.2</version>
+            <version>19</version>  <!-- Using the same version for Graphics -->
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <!-- JaCoCo Maven Plugin -->
@@ -88,12 +93,13 @@
                 </executions>
             </plugin>
 
+            <!-- JavaFX Maven Plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>${javafx.maven.plugin.version}</version>
+                <version>0.0.8</version> <!-- Make sure the plugin version is correct -->
                 <configuration>
-                    <mainClass>patterns.dental.clinic.Main</mainClass>
+                    <mainClass>patterns.dental.clinic.Main</mainClass> <!-- Your Main class -->
                 </configuration>
                 <executions>
                     <execution>
@@ -103,7 +109,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
