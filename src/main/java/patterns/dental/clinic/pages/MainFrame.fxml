@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<?import javafx.scene.layout.Background?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #E0F2F5;">
+    <!-- Your other UI elements go here -->
+</AnchorPane>
