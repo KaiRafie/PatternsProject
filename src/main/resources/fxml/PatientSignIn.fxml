@@ -20,13 +20,13 @@
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Label>
-      <ImageView fitHeight="298.0" fitWidth="369.0" layoutX="227.0" layoutY="200.0">
+      <ImageView fitHeight="354.0" fitWidth="360.0" layoutX="231.0" layoutY="182.0">
          <image>
             <Image url="@../images/logInBoxNoBg.png" />
          </image>
       </ImageView>
-      <TextField layoutX="281.0" layoutY="338.0" prefHeight="42.0" prefWidth="252.0" promptText="UserID Ex. 123456" />
-      <TextField layoutX="281.0" layoutY="423.0" prefHeight="42.0" prefWidth="252.0" promptText="Password" />
+      <TextField layoutX="285.0" layoutY="305.0" prefHeight="42.0" prefWidth="252.0" promptText="UserID Ex. 123456" />
+      <TextField layoutX="285.0" layoutY="375.0" prefHeight="42.0" prefWidth="252.0" promptText="Password" />
       <ImageView fitHeight="122.0" fitWidth="261.0" layoutX="277.0" layoutY="58.0">
          <image>
             <Image url="@../images/usersLogosNoBg.png" />
@@ -34,6 +34,10 @@
       </ImageView>
       <Button layoutX="10.0" layoutY="434.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="66.0" text="Home" />
       <Button layoutX="10.0" layoutY="486.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="66.0" text="Previous" />
-      <Button layoutX="374.0" layoutY="498.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="66.0" text="Home" />
+      <Button layoutX="365.0" layoutY="449.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" text="Log In">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
