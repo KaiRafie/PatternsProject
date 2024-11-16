@@ -25,7 +25,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                    "src/main/java/patterns/dental/clinic/pages/MainFrame.fxml"));
+                    "/fxml/MainFrame.fxml"));
             AnchorPane root = loader.load();
 
             Scene scene = new Scene(root);
