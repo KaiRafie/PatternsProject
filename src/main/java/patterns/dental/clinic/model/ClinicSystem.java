@@ -7,6 +7,7 @@ import patterns.dental.clinic.model.bill.BillModel;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 import patterns.dental.clinic.model.user.User;
+import patterns.dental.clinic.model.visit.Visit;
 
 import java.util.List;
 

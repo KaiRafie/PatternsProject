@@ -1,7 +1,7 @@
 package patterns.dental.clinic.model.bill;
 
 import lombok.*;
-import patterns.dental.clinic.model.Visit;
+import patterns.dental.clinic.model.visit.Visit;
 
 import java.sql.Time;
 import java.util.Date;
@@ -25,5 +25,20 @@ public class PatientBill extends Bill {
     long generateId() {
         //TODO: implement the generate id after having the full basic structure of the whole project
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "PatientBill{" +
+                "billId=" + getBillId() +
+                ", FirstName=" + patientFirstName +
+                ", LastName" + patientLastName +
+                ", visit=" + getVisit() +
+                ", date=" + getDate() +
+                ", time=" + getTime() +
+                ", subTotal=" + getSubTotal() +
+                ", total=" + getTotal() +
+                ", insuranceDeduction=" + getInsuranceDeduction() +
+                '}';
     }
 }

@@ -1,26 +1,26 @@
 package patterns.dental.clinic.model.bill;
 
 import lombok.Getter;
-import patterns.dental.clinic.model.Visit;
+import patterns.dental.clinic.model.visit.Visit;
 import patterns.dental.clinic.model.user.Patient;
 
 import java.sql.Time;
 import java.util.Date;
 import java.util.InputMismatchException;
 
+@Getter
 public class BillFactory {
-    private BillFactory billFactory;
+    private static BillFactory billFactory;
 
-    @Getter
     private long billId = 0;
 
 
     private BillFactory() {
     }
 
-    public BillFactory getInstance() {
+    public static BillFactory getInstance() {
         if (billFactory == null) {
-            synchronized (BillModel.class) {
+            synchronized (BillFactory.class) {
                 if (billFactory == null) {
                     billFactory = new BillFactory();
                 }
@@ -33,9 +33,9 @@ public class BillFactory {
         int defaultBillId = 0;
 
         return switch (billType) {
-            case DENTIST_BILL -> new DentistBill(billId, new Visit(), new Date(), new Time(0,0,0),
+            case DENTIST_BILL -> new DentistBill(billId, new Visit(), new Date(0,0,0), new Time(0,0,0),
                     0, 0, 0, "N/A", "N/A", "N/A", "N/A" );
-            case PATIENT_BILL -> new PatientBill(billId, new Visit(), new Date(), new Time(0,0,0),
+            case PATIENT_BILL -> new PatientBill(billId, new Visit(), new Date(0,0,0), new Time(0,0,0),
                     0, 0, 0, "N/A", "N/A");
             default -> throw new InputMismatchException("Bill type not found: " + billType);
         };
@@ -58,6 +58,3 @@ public class BillFactory {
     }
 }
 
-enum BillType {
-    DENTIST_BILL, PATIENT_BILL
-}

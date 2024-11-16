@@ -2,13 +2,14 @@ package patterns.dental.clinic.model.bill;
 
 import lombok.Getter;
 import lombok.Setter;
-import patterns.dental.clinic.model.Visit;
+import lombok.ToString;
+import patterns.dental.clinic.model.visit.Visit;
 
 import java.sql.Time;
 import java.util.Date;
 
-@Getter
-@Setter
+
+@ToString
 public abstract class Bill {
     private long billId;
     private Visit visit;
@@ -28,5 +29,65 @@ public abstract class Bill {
         this.insuranceDeduction = insuranceDeduction;
     }
 
+    public long getBillId() {
+        return billId;
+    }
+
+    public void setBillId(long billId) {
+        this.billId = billId;
+    }
+
+    public Visit getVisit() {
+        return visit;
+    }
+
+    public void setVisit(Visit visit) {
+        this.visit = visit;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getInsuranceDeduction() {
+        return insuranceDeduction;
+    }
+
+    public void setInsuranceDeduction(double insuranceDeduction) {
+        this.insuranceDeduction = insuranceDeduction;
+    }
+
+
+
     abstract long generateId();
+
+
 }
