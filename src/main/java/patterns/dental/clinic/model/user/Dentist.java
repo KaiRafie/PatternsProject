@@ -4,21 +4,19 @@ package patterns.dental.clinic.model.user;
 import java.util.Date;
 
 public abstract class Dentist extends User {
-    private long dentistID = 0;
+    private static long lastId = 0;
+    private long dentistID;
 
-    public Dentist() {
+    public Dentist(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
+        super(firstName, lastName, loginPass, dateOfBirth);
+        dentistID = generateID();
     }
 
-    public Dentist(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth, long dentistId) {
-        super(firstName, lastName, loginID, loginPass, dateOfBirth);
-        this.dentistID = dentistId;
+    public long generateID(){
+        //To be possibly changed (implemented in DB or in Java)
+        return lastId++;
     }
-
-    private long generateID(){
-        //TODO: Implement id generation method
-        return 0;
-    };
-
+    
     @Override
     public String toString() {
         return "Dentist{" +
@@ -27,4 +25,6 @@ public abstract class Dentist extends User {
                 ", patientFullName" + getFirstName() + " " + getLastName() +
                 '}';
     }
+
+    
 }

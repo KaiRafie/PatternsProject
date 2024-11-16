@@ -1,38 +1,18 @@
 package patterns.dental.clinic.model.user;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.Date;
 
-@Getter
-@Setter
-@ToString
 public abstract class User {
-    @Getter
-    @Setter
+   
     private String firstName;
-    @Getter
-    @Setter
     private String lastName;
-    @Getter
-    @Setter
     private String loginID;
-    @Getter
-    @Setter
     private String loginPass;
-    @Getter
-    @Setter
     private Date dateOfBirth;
 
-    public User() {
-    }
-
-    public User(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
+    public User(String firstName, String lastName, String loginPass, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.loginID = loginID;
         this.loginPass = loginPass;
         this.dateOfBirth = dateOfBirth;
     }
