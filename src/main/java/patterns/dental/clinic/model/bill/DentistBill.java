@@ -14,6 +14,9 @@ public class DentistBill extends Bill {
     private String dentistFullName;
     private String patientInformation;
 
+    public DentistBill() {
+    }
+
     public DentistBill(long billId, Visit visit, String date, String time, double subTotal, double total,
                        double insuranceDeduction, String procedureInfo, String patientFullName, String dentistFullName,
                        String patientInfo) {

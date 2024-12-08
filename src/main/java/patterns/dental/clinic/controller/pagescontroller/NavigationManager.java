@@ -15,7 +15,11 @@ public class NavigationManager {
 
     public static NavigationManager getInstance() {
         if (instance == null) {
-            instance = new NavigationManager();
+            synchronized (NavigationManager.class) {
+                if (instance == null) {
+                    instance = new NavigationManager();
+                }
+            }
         }
         return instance;
     }

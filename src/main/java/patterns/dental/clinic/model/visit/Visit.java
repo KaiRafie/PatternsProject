@@ -13,17 +13,20 @@ public class Visit {
     private String time;
     private Patient patient;
     private Dentist dentist;
+    private String procedureInformation;
 
     public Visit() {
     }
 
-    public Visit(long visitId, String visitType, String date, String time, Patient patient, Dentist dentist) {
+    public Visit(long visitId, String visitType, String date, String time, Patient patient, Dentist dentist,
+                    String procedureInformation) {
         this.visitId = visitId;
         this.visitType = visitType;
         this.date = date;
         this.time = time;
         this.patient = patient;
         this.dentist = dentist;
+        this.procedureInformation = procedureInformation;
     }
 
     @Override
@@ -84,5 +87,13 @@ public class Visit {
 
     public void setDentist(Dentist dentist) {
         this.dentist = dentist;
+    }
+
+    public String getProcedureInformation() {
+        return procedureInformation;
+    }
+
+    public void setProcedureInformation(String procedureInformation) {
+        this.procedureInformation = procedureInformation;
     }
 }

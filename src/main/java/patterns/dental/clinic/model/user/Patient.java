@@ -7,7 +7,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class Patient extends User {
-    private static long lastId = 0;
 
     public Patient() {
     }
