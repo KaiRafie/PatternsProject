@@ -7,20 +7,22 @@ import java.util.Date;
 @Getter
 @Setter
 public class Patient extends User {
-    private long patientID = 0;
+    private static long lastId = 0;
+    private long patientID;
 
     public Patient() {
     }
 
-    public Patient(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth, long patientId) {
-        super(firstName, lastName, loginID, loginPass, dateOfBirth);
-        this.patientID = patientId;
+
+    public Patient(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
+        super(firstName, lastName, loginPass, dateOfBirth);
+        patientID = generateID();
     }
 
 
     public long generateID(){
-        //TODO: Implement id generation method
-        return 0;
+        //To be possibly changed (implemented in DB or in Java)
+        return lastId++;
     }
 
     @Override

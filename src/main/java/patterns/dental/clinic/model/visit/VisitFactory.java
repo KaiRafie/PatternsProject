@@ -11,7 +11,7 @@ import java.sql.Time;
 public class VisitFactory {
     private static VisitFactory visitFactory;
 
-    private static long visitId = 0;
+    private long visitId = 0;
 
     private VisitFactory() {
     }
