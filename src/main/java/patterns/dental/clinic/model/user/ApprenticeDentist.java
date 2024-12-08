@@ -4,11 +4,7 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> origin/dev
-
 @Getter
 @Setter
 
@@ -17,14 +13,6 @@ public class ApprenticeDentist extends Dentist {
 
     public ApprenticeDentist(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
         super(firstName, lastName, loginID, loginPass, dateOfBirth);
-    }
-
-    enum Operations{
-        TEETH_CLEANING, FLUORIDE_APPLICATION, CAVITY_CLEANING, DENTAL_EXAMINATIONS;
-        @Override
-        public String toString(){
-            return name().replace('_', ' ');
-        }
     }
 
     public void addOperation(Operations value){

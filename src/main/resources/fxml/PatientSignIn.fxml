@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontroller.PatientSignInController">
    <children>
       <ImageView fitHeight="550.0" fitWidth="86.0">
          <image>
@@ -25,16 +25,16 @@
             <Image url="@../images/logInBoxNoBg.png" />
          </image>
       </ImageView>
-      <TextField layoutX="285.0" layoutY="305.0" prefHeight="42.0" prefWidth="252.0" promptText="UserID Ex. 123456" />
-      <TextField layoutX="285.0" layoutY="375.0" prefHeight="42.0" prefWidth="252.0" promptText="Password" />
+      <TextField fx:id="userIdField" layoutX="285.0" layoutY="305.0" prefHeight="42.0" prefWidth="252.0" promptText="UserID Ex. 123456" />
+      <TextField fx:id="passwordField" layoutX="285.0" layoutY="375.0" prefHeight="42.0" prefWidth="252.0" promptText="Password" />
       <ImageView fitHeight="122.0" fitWidth="261.0" layoutX="277.0" layoutY="58.0">
          <image>
             <Image url="@../images/usersLogosNoBg.png" />
          </image>
       </ImageView>
-      <Button layoutX="10.0" layoutY="434.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="66.0" text="Home" />
-      <Button layoutX="10.0" layoutY="486.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="66.0" text="Previous" />
-      <Button layoutX="365.0" layoutY="449.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" text="Log In">
+      <Button fx:id="homeButton" layoutX="10.0" layoutY="434.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
+      <Button fx:id="previousButton" layoutX="10.0" layoutY="486.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
+      <Button fx:id="logInButton" layoutX="365.0" layoutY="449.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" text="Log In">
          <font>
             <Font size="18.0" />
          </font>

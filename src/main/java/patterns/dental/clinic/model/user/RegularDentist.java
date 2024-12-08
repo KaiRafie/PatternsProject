@@ -14,4 +14,6 @@ public class RegularDentist extends Dentist {
         super(firstName, lastName, loginID, loginPass, dateOfBirth);
     }
 
+    public RegularDentist() {
+    }
 }
