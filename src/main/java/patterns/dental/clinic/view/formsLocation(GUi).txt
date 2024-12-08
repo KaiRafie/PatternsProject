@@ -1,0 +1,2 @@
+In order to work with javafx and sceneBuilder, all the GUI are place in resources/fxml
+with the modules being in resources/javafx-sdk-23.0.1
