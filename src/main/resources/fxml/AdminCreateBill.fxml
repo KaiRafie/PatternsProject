@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontroller.AdminCreateBillController">
+   <children>
+      <AnchorPane layoutY="1.0" prefHeight="550.0" prefWidth="750.0">
+         <children>
+            <AnchorPane prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;">
+               <children>
+                  <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="175.0" layoutY="14.0">
+                     <image>
+                        <Image url="@../images/CreateBillNoBg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="550.0" fitWidth="86.0" layoutY="1.0">
+                     <image>
+                        <Image url="@../images/sideBar.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="homeButton" layoutX="10.0" layoutY="435.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
+                  <Button fx:id="previousButton" layoutX="10.0" layoutY="487.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
+                  <TextField fx:id="visitIdTextField" layoutX="275.0" layoutY="71.0" prefHeight="42.0" prefWidth="252.0" promptText="Visit Id" />
+                  <TextField fx:id="subtotalTextField" layoutX="275.0" layoutY="289.0" prefHeight="42.0" prefWidth="252.0" promptText="100.10" />
+                  <TextField fx:id="timeTextField" layoutX="275.0" layoutY="219.0" prefHeight="42.0" prefWidth="252.0" promptText="00:00:00" />
+                  <TextField fx:id="dateTextField" layoutX="275.0" layoutY="145.0" prefHeight="42.0" prefWidth="252.0" promptText="1/1/1010" />
+                  <Label layoutX="194.0" layoutY="55.0" text="Vist Id">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="194.0" layoutY="129.0" text="Date">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="194.0" layoutY="203.0" text="Time">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="194.0" layoutY="273.0" text="Subtotal">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="createButton" layoutX="375.0" layoutY="453.0" mnemonicParsing="false" onAction="#createButtonClick" prefHeight="34.0" prefWidth="66.0" text="Create" />
+                  <TextField fx:id="totalTextField" layoutX="275.0" layoutY="350.0" prefHeight="42.0" prefWidth="252.0" promptText="100.10" />
+                  <Label layoutX="194.0" layoutY="334.0" text="Total">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="insuranceDeductionTextField" layoutX="275.0" layoutY="407.0" prefHeight="42.0" prefWidth="252.0" promptText="100.10" />
+                  <Label layoutX="194.0" layoutY="391.0" text="Insurance Deducation">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

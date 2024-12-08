@@ -7,6 +7,9 @@ public abstract class Dentist extends User {
     private static long lastId = 0;
     private long dentistID;
 
+    public Dentist() {
+    }
+
     public Dentist(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
         super(firstName, lastName, loginPass, dateOfBirth);
         dentistID = generateID();

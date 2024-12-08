@@ -13,7 +13,6 @@ public class Patient extends User {
     public Patient() {
     }
 
-
     public Patient(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
         super(firstName, lastName, loginPass, dateOfBirth);
         patientID = generateID();
