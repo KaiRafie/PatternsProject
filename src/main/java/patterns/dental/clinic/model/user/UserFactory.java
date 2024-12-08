@@ -1,6 +1,7 @@
 package patterns.dental.clinic.model.user;
 
 import lombok.Getter;
+import patterns.dental.clinic.MyList;
 
 import java.util.List;
 
@@ -22,29 +23,28 @@ public class UserFactory {
         return userFactory;
     }
 
-    public User createUser(User user) {
-        String userClass = user.getClass().getName().split("\\.")[4].toLowerCase();
-        return switch (userClass) {
-            case "patient":
-                yield createPatient(user);
-            case "apprenticedentist":
-                yield createRegularDentist(user);
-            case "regulardentist":
-                yield createApprenticeDentist(user);
-            default:
-                throw new IllegalStateException("Unexpected value: " + userClass);
-        };
+    public User createPatient(String firstName, String lastName, String loginPass,String dateOfBirth) {
+        return new Patient(firstName, lastName, loginPass, dateOfBirth);
     }
 
-    private Patient createPatient(User user) {
-        return new Patient(user.getFirstName(), user.getLastName(), user.getLoginPass(), user.getDateOfBirth());
+    public Dentist createDentist(long dentistId, String firstName, String lastName, String loginPass,String dateOfBirth, String specialty,
+                                    MyList<String> allowedOperations) {
+        if (specialty.equalsIgnoreCase("apprentice")) {
+            return createApprenticeDentist(dentistId, firstName, lastName, loginPass, dateOfBirth, specialty, allowedOperations);
+        } else {
+            List<String> operations = new MyList<>();
+            operations.add("All");
+            return createRegularDentist(dentistId, firstName, lastName, loginPass, dateOfBirth, specialty, allowedOperations);
+        }
     }
 
-    private Dentist createRegularDentist(User user) {
-        return new RegularDentist(user.getFirstName(), user.getLastName(), user.getLoginPass(), user.getDateOfBirth());
+    private Dentist createRegularDentist(long dentistId, String firstName, String lastName, String LoginPass,String dateOfBirth,
+                                                String specialty, MyList<String> allowedOperations) {
+        return new RegularDentist(firstName, lastName, dentistId, LoginPass, dateOfBirth, allowedOperations, specialty);
     }
 
-    private Dentist createApprenticeDentist(User user) {
-        return new ApprenticeDentist(user.getFirstName(), user.getLastName(), user.getLoginPass(), user.getDateOfBirth());
+    private Dentist createApprenticeDentist(long dentistId, String firstName, String lastName, String LoginPass,String dateOfBirth,
+                                                String specialty, MyList<String> allowedOperations) {
+        return new ApprenticeDentist(firstName, lastName, dentistId, LoginPass, dateOfBirth, allowedOperations, specialty);
     }
 }

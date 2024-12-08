@@ -12,12 +12,14 @@ public class PatientBill extends Bill {
     private String patientFirstName;
     private String patientLastName;
 
+    public PatientBill() {
+    }
+
     public PatientBill(long billId, Visit visit, String date, String time, double subTotal, double total,
                        double insuranceDeduction, String patientFirstName, String patientLastName) {
         super(billId, visit, date, time, subTotal, total, insuranceDeduction);
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
-
     }
 
     @Override

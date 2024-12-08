@@ -2,12 +2,15 @@ package patterns.dental.clinic.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.DatabaseController;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 import patterns.dental.clinic.model.user.User;
 import patterns.dental.clinic.model.visit.Visit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,22 +18,22 @@ public class ClinicSystem {
     private static ClinicSystem clinicSystem;
 
     @Getter
-    @Setter
     private List<User> usersList;
     @Getter
-    @Setter
     private List<Patient> patientsList;
     @Getter
-    @Setter
     private List<Dentist> dentistsList;
     @Getter
-    @Setter
     private List<Bill> billsList;
     @Getter
-    @Setter
     private List<Visit> visitsList;
 
     private ClinicSystem() {
+        usersList = ClinicSystemController.queryAllUsers();
+        patientsList = DatabaseController.queryAllPatientRecords();
+        dentistsList = DatabaseController.queryAllDentistRecords();
+        billsList = DatabaseController.queryAllBillRecords();
+        visitsList = DatabaseController.queryAllVisitRecords();
     }
 
     /**

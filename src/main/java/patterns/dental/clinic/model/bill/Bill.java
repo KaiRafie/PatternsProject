@@ -19,6 +19,9 @@ public abstract class Bill {
     private double total;
     private double insuranceDeduction;
 
+    public Bill() {
+    }
+
     public Bill(long billId, Visit visit, String date, String time, double subTotal, double total, double insuranceDeduction) {
         this.billId = billId;
         this.visit = visit;

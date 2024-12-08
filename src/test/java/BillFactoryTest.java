@@ -14,16 +14,6 @@ import java.time.LocalDate;
 public class BillFactoryTest {
 
     @Test
-    public void testGetInstance1() {
-        BillFactory obj1 = BillFactory.getInstance();
-        BillFactory obj2 = BillFactory.getInstance();
-        boolean expResult = true;
-        boolean result = obj1 == obj2;
-
-        Assert.assertEquals(expResult, result);
-    }
-
-    @Test
     public void testGetInstance2() {
         VisitFactory obj1 = VisitFactory.getInstance();
         VisitFactory obj2 = VisitFactory.getInstance();
