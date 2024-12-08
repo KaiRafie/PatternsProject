@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import patterns.dental.clinic.controller.pagescontroller.NavigationManager;
 import patterns.dental.clinic.model.bill.*;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
@@ -30,17 +31,19 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                    "/fxml/DentistSignIn.fxml"));
+            NavigationManager.getInstance().setPrimaryStage(stage);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainPage.fxml"));
             AnchorPane root = loader.load();
 
             Scene scene = new Scene(root);
 
 
             stage.setScene(scene);
-            stage.setTitle("JavaFX Application");
+            stage.setTitle("Dental Management System");
 
             stage.show();
+
+            NavigationManager.getInstance().setPrimaryStage(stage);
         } catch (Exception e) {
             e.printStackTrace();
         }
