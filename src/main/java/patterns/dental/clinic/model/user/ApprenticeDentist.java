@@ -1,23 +1,22 @@
 package patterns.dental.clinic.model.user;
 
 import lombok.*;
+import patterns.dental.clinic.MyList;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 @Getter
 @Setter
-
 public class ApprenticeDentist extends Dentist {
-    private ArrayList<String> allowedOperations;
 
-    public ApprenticeDentist(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
-        super(firstName, lastName, loginID, loginPass, dateOfBirth);
+    public ApprenticeDentist() {
     }
 
-    public void addOperation(Operations value){
-        allowedOperations.add(value.toString());
+    public ApprenticeDentist(String firstName, String lastName, long userID, String loginPass, String dateOfBirth,
+                                MyList<String> allowedOperations, String specialty) {
+        super(firstName, lastName, userID, loginPass, dateOfBirth, allowedOperations, specialty);
+
     }
 
-
+    public ApprenticeDentist(String firstName, String lastName, String loginPass, String dateOfBirth) {
+        super(firstName, lastName, loginPass, dateOfBirth);
+    }
 }

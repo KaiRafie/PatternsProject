@@ -10,6 +10,7 @@ import patterns.dental.clinic.model.bill.*;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 import patterns.dental.clinic.model.user.RegularDentist;
+import patterns.dental.clinic.model.user.User;
 import patterns.dental.clinic.model.visit.Visit;
 import patterns.dental.clinic.model.visit.VisitFactory;
 
@@ -19,7 +20,12 @@ import java.time.LocalDate;
 
 public class Main extends Application {
     public static void main(String[] args) {
-        launch(args);
+        User patient = new Patient();
+        String userClass = patient.getClass().getName();
+        String[] uclass = userClass.split("\\.");
+        String realClass = uclass[uclass.length - 1];
+        System.out.println(realClass);
+        //launch(args);
     }
 
     @Override

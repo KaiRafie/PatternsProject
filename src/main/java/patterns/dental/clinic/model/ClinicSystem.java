@@ -3,7 +3,6 @@ package patterns.dental.clinic.model;
 import lombok.Getter;
 import lombok.Setter;
 import patterns.dental.clinic.model.bill.Bill;
-import patterns.dental.clinic.model.bill.BillModel;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 import patterns.dental.clinic.model.user.User;
@@ -40,7 +39,7 @@ public class ClinicSystem {
      */
     public static ClinicSystem getInstance() {
         if (clinicSystem == null) {
-            synchronized (BillModel.class) {
+            synchronized (ClinicSystem.class) {
                 if (clinicSystem == null) {
                     clinicSystem = new ClinicSystem();
                 }

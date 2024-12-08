@@ -12,8 +12,6 @@ import java.util.InputMismatchException;
 public class BillFactory {
     private static BillFactory billFactory;
 
-    private long billId = 0;
-
 
     private BillFactory() {
     }
@@ -29,27 +27,13 @@ public class BillFactory {
         return billFactory;
     }
 
-    public Bill createDefaultBill(BillType billType) {
-        int defaultBillId = 0;
-
-        return switch (billType) {
-            case DENTIST_BILL -> new DentistBill(billId, new Visit(), new Date(0,0,0), new Time(0,0,0),
-                    0, 0, 0, "N/A", "N/A", "N/A", "N/A" );
-            case PATIENT_BILL -> new PatientBill(billId, new Visit(), new Date(0,0,0), new Time(0,0,0),
-                    0, 0, 0, "N/A", "N/A");
-            default -> throw new InputMismatchException("Bill type not found: " + billType);
-        };
-    }
-
-    public Bill createPatientBill(Visit visit, Date date, Time time, int subTotal, int total, int insuranceDeduction,
+    public Bill createPatientBill(long billId, Visit visit, String date, String time, int subTotal, int total, int insuranceDeduction,
                                   String patientFirstName, String patientLastName) {
-        billId++;
         return new PatientBill(billId, visit, date, time, subTotal, total, insuranceDeduction, patientFirstName, patientLastName);
     }
 
-    public Bill createDentistBill(Visit visit, Date date, Time time, int subTotal, int total, int insuranceDeduction,
+    public Bill createDentistBill(long billId, Visit visit, String date, String time, int subTotal, int total, int insuranceDeduction,
                                   String procedureInfo, Patient patient, String dentistFirstName, String dentistLastName) {
-        billId++;
         String patientFullName = patient.getFirstName() + " " + patient.getLastName();
         String dentistFullName = dentistFirstName + " " + dentistLastName;
         String patientInfo = patient.toString();
