@@ -11,8 +11,6 @@ import java.sql.Time;
 public class VisitFactory {
     private static VisitFactory visitFactory;
 
-    private long visitId = 0;
-
     private VisitFactory() {
     }
 
@@ -27,8 +25,8 @@ public class VisitFactory {
         return visitFactory;
     }
 
-    public Visit generateVisit(Patient patient, Dentist dentist, Date date, Time time, String visitType) {
-        ++visitId;
+    public Visit generateVisit(long visitId, Patient patient, Dentist dentist, Date date, Time time, String visitType) {
+
         return new Visit(visitId, visitType, date, time, patient, dentist);
     }
 

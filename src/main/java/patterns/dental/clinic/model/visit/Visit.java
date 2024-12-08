@@ -9,15 +9,15 @@ import java.sql.Date;
 public class Visit {
     private long visitId;
     private String visitType;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
     private Patient patient;
     private Dentist dentist;
 
     public Visit() {
     }
 
-    public Visit(long visitId, String visitType, Date date, Time time, Patient patient, Dentist dentist) {
+    public Visit(long visitId, String visitType, String date, String time, Patient patient, Dentist dentist) {
         this.visitId = visitId;
         this.visitType = visitType;
         this.date = date;
@@ -54,19 +54,19 @@ public class Visit {
         this.visitType = visitType;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
