@@ -14,7 +14,7 @@ public class DentistBill extends Bill {
     private String dentistFullName;
     private String patientInformation;
 
-    public DentistBill(long billId, Visit visit, Date date, Time time, double subTotal, double total,
+    public DentistBill(long billId, Visit visit, String date, String time, double subTotal, double total,
                        double insuranceDeduction, String procedureInfo, String patientFullName, String dentistFullName,
                        String patientInfo) {
         super(billId, visit, date, time, subTotal, total, insuranceDeduction);
@@ -22,13 +22,6 @@ public class DentistBill extends Bill {
         this.patientFullName = patientFullName;
         this.dentistFullName = dentistFullName;
         this.patientInformation = patientInfo;
-    }
-
-
-    @Override
-    long generateId() {
-        //TODO: implement the generate id after having the full basic structure of the whole project
-        return 0;
     }
 
     public String getProcedureInformation() {

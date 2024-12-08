@@ -13,13 +13,13 @@ import java.util.Date;
 public abstract class Bill {
     private long billId;
     private Visit visit;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
     private double subTotal;
     private double total;
     private double insuranceDeduction;
 
-    public Bill(long billId, Visit visit, Date date, Time time, double subTotal, double total, double insuranceDeduction) {
+    public Bill(long billId, Visit visit, String date, String time, double subTotal, double total, double insuranceDeduction) {
         this.billId = billId;
         this.visit = visit;
         this.date = date;
@@ -45,19 +45,19 @@ public abstract class Bill {
         this.visit = visit;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -84,10 +84,5 @@ public abstract class Bill {
     public void setInsuranceDeduction(double insuranceDeduction) {
         this.insuranceDeduction = insuranceDeduction;
     }
-
-
-
-    abstract long generateId();
-
 
 }

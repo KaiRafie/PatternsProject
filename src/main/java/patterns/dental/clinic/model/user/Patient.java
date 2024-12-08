@@ -8,29 +8,27 @@ import java.util.Date;
 @Setter
 public class Patient extends User {
     private static long lastId = 0;
-    private long patientID;
 
     public Patient() {
     }
 
-
-    public Patient(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
+    public Patient(String firstName, String lastName, String loginPass, String dateOfBirth) {
         super(firstName, lastName, loginPass, dateOfBirth);
-        patientID = generateID();
     }
 
 
-    public long generateID(){
-        //To be possibly changed (implemented in DB or in Java)
-        return lastId++;
+    // to query patients to the system's list
+    public Patient(String firstName, String lastName, long userID, String loginPass, String dateOfBirth) {
+        super(firstName, lastName, userID, loginPass, dateOfBirth);
     }
 
     @Override
     public String toString() {
         return "Patient{" +
-                "patientID=" + patientID +
+                "patientID=" + getUserID() +
                 ", dateOfBirth=" + getDateOfBirth() +
-                ", patientFullName" + getFirstName() + " " + getLastName() +
+                ", patientFullName=" + getFirstName() + " " + getLastName() +
+                ", patientPassword=" + getLoginPass() +
                 '}';
     }
 }
