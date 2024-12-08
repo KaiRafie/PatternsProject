@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class ClinicSystem {
-    private ClinicSystem clinicSystem;
+    private static ClinicSystem clinicSystem;
 
     @Getter
     @Setter
@@ -38,7 +38,7 @@ public class ClinicSystem {
      * insures that the class is a singleton
      * @return a single instance of the class
      */
-    public ClinicSystem getInstance() {
+    public static ClinicSystem getInstance() {
         if (clinicSystem == null) {
             synchronized (BillModel.class) {
                 if (clinicSystem == null) {

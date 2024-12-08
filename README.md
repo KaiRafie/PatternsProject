@@ -15,3 +15,7 @@ The system is a functional software solution designed to manage the day to day o
 * Finally provide a dynamical code with structured designing patterns.
 
 This project is going to be designed to make managing a dental clinic easier for both dentists and patients. This project shall be finalized before the deadline given.
+
+
+## Make sure to
+* copy '--module-path "./src/main/resources/javafx-sdk-23.0.1/lib" --add-modules javafx.controls,javafx.fxml'
