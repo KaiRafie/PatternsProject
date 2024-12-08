@@ -20,12 +20,7 @@ import java.time.LocalDate;
 
 public class Main extends Application {
     public static void main(String[] args) {
-        User patient = new Patient();
-        String userClass = patient.getClass().getName();
-        String[] uclass = userClass.split("\\.");
-        String realClass = uclass[uclass.length - 1];
-        System.out.println(realClass);
-        //launch(args);
+        launch(args);
     }
 
     @Override

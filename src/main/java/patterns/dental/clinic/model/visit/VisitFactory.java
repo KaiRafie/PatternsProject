@@ -4,9 +4,6 @@ import lombok.Getter;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 
-import java.sql.Date;
-import java.sql.Time;
-
 @Getter
 public class VisitFactory {
     private static VisitFactory visitFactory;
@@ -25,7 +22,7 @@ public class VisitFactory {
         return visitFactory;
     }
 
-    public Visit generateVisit(long visitId, Patient patient, Dentist dentist, Date date, Time time, String visitType) {
+    public Visit generateVisit(long visitId, Patient patient, Dentist dentist, String date, String time, String visitType) {
 
         return new Visit(visitId, visitType, date, time, patient, dentist);
     }
