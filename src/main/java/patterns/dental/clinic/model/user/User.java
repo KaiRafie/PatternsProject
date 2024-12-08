@@ -6,11 +6,22 @@ public abstract class User {
    
     private String firstName;
     private String lastName;
-    private String loginID;
+    private long userID;
     private String loginPass;
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
-    public User(String firstName, String lastName, String loginPass, Date dateOfBirth) {
+    public User() {
+    }
+
+    public User(String firstName, String lastName, long userID, String loginPass, String dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userID = userID;
+        this.loginPass = loginPass;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public User(String firstName, String lastName, String loginPass, String dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.loginPass = loginPass;
@@ -33,12 +44,12 @@ public abstract class User {
         this.lastName = lastName;
     }
 
-    public String getLoginID() {
-        return loginID;
+    public long getUserID() {
+        return userID;
     }
 
-    public void setLoginID(String loginID) {
-        this.loginID = loginID;
+    public void setUserID(long loginID) {
+        this.userID = loginID;
     }
 
     public String getLoginPass() {
@@ -49,11 +60,11 @@ public abstract class User {
         this.loginPass = loginPass;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }

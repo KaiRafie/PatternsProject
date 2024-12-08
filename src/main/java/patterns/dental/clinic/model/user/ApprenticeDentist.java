@@ -1,35 +1,22 @@
 package patterns.dental.clinic.model.user;
 
 import lombok.*;
-
-import java.util.ArrayList;
-import java.util.Date;
-<<<<<<< HEAD
-=======
-import java.util.List;
->>>>>>> origin/dev
+import patterns.dental.clinic.MyList;
 
 @Getter
 @Setter
-
 public class ApprenticeDentist extends Dentist {
-    private ArrayList<String> allowedOperations;
 
-    public ApprenticeDentist(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
-        super(firstName, lastName, loginID, loginPass, dateOfBirth);
+
+    public ApprenticeDentist() {
     }
 
-    enum Operations{
-        TEETH_CLEANING, FLUORIDE_APPLICATION, CAVITY_CLEANING, DENTAL_EXAMINATIONS;
-        @Override
-        public String toString(){
-            return name().replace('_', ' ');
-        }
+    public ApprenticeDentist(String firstName, String lastName, long userID, String loginPass, String dateOfBirth,
+                                MyList<String> allowedOperations, String specialty) {
+        super(firstName, lastName, userID, loginPass, dateOfBirth, allowedOperations, specialty);
     }
 
-    public void addOperation(Operations value){
-        allowedOperations.add(value.toString());
+    public ApprenticeDentist(String firstName, String lastName, String loginPass, String dateOfBirth) {
+        super(firstName, lastName, loginPass, dateOfBirth);
     }
-
-
 }

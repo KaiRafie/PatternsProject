@@ -1,6 +1,7 @@
 package patterns.dental.clinic.model.user;
 
 import lombok.*;
+import patterns.dental.clinic.MyList;
 
 import java.util.Date;
 
@@ -8,10 +9,16 @@ import java.util.Date;
 @Setter
 
 public class RegularDentist extends Dentist {
-    private String specialty;
 
-    public RegularDentist(String firstName, String lastName, String loginID, String loginPass, Date dateOfBirth) {
-        super(firstName, lastName, loginID, loginPass, dateOfBirth);
+    public RegularDentist() {
     }
 
+    public RegularDentist(String firstName, String lastName, long userID, String loginPass, String dateOfBirth,
+                          MyList<String> allowedOperations, String specialty) {
+        super(firstName, lastName, userID, loginPass, dateOfBirth, allowedOperations, specialty);
+    }
+
+    public RegularDentist(String firstName, String lastName, String loginPass, String dateOfBirth) {
+        super(firstName, lastName, loginPass, dateOfBirth);
+    }
 }
