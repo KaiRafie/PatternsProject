@@ -1,5 +1,7 @@
 package patterns.dental.clinic.controller;
 
+import lombok.Getter;
+import lombok.Setter;
 import patterns.dental.clinic.memento.ClinicSystemMemento;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.bill.Bill;
@@ -221,5 +223,19 @@ public class ClinicSystemController {
             }
         }
         return removedVisit;
+    }
+
+    public boolean createVisit(long dentistId, long patientId, String visitType, String date, String time, String procedure) {
+        DatabaseController.insertVisitRecord(dentistId, patientId, visitType, date, time, procedure);
+
+        Visit visit = DatabaseController.queryLastVisit();
+
+        clinicSystem.getVisitsList().add(visit);
+
+        if (clinicSystem.getVisitsList().contains(visit)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
