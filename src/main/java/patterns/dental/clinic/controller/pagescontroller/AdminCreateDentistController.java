@@ -8,9 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import patterns.dental.clinic.MyList;
 import patterns.dental.clinic.model.user.Operations;
-
 import java.util.Arrays;
 import java.util.List;
 

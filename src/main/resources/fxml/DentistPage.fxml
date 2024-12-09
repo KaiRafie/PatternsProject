@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontroller.DentistPageController">
+   <children>
+      <AnchorPane prefHeight="550.0" prefWidth="750.0">
+         <children>
+            <AnchorPane prefHeight="550.0" prefWidth="750.0">
+               <children>
+                  <AnchorPane prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;">
+                     <children>
+                        <ImageView fitHeight="550.0" fitWidth="86.0" layoutY="1.0">
+                           <image>
+                              <Image url="@../images/sideBar.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="homeButton" layoutX="10.0" layoutY="435.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
+                        <Button fx:id="previousButton" layoutX="10.0" layoutY="487.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
+                        <ListView fx:id="visitListView" layoutX="145.0" layoutY="112.0" prefHeight="218.0" prefWidth="461.0" />
+                        <TextField fx:id="patientIdTextField" layoutX="145.0" layoutY="73.0" promptText="Patient Id" />
+                        <Label layoutX="145.0" layoutY="44.0" prefHeight="17.0" prefWidth="149.0" text="View Patient's Visits">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="viewButton" layoutX="310.0" layoutY="73.0" mnemonicParsing="false" onAction="#viewButtonClick" prefHeight="25.0" prefWidth="66.0" text="View" />
+                        <Button fx:id="createVisitButton" layoutX="371.0" layoutY="491.0" mnemonicParsing="false" onAction="#createVisitButtonClick" prefHeight="20.0" prefWidth="92.0" text="Create Visit">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="visitTypeTextField" layoutX="169.0" layoutY="385.0" />
+                        <TextField fx:id="dentistIdTextField" layoutX="342.0" layoutY="441.0" />
+                        <TextField fx:id="dateTextField" layoutX="169.0" layoutY="441.0" />
+                        <TextField fx:id="patientVisitIdTextField" layoutX="342.0" layoutY="385.0" />
+                        <TextField fx:id="timeTextField" layoutX="169.0" layoutY="506.0" />
+                        <Label layoutX="143.0" layoutY="367.0" prefHeight="17.0" prefWidth="149.0" text="Visit Type">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="133.0" layoutY="330.0" prefHeight="17.0" prefWidth="149.0" text="Create Visit">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="143.0" layoutY="421.0" prefHeight="17.0" prefWidth="149.0" text="Date">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="143.0" layoutY="487.0" prefHeight="17.0" prefWidth="149.0" text="Time">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="318.0" layoutY="367.0" prefHeight="17.0" prefWidth="149.0" text="Patient Id">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="318.0" layoutY="421.0" prefHeight="17.0" prefWidth="149.0" text="Dentist Id">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
