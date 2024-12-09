@@ -49,10 +49,8 @@ public class DentistPageController {
     private ListView<Visit> visitListView;
 
     public void loadVisitsToViewBox(java.util.List<Visit> visits) {
-        // Clear existing items
         visitListView.getItems().clear();
 
-        // Add all visits to the ListView
         visitListView.getItems().addAll(visits);
     }
 

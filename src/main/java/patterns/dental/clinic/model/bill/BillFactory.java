@@ -11,6 +11,18 @@ import java.util.InputMismatchException;
 
 @Getter
 public class BillFactory {
+    /**
+     * Factory method to create a patient bill
+     * @param billId of patient
+     * @param visit of patient
+     * @param date of patient
+     * @param time of patient
+     * @param subTotal of bill
+     * @param total of bill
+     * @param insuranceDeduction from bill
+     * @param patient of bill
+     * @return
+     */
 
     public static Bill createPatientBill(long billId, Visit visit, String date, String time, double subTotal, double total,
                                          double insuranceDeduction, Patient patient) {
