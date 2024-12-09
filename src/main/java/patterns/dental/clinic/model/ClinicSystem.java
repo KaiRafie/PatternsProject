@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.controller.DatabaseController;
+import patterns.dental.clinic.memento.ClinicSystemMemento;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
@@ -17,15 +18,11 @@ import java.util.List;
 public class ClinicSystem {
     private static ClinicSystem clinicSystem;
 
-    @Getter
-    private List<User> usersList;
-    @Getter
+    private List<User> usersList; // not much needed but for being a temp history when loading the program for the first time
+    // and then check it manually later on when you want to check back some old modified data.
     private List<Patient> patientsList;
-    @Getter
     private List<Dentist> dentistsList;
-    @Getter
     private List<Bill> billsList;
-    @Getter
     private List<Visit> visitsList;
 
     private ClinicSystem() {
@@ -34,6 +31,26 @@ public class ClinicSystem {
         dentistsList = DatabaseController.queryAllDentistRecords();
         billsList = DatabaseController.queryAllBillRecords();
         visitsList = DatabaseController.queryAllVisitRecords();
+    }
+
+    public List<User> getUsersList() {
+        return usersList;
+    }
+
+    public List<Patient> getPatientsList() {
+        return patientsList;
+    }
+
+    public List<Dentist> getDentistsList() {
+        return dentistsList;
+    }
+
+    public List<Bill> getBillsList() {
+        return billsList;
+    }
+
+    public List<Visit> getVisitsList() {
+        return visitsList;
     }
 
     /**
@@ -49,6 +66,18 @@ public class ClinicSystem {
             }
         }
         return clinicSystem;
+    }
+
+    public ClinicSystemMemento saveSystemHistory() {
+        return new ClinicSystemMemento(usersList, patientsList, dentistsList, billsList, visitsList);
+    }
+
+    public void restoreSystemState(ClinicSystemMemento memento) {
+        this.usersList = new ArrayList<>(memento.getUsersList());
+        this.patientsList = new ArrayList<>(memento.getPatientsList());
+        this.dentistsList = new ArrayList<>(memento.getDentistsList());
+        this.billsList = new ArrayList<>(memento.getBillsList());
+        this.visitsList = new ArrayList<>(memento.getVisitsList());
     }
 
 }

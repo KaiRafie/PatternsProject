@@ -1,20 +1,18 @@
 package patterns.dental.clinic.model.user;
 
-
-import patterns.dental.clinic.MyList;
-
 import java.util.Date;
+import java.util.List;
 
 public abstract class Dentist extends User {
     private String specialty;
-    private MyList<String> allowedOperations;
+    private List<String> allowedOperations;
 
     public Dentist() {
     }
 
 
     public Dentist(String firstName, String lastName, long userID, String loginPass, String dateOfBirth,
-                        MyList<String> allowedOperations, String specialty) {
+                        List<String> allowedOperations, String specialty) {
         super(firstName, lastName, userID, loginPass, dateOfBirth);
         this.specialty = specialty;
         this.allowedOperations = allowedOperations;
@@ -37,11 +35,11 @@ public abstract class Dentist extends User {
         this.specialty = specialty;
     }
 
-    public void setAllowedOperations(MyList<String> allowedOperations) {
+    public void setAllowedOperations(List<String> allowedOperations) {
         this.allowedOperations = allowedOperations;
     }
 
-    public MyList<String> getAllowedOperations() {
+    public List<String> getAllowedOperations() {
         return allowedOperations;
     }
 }
