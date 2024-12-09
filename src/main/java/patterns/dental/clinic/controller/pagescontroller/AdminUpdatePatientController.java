@@ -1,33 +1,38 @@
 package patterns.dental.clinic.controller.pagescontroller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+public class AdminUpdatePatientController {
 
+    @FXML
+    private TextField dobTextField;
 
-public class PatientSignInController {
+    @FXML
+    private TextField firstNameTextField;
 
     @FXML
     private Button homeButton;
 
     @FXML
-    private Button logInButton;
+    private TextField lastNameTextField;
 
     @FXML
-    private TextField passwordField;
+    private TextField passwordTextField;
+
+    @FXML
+    private TextField patientIdTextField;
 
     @FXML
     private Button previousButton;
 
     @FXML
-    private TextField userIdField;
+    private Button updateButton;
 
     @FXML
     public void homeButtonClick(ActionEvent ae){
@@ -49,4 +54,15 @@ public class PatientSignInController {
         NavigationManager.getInstance().navigateBack();
     }
 
+    @FXML
+    void updateButtonClick(ActionEvent event) {
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        int id = Integer.parseInt(patientIdTextField.getText());
+        String password = passwordTextField.getText();
+        String dob = dobTextField.getText();
+
+    }
+
 }
+

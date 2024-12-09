@@ -1,18 +1,14 @@
 package patterns.dental.clinic.controller.pagescontroller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-
-
-public class PatientSignInController {
+public class DentistSignInController {
 
     @FXML
     private Button homeButton;
@@ -21,13 +17,19 @@ public class PatientSignInController {
     private Button logInButton;
 
     @FXML
-    private TextField passwordField;
+    private TextField passwordTextField;
 
     @FXML
     private Button previousButton;
 
     @FXML
-    private TextField userIdField;
+    private TextField userIdTextField;
+
+    @FXML
+    void logInButtonClick(ActionEvent event) {
+        int id = Integer.parseInt(userIdTextField.getText());
+        String password = passwordTextField.getText();
+    }
 
     @FXML
     public void homeButtonClick(ActionEvent ae){
