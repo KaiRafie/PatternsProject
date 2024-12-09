@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import patterns.dental.clinic.controller.DatabaseController;
 import patterns.dental.clinic.controller.pagescontroller.NavigationManager;
 import patterns.dental.clinic.model.bill.*;
 import patterns.dental.clinic.model.user.Dentist;
@@ -20,6 +21,7 @@ import java.time.LocalDate;
 
 public class Main extends Application {
     public static void main(String[] args) {
+        DatabaseController.initializeDatabase();
         launch(args);
     }
 

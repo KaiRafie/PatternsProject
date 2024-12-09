@@ -44,7 +44,7 @@ public class ClinicSystemController {
         }
     }
 
-    public void createBill(long visitId, String date, String time, double subTotal, double total, double insuranceDeduction) {
+    public boolean createBill(long visitId, String date, String time, double subTotal, double total, double insuranceDeduction) {
         DatabaseController.insertBillRecord(visitId, date, time, subTotal, total, insuranceDeduction);
         Bill bill = DatabaseController.queryLastBill();
         String billType = bill.getClass().getSimpleName();
@@ -58,9 +58,15 @@ public class ClinicSystemController {
                     bill.getVisit().getDentist());
         }
         clinicSystem.getBillsList().add(newBill);
+
+        if (clinicSystem.getBillsList().contains(newBill) && bill.getBillId() == newBill.getBillId()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void updateBill(long billId, long visitId, String date, String time, double subTotal, double total,
+    public boolean updateBill(long billId, long visitId, String date, String time, double subTotal, double total,
                                 double insuranceDeduction) {
         DatabaseController.updateBillRecord(billId, visitId, date, time, subTotal, total, insuranceDeduction);
         Visit visit = DatabaseController.queryVisitByBillId(billId);
@@ -82,9 +88,11 @@ public class ClinicSystemController {
 
                 }
                 clinicSystem.getBillsList().set(i, updatedBill);
-                break;
+                return true;
             }
         }
+
+        return false;
     }
 
     public Bill removeBill(long billId) {
@@ -103,18 +111,22 @@ public class ClinicSystemController {
         return removedBill;
     }
 
-    public void createDentist(String fistName, String lastName, String password, String birthDate, List<String> Operations,
+    public boolean createDentist(String fistName, String lastName, String password, String birthDate, List<String> Operations,
                                     String specialty) {
         DatabaseController.insertDentistRecord(fistName, lastName, birthDate, Operations, specialty, password);
 
         Dentist dentist = DatabaseController.queryLastDentistRecord();
 
         clinicSystem.getDentistsList().add(dentist);
-        clinicSystem.getUsersList().add(dentist);
 
+        if (clinicSystem.getDentistsList().contains(dentist)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void updateDentist(long dentistId, String firstName, String lastName, String birthDate,
+    public boolean updateDentist(long dentistId, String firstName, String lastName, String birthDate,
                               List<String> allowedOperations, String specialty, String password) {
         DatabaseController.updateDentistRecord(dentistId, firstName, lastName, birthDate, allowedOperations, specialty, password);
 
@@ -126,9 +138,11 @@ public class ClinicSystemController {
                 Dentist updatedDentist = UserFactory.createDentist(dentistId, firstName, lastName, password, birthDate,
                         specialty, allowedOperations);
                 clinicSystem.getDentistsList().set(i, updatedDentist);
-                break;
+                return true;
             }
         }
+
+        return false;
     }
 
     public Dentist removeDentist(long dentistId) {
@@ -147,16 +161,21 @@ public class ClinicSystemController {
         return removedDentist;
     }
 
-    public void createPatient(String firstName, String lastName, String birthDate, String password) {
+    public boolean createPatient(String firstName, String lastName, String birthDate, String password) {
         DatabaseController.insertPatientRecord(firstName, lastName, birthDate, password);
 
         User patient = DatabaseController.queryLastPatientRecord();
 
         clinicSystem.getPatientsList().add((Patient) patient);
-        clinicSystem.getUsersList().add(patient);
+
+        if (clinicSystem.getPatientsList().contains(patient)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void updatePatient(long patientId, String firstName, String lastName, String birthDate, String password) {
+    public boolean updatePatient(long patientId, String firstName, String lastName, String birthDate, String password) {
         DatabaseController.updatePatientRecord(patientId, firstName, lastName, birthDate, password);
 
         for (int i = 0; i < clinicSystem.getPatientsList().size(); i++) {
@@ -166,9 +185,10 @@ public class ClinicSystemController {
                 User updatedPatient = UserFactory.createPatient(firstName, lastName, password, birthDate);
 
                 clinicSystem.getPatientsList().set(i, (Patient) updatedPatient);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public User removePatient(long patientId) {
