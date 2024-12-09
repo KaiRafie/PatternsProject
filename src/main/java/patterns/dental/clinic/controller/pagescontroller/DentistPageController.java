@@ -1,5 +1,6 @@
 package patterns.dental.clinic.controller.pagescontroller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +41,7 @@ public class DentistPageController {
     private TextField timeTextField;
 
     @FXML
-    private TextField dentisttIdTextField;
+    private TextField dentistIdTextField;
 
     @FXML
     private TextField patientVisitIdTextField;
@@ -54,12 +55,11 @@ public class DentistPageController {
     @FXML
     private ListView<Visit> visitListView;
 
-    public void loadVisitsToViewBox(java.util.List<Visit> visits) {
-        // Clear existing items
-        visitListView.getItems().clear();
+    public void loadVisitsToViewBox(List<Visit> visits) {
+        // Temporary workaround to force UI refresh
+        visitListView.setItems(FXCollections.observableArrayList()); // Clear ListView
+        visitListView.setItems(FXCollections.observableArrayList(visits)); // Add updated items
 
-        // Add all visits to the ListView
-        visitListView.getItems().addAll(visits);
     }
 
     @FXML
@@ -69,7 +69,7 @@ public class DentistPageController {
         String date = dateTextField.getText();
         String time = timeTextField.getText();
         int patientId = Integer.parseInt(patientVisitIdTextField.getText());
-        int dentistId = Integer.parseInt(dentisttIdTextField.getText());
+        int dentistId = Integer.parseInt(dentistIdTextField.getText());
 
         boolean createdState = controller.createVisit(dentistId, patientId, visitType, date, time, procedureInfo);
 
