@@ -18,12 +18,12 @@ import java.util.List;
 public class ClinicSystem {
     private static ClinicSystem clinicSystem;
 
-    private List<User> usersList; // not much needed but for being a temp history when loading the program for the first time
+    private List<User> usersList = new ArrayList<>(); // not much needed but for being a temp history when loading the program for the first time
     // and then check it manually later on when you want to check back some old modified data.
-    private List<Patient> patientsList;
-    private List<Dentist> dentistsList;
-    private List<Bill> billsList;
-    private List<Visit> visitsList;
+    private List<Patient> patientsList = new ArrayList<>();
+    private List<Dentist> dentistsList = new ArrayList<>();
+    private List<Bill> billsList = new ArrayList<>();
+    private List<Visit> visitsList = new ArrayList<>();
 
     private ClinicSystem() {
         usersList = ClinicSystemController.queryAllUsers();

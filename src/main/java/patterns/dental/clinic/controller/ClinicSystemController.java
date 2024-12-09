@@ -118,7 +118,6 @@ public class ClinicSystemController {
         Dentist dentist = DatabaseController.queryLastDentistRecord();
 
         clinicSystem.getDentistsList().add(dentist);
-        clinicSystem.getUsersList().add(dentist);
 
         if (clinicSystem.getDentistsList().contains(dentist)) {
             return true;
@@ -168,7 +167,6 @@ public class ClinicSystemController {
         User patient = DatabaseController.queryLastPatientRecord();
 
         clinicSystem.getPatientsList().add((Patient) patient);
-        clinicSystem.getUsersList().add(patient);
 
         if (clinicSystem.getPatientsList().contains(patient)) {
             return true;

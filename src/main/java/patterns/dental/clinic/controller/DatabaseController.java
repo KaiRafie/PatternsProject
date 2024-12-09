@@ -13,9 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DatabaseController {
-    private static final String relativPath = "jdbc:sqlite:src/main/resources/database/ClinicSystem.db";
-    private static final Path dbPath = Paths.get(relativPath).toAbsolutePath();
-    private static final String URL = "jdbc:sqlite:" + dbPath;
+    private static final String URL = "jdbc:sqlite:src/main/resources/database/ClinicSystem.db";
 
     private static Connection connect() {
         try {
@@ -27,24 +25,39 @@ public class DatabaseController {
 
     // Creating tables if they do not exist
     public static void createPatientTable() {
-        String sql = """
-                CREATE TABLE IF NOT EXISTS patient(
+        // SQL to create the table
+        String createTableSQL = """
+            CREATE TABLE IF NOT EXISTS patient (
                 patient_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 patient_first_name TEXT NOT NULL,
                 patient_last_name TEXT NOT NULL,
                 patient_birth_date TEXT NOT NULL,
                 patient_login_password TEXT NOT NULL
-                
-                -- Set starting value to 10000
-                INSERT INTO patient(patient_id, patient_first_name, patient_last_name, patient_birth_date, patient_login_password)
-                VALUES (9999, 'dummy', 'dummy', '2000-01-01', 'dummy');
-                
-                DELETE FROM patient WHERE patient_id = 9999;
-                )
-                """;
+            );
+            """;
+
+        // SQL to insert a dummy record to make patients ids start at 10000
+        String insertDummySQL = """
+            INSERT INTO patient(patient_id, patient_first_name, patient_last_name, patient_birth_date, patient_login_password)
+            VALUES (9999, 'dummy', 'dummy', '2000-01-01', 'dummy');
+            """;
+
+        // SQL to delete the dummy record
+        String deleteDummySQL = """
+            DELETE FROM patient WHERE patient_id = 9999;
+            """;
+
         try (Connection conn = connect();
              Statement stat = conn.createStatement()) {
-            stat.execute(sql);
+            // Execute the table creation SQL
+            stat.execute(createTableSQL);
+
+            // Insert the dummy record
+            stat.execute(insertDummySQL);
+
+            // Delete the dummy record
+            stat.execute(deleteDummySQL);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
