@@ -6,8 +6,7 @@ import patterns.dental.clinic.model.visit.Visit;
 import java.sql.Time;
 import java.util.Date;
 
-@Getter
-@Setter
+
 public class DentistBill extends Bill {
     private String procedureInformation;
     private String patientFullName;

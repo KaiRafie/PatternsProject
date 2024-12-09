@@ -5,7 +5,6 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 public class UserFactory {
 
     public static User createPatient(String firstName, String lastName, String loginPass,String dateOfBirth) {

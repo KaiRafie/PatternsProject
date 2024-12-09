@@ -29,7 +29,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         try {
             NavigationManager.getInstance().setPrimaryStage(stage);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DentistPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainPage.fxml"));
             AnchorPane root = loader.load();
 
             Scene scene = new Scene(root);
