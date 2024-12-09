@@ -4,14 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import patterns.dental.clinic.controller.ClinicSystemController;
+
 import patterns.dental.clinic.model.user.Operations;
+import java.util.Arrays;
+import java.util.List;
 
 public class AdminCreateDentistController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button createButton;
@@ -29,24 +34,27 @@ public class AdminCreateDentistController {
     private TextField lastNameTextField;
 
     @FXML
-    private ComboBox<Operations> operationsComboBox;
-
-    @FXML
     private TextField passwordTextField;
 
     @FXML
     private Button previousButton;
 
     @FXML
+    private VBox operationsListBox;
+
+    @FXML
     private TextField specialityTextField;
+
+
+    private final ListView<CheckBox> operationsListView = new ListView<>();
 
     @FXML
     public void initialize() {
-        // Load enum values into the ComboBox
-        operationsComboBox.getItems().setAll(Operations.values());
-
-        // Optionally, set a default value
-        operationsComboBox.setValue(Operations.ALL_OPERATIONS); // Replace with a valid default if needed
+        for (Operations operation : Operations.values()) {
+            CheckBox checkBox = new CheckBox(operation.name());
+            operationsListView.getItems().add(checkBox);
+        }
+        operationsListBox.getChildren().add(operationsListView);
     }
 
     @FXML
@@ -55,8 +63,31 @@ public class AdminCreateDentistController {
         String lastName = lastNameTextField.getText();
         String password = passwordTextField.getText();
         String dateOfBirth = dobTextField.getText();
-        Operations operation = operationsComboBox.getValue();
+        StringBuilder selectedOperations = new StringBuilder();
+        for (CheckBox checkBox : operationsListView.getItems()) {
+            if (checkBox.isSelected()) {
+                selectedOperations.append(checkBox.getText()).append(", ");
+            }
+        }
+        List<String> allowedOperations = Arrays.stream(selectedOperations.toString()
+                .split(", ")).toList();
         String specialty = specialityTextField.getText();
+
+        boolean createdState = controller.createDentist(firstName, lastName, password, dateOfBirth, allowedOperations, specialty);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Dentist Creation");
+
+        if (createdState) {
+            alert.setHeaderText("Dentist created successfully");
+            alert.setContentText("You have created a dentist successfully");
+        } else {
+            alert.setHeaderText("Dentist NOT created successfully");
+            alert.setContentText("The system was unable to create the dentist, check the information and try again!");
+        }
+
+        alert.showAndWait();
     }
 
     @FXML
@@ -68,12 +99,7 @@ public class AdminCreateDentistController {
 
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.setTitle("Dental Management System");
-
-            stage.show();
+            NavigationManager.getInstance().navigateTo(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }

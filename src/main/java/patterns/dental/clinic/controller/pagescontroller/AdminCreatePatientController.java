@@ -1,69 +1,62 @@
 package patterns.dental.clinic.controller.pagescontroller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 import patterns.dental.clinic.controller.ClinicSystemController;
 
-public class AdminCreateBillController {
-
+public class AdminCreatePatientController {
     ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button createButton;
 
     @FXML
-    private TextField dateTextField;
+    private TextField dobTextField;
+
+    @FXML
+    private TextField firstNameTextField;
 
     @FXML
     private Button homeButton;
 
     @FXML
-    private TextField insuranceDeductionTextField;
+    private TextField lastNameTextField;
+
+    @FXML
+    private TextField passwordTextField;
 
     @FXML
     private Button previousButton;
 
-    @FXML
-    private TextField subtotalTextField;
-
-    @FXML
-    private TextField timeTextField;
-
-    @FXML
-    private TextField totalTextField;
-
-    @FXML
-    private TextField visitIdTextField;
-
+    /**
+     * Method that creates patient from inputted information from GUI
+     */
     @FXML
     void createButtonClick(ActionEvent event) {
-        int visitId = Integer.parseInt(visitIdTextField.getText());
-        String date = dateTextField.getText();
-        String time = timeTextField.getText();
-        double subtotal = Double.parseDouble(subtotalTextField.getText());
-        double total = Double.parseDouble(totalTextField.getText());
-        double insuranceDeduction = Double.parseDouble(insuranceDeductionTextField.getText());
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String password = passwordTextField.getText();
+        String dob = dobTextField.getText();
 
-        boolean createdState = controller.createBill(visitId, date, time, subtotal, total, insuranceDeduction);
+        boolean createdState = controller.createPatient(firstName, lastName, dob, password);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-        alert.setTitle("Bill Creation");
+        alert.setTitle("Patient Creation");
 
         if (createdState) {
-            alert.setHeaderText("Bill created successfully");
-            alert.setContentText("You have created a bill successfully");
+            alert.setHeaderText("Patient created successfully");
+            alert.setContentText("You have created a patient successfully");
         } else {
-            alert.setHeaderText("Bill NOT created successfully");
-            alert.setContentText("The system was unable to create the bill, check the information and try again!");
+            alert.setHeaderText("Patient NOT created successfully");
+            alert.setContentText("The system was unable to create the patient, check the information and try again!");
         }
 
         alert.showAndWait();
@@ -90,4 +83,3 @@ public class AdminCreateBillController {
     }
 
 }
-

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontroller.PatientPageController">
+   <children>
+      <AnchorPane prefHeight="550.0" prefWidth="750.0">
+         <children>
+            <AnchorPane prefHeight="550.0" prefWidth="750.0">
+               <children>
+                  <AnchorPane prefHeight="550.0" prefWidth="750.0">
+                     <children>
+                        <AnchorPane prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;">
+                           <children>
+                              <ImageView fitHeight="550.0" fitWidth="86.0" layoutY="1.0">
+                                 <image>
+                                    <Image url="@../images/sideBar.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="homeButton" layoutX="10.0" layoutY="435.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
+                              <Button fx:id="previousButton" layoutX="10.0" layoutY="487.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
+                              <ListView fx:id="visitListView" layoutX="147.0" layoutY="120.0" prefHeight="132.0" prefWidth="461.0" />
+                              <TextField fx:id="patientIdTextField" layoutX="139.0" layoutY="20.0" promptText="Patient Id" />
+                              <Label layoutX="143.0" layoutY="55.0" prefHeight="17.0" prefWidth="149.0" text="View Your Visits">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="viewVisitButton" layoutX="147.0" layoutY="79.0" mnemonicParsing="false" onAction="#viewVisitButtonClick" prefHeight="25.0" prefWidth="66.0" text="View" />
+                              <ListView fx:id="billListView" layoutX="143.0" layoutY="323.0" prefHeight="132.0" prefWidth="461.0" />
+                              <Label layoutX="143.0" layoutY="255.0" prefHeight="17.0" prefWidth="149.0" text="View Your Bill">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="viewBillButton" layoutX="143.0" layoutY="284.0" mnemonicParsing="false" onAction="#viewBillButtonClick" prefHeight="25.0" prefWidth="66.0" text="View" />
+                              <TextField fx:id="billTextField" layoutX="143.0" layoutY="504.0" promptText="Bill Id" />
+                              <Label layoutX="143.0" layoutY="462.0" prefHeight="17.0" prefWidth="149.0" text="Pay Your Bill">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="amountPaidTextField" layoutX="329.0" layoutY="504.0" promptText="Amount Paid" />
+                              <Button fx:id="submitButton" layoutX="517.0" layoutY="504.0" mnemonicParsing="false" onAction="#submitButtonClick" prefHeight="25.0" prefWidth="66.0" text="Submit" />
+                              <Button fx:id="refreshButton" layoutX="10.0" layoutY="111.0" mnemonicParsing="false" onAction="#refreshButtonClick" prefHeight="34.0" prefWidth="66.0" text="Refresh" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -44,5 +45,31 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Button>
+      <Button fx:id="adminPageButton" layoutX="629.0" layoutY="500.0" mnemonicParsing="false" onAction="#adminPageButtonClick" prefHeight="36.0" prefWidth="107.0" text="Admin Page">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="refreshButton" layoutX="5.0" layoutY="400.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Refresh">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="restoreButton" layoutX="5.0" layoutY="500.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Restore">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveButton" layoutX="5.0" layoutY="448.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Save">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="adminKeyTextField" layoutX="442.0" layoutY="506.0" prefHeight="25.0" prefWidth="171.0" promptText="Enter Admin key" />
+      <Label layoutX="327.0" layoutY="508.0" prefHeight="21.0" prefWidth="97.0" text="Admin Key:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
