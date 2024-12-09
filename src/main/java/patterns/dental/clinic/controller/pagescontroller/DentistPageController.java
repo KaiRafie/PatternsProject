@@ -45,6 +45,9 @@ public class DentistPageController {
     private Button viewButton;
 
     @FXML
+    private TextField procedureInfoTextField;
+
+    @FXML
     private ListView<Visit> visitListView;
 
     public void loadVisitsToViewBox(java.util.List<Visit> visits) {
@@ -57,6 +60,7 @@ public class DentistPageController {
 
     @FXML
     void createVisitButtonClick(ActionEvent event) {
+        String procedureInfo = procedureInfoTextField.getText();
         String visitType = visitTypeTextField.getText();
         String date = dateTextField.getText();
         String time = timeTextField.getText();
