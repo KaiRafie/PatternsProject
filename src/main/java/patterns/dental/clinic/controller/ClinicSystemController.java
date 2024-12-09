@@ -1,6 +1,6 @@
 package patterns.dental.clinic.controller;
 
-import patterns.dental.clinic.MyList;
+import patterns.dental.clinic.memento.ClinicSystemMemento;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.bill.BillFactory;
@@ -12,9 +12,12 @@ import patterns.dental.clinic.model.visit.Visit;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Stack;
 import java.util.stream.Stream;
 
 public class ClinicSystemController {
+    private final Stack<ClinicSystemMemento> systemHistory = new Stack<>();
     private ClinicSystem clinicSystem = ClinicSystem.getInstance();
 
     public static List<User> queryAllUsers() {
@@ -25,6 +28,20 @@ public class ClinicSystemController {
                 .toList();
 
         return users;
+    }
+
+    public void saveSystemHistory() {
+        ClinicSystemMemento memento = clinicSystem.saveSystemHistory();
+        systemHistory.push(memento);
+    }
+
+    public void restoreSystemHistory() {
+        if (!systemHistory.isEmpty()) {
+            ClinicSystemMemento memento = systemHistory.pop();
+            clinicSystem.restoreSystemState(memento);
+        } else {
+            throw new NoSuchElementException("No system state to restore.");
+        }
     }
 
     public void createBill(long visitId, String date, String time, double subTotal, double total, double insuranceDeduction) {
@@ -86,7 +103,7 @@ public class ClinicSystemController {
         return removedBill;
     }
 
-    public void createDentist(String fistName, String lastName, String password, String birthDate, MyList<String> Operations,
+    public void createDentist(String fistName, String lastName, String password, String birthDate, List<String> Operations,
                                     String specialty) {
         DatabaseController.insertDentistRecord(fistName, lastName, birthDate, Operations, specialty, password);
 
@@ -98,7 +115,7 @@ public class ClinicSystemController {
     }
 
     public void updateDentist(long dentistId, String firstName, String lastName, String birthDate,
-                              MyList<String> allowedOperations, String specialty, String password) {
+                              List<String> allowedOperations, String specialty, String password) {
         DatabaseController.updateDentistRecord(dentistId, firstName, lastName, birthDate, allowedOperations, specialty, password);
 
         for (int i = 0; i < clinicSystem.getDentistsList().size(); i++) {

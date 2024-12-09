@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.controller.DatabaseController;
+import patterns.dental.clinic.memento.ClinicSystemMemento;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
@@ -65,6 +66,18 @@ public class ClinicSystem {
             }
         }
         return clinicSystem;
+    }
+
+    public ClinicSystemMemento saveSystemHistory() {
+        return new ClinicSystemMemento(usersList, patientsList, dentistsList, billsList, visitsList);
+    }
+
+    public void restoreSystemState(ClinicSystemMemento memento) {
+        this.usersList = new ArrayList<>(memento.getUsersList());
+        this.patientsList = new ArrayList<>(memento.getPatientsList());
+        this.dentistsList = new ArrayList<>(memento.getDentistsList());
+        this.billsList = new ArrayList<>(memento.getBillsList());
+        this.visitsList = new ArrayList<>(memento.getVisitsList());
     }
 
 }

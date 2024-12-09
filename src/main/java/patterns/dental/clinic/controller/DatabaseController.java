@@ -1,6 +1,5 @@
 package patterns.dental.clinic.controller;
 
-import patterns.dental.clinic.MyList;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.bill.PatientBill;
 import patterns.dental.clinic.model.user.*;
@@ -12,7 +11,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class DatabaseController {
     private static final String relativPath = "jdbc:sqlite:src/main/resources/database/ClinicSystem.db";
@@ -150,7 +148,11 @@ public class DatabaseController {
             if (allowedOperations.isEmpty()) {
                 stat.setString(4, "All, ");
             } else {
-                stat.setString(4, allowedOperations.toString());
+                StringBuilder sb = new StringBuilder();
+                for (var operation: allowedOperations) {
+                    sb.append(operation).append(", ");
+                }
+                stat.setString(4, sb.toString());
             }
             stat.setString(5, specialty);
             stat.setString(6, password);
@@ -239,7 +241,7 @@ public class DatabaseController {
     }
 
     public static void updateDentistRecord(long dentistId, String firstName, String lastName, String birthDate,
-                                           MyList<String> allowedOperations, String specialty, String password) {
+                                           List<String> allowedOperations, String specialty, String password) {
         String sql = """
                 UPDATE dentist SET
                 dentist_first_name = ?,
@@ -476,7 +478,7 @@ public class DatabaseController {
                 String firstName = rs.getString("dentist_first_name");
                 String lastName = rs.getString("dentist_last_name");
                 String birthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                                                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String password = rs.getString("dentist_login_password");
@@ -524,7 +526,7 @@ public class DatabaseController {
                 String dentistFirstName = rs.getString("dentist_first_name");
                 String dentistLastName = rs.getString("dentist_last_name");
                 String dentistBirthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                                                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String dentistPassword = rs.getString("dentist_login_password");
@@ -586,7 +588,7 @@ public class DatabaseController {
                 String dentistFirstName = rs.getString("dentist_first_name");
                 String dentistLastName = rs.getString("dentist_last_name");
                 String dentistBirthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                                                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String dentistPassword = rs.getString("dentist_login_password");
@@ -663,7 +665,7 @@ public class DatabaseController {
                 String dentistFirstName = rs.getString("dentist_first_name");
                 String dentistLastName = rs.getString("dentist_last_name");
                 String dentistBirthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                                                                 .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String dentistPassword = rs.getString("dentist_login_password");
@@ -739,7 +741,7 @@ public class DatabaseController {
                 String dentistFirstName = rs.getString("dentist_first_name");
                 String dentistLastName = rs.getString("dentist_last_name");
                 String dentistBirthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                                                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String dentistPassword = rs.getString("dentist_login_password");
@@ -820,7 +822,7 @@ public class DatabaseController {
                 String firstName = rs.getString("dentist_first_name");
                 String lastName = rs.getString("dentist_last_name");
                 String birthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                                                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String password = rs.getString("dentist_login_password");
@@ -868,7 +870,7 @@ public class DatabaseController {
                 String dentistFirstName = rs.getString("dentist_first_name");
                 String dentistLastName = rs.getString("dentist_last_name");
                 String dentistBirthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String dentistPassword = rs.getString("dentist_login_password");
@@ -941,7 +943,7 @@ public class DatabaseController {
                 String dentistFirstName = rs.getString("dentist_first_name");
                 String dentistLastName = rs.getString("dentist_last_name");
                 String dentistBirthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String dentistPassword = rs.getString("dentist_login_password");
@@ -1000,7 +1002,7 @@ public class DatabaseController {
                 String dentistFirstName = rs.getString("dentist_first_name");
                 String dentistLastName = rs.getString("dentist_last_name");
                 String dentistBirthDate = rs.getString("dentist_birth_date");
-                MyList<String> allowedOperations = (MyList<String>) Arrays.stream(rs.getString("allowed_operations")
+                List<String> allowedOperations = Arrays.stream(rs.getString("allowed_operations")
                         .split(", ")).toList();
                 String specialty = rs.getString("specialty");
                 String dentistPassword = rs.getString("dentist_login_password");

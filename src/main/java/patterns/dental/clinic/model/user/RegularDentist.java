@@ -1,12 +1,8 @@
 package patterns.dental.clinic.model.user;
 
-import lombok.*;
-import patterns.dental.clinic.MyList;
 
-import java.util.Date;
 
-@Getter
-@Setter
+import java.util.List;
 
 public class RegularDentist extends Dentist {
 
@@ -15,7 +11,7 @@ public class RegularDentist extends Dentist {
 
 
     public RegularDentist(String firstName, String lastName, long userID, String loginPass, String dateOfBirth,
-                          MyList<String> allowedOperations, String specialty) {
+                          List<String> allowedOperations, String specialty) {
         super(firstName, lastName, userID, loginPass, dateOfBirth, allowedOperations, specialty);
     }
 
