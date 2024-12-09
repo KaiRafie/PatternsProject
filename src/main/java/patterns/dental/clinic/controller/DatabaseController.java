@@ -946,13 +946,13 @@ public class DatabaseController {
     }
 
     public static Visit queryLastVisit() {
+        Visit visit = null;
         String sql = """
                      SELECT visit.*, patient.*, dentist.* FROM visit
                      JOIN patient ON visit.patient_id = patient.patient_id
                      JOIN dentist ON visit.dentist_id = dentist.dentist_id
                      WHERE visit.visit_id = (SELECT MAX(visit_id) FROM visit WHERE visit_id IS NOT NULL)
                      """;
-        Visit visit = null;
 
         try (Connection conn = connect();
              Statement stat = conn.createStatement();
