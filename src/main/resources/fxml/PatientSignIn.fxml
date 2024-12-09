@@ -34,7 +34,7 @@
       </ImageView>
       <Button fx:id="homeButton" layoutX="10.0" layoutY="434.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
       <Button fx:id="previousButton" layoutX="10.0" layoutY="486.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
-      <Button fx:id="logInButton" layoutX="365.0" layoutY="449.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" text="Log In">
+      <Button fx:id="logInButton" layoutX="365.0" layoutY="449.0" mnemonicParsing="false" onAction="#authenticateButton" prefHeight="39.0" prefWidth="86.0" text="Log In">
          <font>
             <Font size="18.0" />
          </font>

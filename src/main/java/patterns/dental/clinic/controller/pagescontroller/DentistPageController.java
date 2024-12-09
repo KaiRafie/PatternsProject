@@ -1,16 +1,23 @@
 package patterns.dental.clinic.controller.pagescontroller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.DatabaseController;
 import patterns.dental.clinic.model.visit.Visit;
 
+import java.util.List;
+
 public class DentistPageController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button createVisitButton;
@@ -34,7 +41,7 @@ public class DentistPageController {
     private TextField timeTextField;
 
     @FXML
-    private TextField dentisttIdTextField;
+    private TextField dentistIdTextField;
 
     @FXML
     private TextField patientVisitIdTextField;
@@ -61,7 +68,23 @@ public class DentistPageController {
         String date = dateTextField.getText();
         String time = timeTextField.getText();
         int patientId = Integer.parseInt(patientVisitIdTextField.getText());
-        int dentistId = Integer.parseInt(dentisttIdTextField.getText());
+        int dentistId = Integer.parseInt(dentistIdTextField.getText());
+
+        boolean createdState = controller.createVisit(dentistId, patientId, visitType, date, time, procedureInfo);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Visit Creation");
+
+        if (createdState) {
+            alert.setHeaderText("Visit created successfully");
+            alert.setContentText("You have created a Visit successfully");
+        } else {
+            alert.setHeaderText("Visit NOT created successfully");
+            alert.setContentText("The system was unable to create the Visit, check the information and try again!");
+        }
+
+        alert.showAndWait();
     }
 
     @FXML
@@ -87,9 +110,9 @@ public class DentistPageController {
     @FXML
     void viewButtonClick(ActionEvent event) {
         int id = Integer.parseInt(patientIdTextField.getText());
-        //query that returns list
-        //loadVisitsToViewBox(list returned from query)
-        //CALL METHOD TO LOAD LIST FROM QUERY TO LISTVIEW
+
+        List<Visit> visit = DatabaseController.queryVisitsByPatientId(id);
+        loadVisitsToViewBox(visit);
     }
 
 }

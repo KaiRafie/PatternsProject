@@ -747,7 +747,7 @@ public class DatabaseController {
                      SELECT visit.*, patient.*, dentist.* FROM visit
                      JOIN patient ON visit.patient_id = patient.patient_id
                      JOIN dentist ON visit.dentist_id = dentist.dentist_id
-                     WHERE patient.patient_id = """ + patientId;
+                     WHERE visit.patient_id =""" + patientId;
 
         List<Visit> visits = new ArrayList<>();
 
@@ -796,6 +796,7 @@ public class DatabaseController {
                 Visit visit = new Visit(visitId, visitType, visitDate, visitTime, patient, dentist, procedureInformation);
 
                 visits.add(visit);
+                System.out.println(visit.toString());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
