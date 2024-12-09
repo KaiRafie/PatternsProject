@@ -376,7 +376,52 @@ public class DatabaseController {
         }
     }
 
-    // Delete Records in case of mistakes or other
+    public static boolean updateBillTotalsWithPayment(long billId, double payment) {
+        String fetchTotalSql = "SELECT total FROM bill WHERE bill_id = ?";
+        String updateSql = """
+            UPDATE bill SET
+            sub_total = ?,
+            total = ?
+            WHERE bill_id = ?
+            """;
+
+        try (Connection conn = connect();
+                PreparedStatement fetchStat = conn.prepareStatement(fetchTotalSql);
+                PreparedStatement updateStat = conn.prepareStatement(updateSql)) {
+
+            fetchStat.setLong(1, billId);
+            double currentTotal;
+
+            try (ResultSet resultSet = fetchStat.executeQuery()) {
+                if (resultSet.next()) {
+                    currentTotal = resultSet.getDouble("total");
+                } else {
+                    System.out.println("No bill found with the given ID.");
+                    return false;
+                }
+            }
+            double newTotal = currentTotal - payment;
+            double newSubTotal = (currentTotal / 1.14975) - (payment / 1.14975);
+
+            updateStat.setDouble(1, newSubTotal);
+            updateStat.setDouble(2, newTotal);
+            updateStat.setLong(3, billId);
+
+            int rowsAffected = updateStat.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Bill totals updated successfully.");
+                return true;
+            } else {
+                System.out.println("Failed to update bill totals.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating bill totals: " + e.getMessage());
+        }
+        return false;
+    }
+
     public static void deletePatientRecord(long patientId) {
         String sql = """
                 DELETE FROM patient WHERE patient_id = ?

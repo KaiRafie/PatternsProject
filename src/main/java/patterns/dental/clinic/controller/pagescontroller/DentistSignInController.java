@@ -44,8 +44,6 @@ public class DentistSignInController {
             Dentist dentist = clinicSystem.getDentistsList().get(i);
             if (dentist.getUserID() == userId) {
                 if (password.equals(dentist.getLoginPass())) {
-                    alert.setHeaderText("Authentication successful");
-                    alert.setContentText("You have signed in successfully");
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(
                                 "/fxml/MainPage.fxml"));

@@ -20,6 +20,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 
 public class Main extends Application {
+
     public static void main(String[] args) {
         DatabaseController.initializeDatabase();
         launch(args);

@@ -67,33 +67,24 @@ public class PatientSignInController {
             User patient = clinicSystem.getPatientsList().get(i);
             if (patient.getUserID() == userId) {
                 if (password.equals(patient.getLoginPass())) {
-                    alert.setHeaderText("Patient created successfully");
-                    alert.setContentText("You have created a patient successfully");
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                                "/fxml/MainPage.fxml"));
+                                "/fxml/PatientPage.fxml"));
                         AnchorPane root = loader.load();
 
                         Scene scene = new Scene(root);
 
                         NavigationManager.getInstance().navigateTo(scene);
-
-                        alert.showAndWait();
-                        break;
+                        return;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {
                     alert.setHeaderText("Authentication Failed");
-                    alert.setContentText("Incorrect password, please try again!");
+                    alert.setContentText("Incorrect Password and User Id combination!");
 
                     alert.showAndWait();
                 }
-            } else {
-                alert.setHeaderText("Authentication Failed");
-                alert.setContentText("Id not found, please try again!");
-
-                alert.showAndWait();
             }
         }
 

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -13,6 +14,7 @@ import patterns.dental.clinic.controller.DatabaseController;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.visit.Visit;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 public class PatientPageController {
@@ -73,8 +75,13 @@ public class PatientPageController {
         billListView.getItems().addAll(bills);
     }
 
-    @FXML public void refreshButtonClick(ActionEvent ae){
-
+    @FXML
+    public void refreshButtonClick(ActionEvent ae){
+        int patientId = Integer.parseInt(patientIdTextField.getText());
+        List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
+        List<Bill> bills = DatabaseController.queryBillsByPatientId(patientId);
+        loadBillsToListView(bills);
+        loadVisitsToListView(visits);
     }
 
     @FXML
@@ -84,8 +91,19 @@ public class PatientPageController {
 
     @FXML
     void submitButtonClick(ActionEvent event) {
-        int billId = Integer.parseInt(billIdTextField.getText());
+        long billId = Long.parseLong(billIdTextField.getText());
         double amountPaid = Double.parseDouble(amountPaidTextField.getText());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Patient Authentication");
+        if (DatabaseController.updateBillTotalsWithPayment(billId, amountPaid)){
+            alert.setHeaderText("Payment Confirmation");
+            alert.setContentText("The amount of " + amountPaid + "has been paid to Bill " + billId);
+            alert.showAndWait();
+        } else {
+            alert.setHeaderText("Payment Failed");
+            alert.setContentText("The amount of " + amountPaid + "failed to be paid to Bill " + billId);
+            alert.showAndWait();
+        }
     }
 
     @FXML
