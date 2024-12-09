@@ -9,8 +9,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.DatabaseController;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.visit.Visit;
+
+import java.util.List;
 
 public class PatientPageController {
     ClinicSystemController controller = new ClinicSystemController();
@@ -22,7 +25,7 @@ public class PatientPageController {
     private TextField billIdTextField;
 
     @FXML
-    private TextField visitIdTextField;
+    private TextField patientIdTextField;
 
     @FXML
     private Button previousButton;
@@ -38,9 +41,6 @@ public class PatientPageController {
 
     @FXML
     private TextField amountPaidTextField;
-
-    @FXML
-    private TextField viewBillIdTextField;
 
     @FXML
     private ListView<Visit> visitListView;
@@ -68,6 +68,11 @@ public class PatientPageController {
         visitListView.getItems().addAll(visits);
     }
 
+    public void loadBillsToListView(java.util.List<Bill> bills) {
+        billListView.getItems().clear();
+        billListView.getItems().addAll(bills);
+    }
+
     @FXML public void refreshButtonClick(ActionEvent ae){
 
     }
@@ -85,18 +90,18 @@ public class PatientPageController {
 
     @FXML
     void viewBillButtonClick(ActionEvent event) {
-        int billId = Integer.parseInt(viewBillIdTextField.getText());
-        //query that returns list
-        //loadVisitsToViewBox(list returned from query)
-        //CALL METHOD TO LOAD LIST FROM QUERY TO BILLLISTVIEW
+        int patientId = Integer.parseInt(patientIdTextField.getText());
+
+        List<Bill> bills = DatabaseController.queryBillsByPatientId(patientId);
+        loadBillsToListView(bills);
     }
 
     @FXML
     void viewVisitButtonClick(ActionEvent event) {
-        int visitId = Integer.parseInt(visitIdTextField.getText());
-        //query that returns list
-        //loadVisitsToListView(list returned from query)
-        //CALL METHOD TO LOAD LIST FROM QUERY TO VISITLISTVIEW
+        int patientId = Integer.parseInt(patientIdTextField.getText());
+
+        List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
+        loadVisitsToListView(visits);
     }
 
 }
