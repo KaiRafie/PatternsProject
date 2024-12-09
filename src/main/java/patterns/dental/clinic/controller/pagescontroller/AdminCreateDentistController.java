@@ -7,14 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import patterns.dental.clinic.MyList;
+import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.model.user.Operations;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class AdminCreateDentistController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button createButton;
@@ -69,8 +69,23 @@ public class AdminCreateDentistController {
         }
         List<String> allowedOperations = Arrays.stream(selectedOperations.toString()
                 .split(", ")).toList();
-        System.out.println(allowedOperations);;
         String specialty = specialityTextField.getText();
+
+        boolean createdState = controller.createDentist(firstName, lastName, password, dateOfBirth, allowedOperations, specialty);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Dentist Creation");
+
+        if (createdState) {
+            alert.setHeaderText("Dentist created successfully");
+            alert.setContentText("You have created a dentist successfully");
+        } else {
+            alert.setHeaderText("Dentist NOT created successfully");
+            alert.setContentText("The system was unable to create the dentist, check the information and try again!");
+        }
+
+        alert.showAndWait();
     }
 
     @FXML

@@ -7,8 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import patterns.dental.clinic.controller.ClinicSystemController;
 
 public class DentistSignInController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button homeButton;

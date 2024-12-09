@@ -8,12 +8,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.model.user.Operations;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class AdminUpdateDentistController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private TextField dentistIdTextField;
@@ -99,8 +101,24 @@ public class AdminUpdateDentistController {
         }
         List<String> allowedOperations = Arrays.stream(selectedOperations.toString()
                 .split(", ")).toList();
-        System.out.println(allowedOperations);;
         String specialty = specialityTextField.getText();
+
+        boolean updateState = controller.updateDentist(id, firstName, lastName, dateOfBirth, allowedOperations,
+                specialty, password);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Dentist Update");
+
+        if (updateState) {
+            alert.setHeaderText("Dentist Updated successfully");
+            alert.setContentText("You have Updated a Dentist account successfully");
+        } else {
+            alert.setHeaderText("Dentist NOT Updated successfully");
+            alert.setContentText("The system was unable to Update the Dentist account, check the information and try again!");
+        }
+
+        alert.showAndWait();
     }
 
 }

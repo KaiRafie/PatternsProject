@@ -4,13 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import patterns.dental.clinic.controller.ClinicSystemController;
 
 public class AdminCreateBillController {
+
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button createButton;
@@ -47,6 +51,22 @@ public class AdminCreateBillController {
         double subtotal = Double.parseDouble(subtotalTextField.getText());
         double total = Double.parseDouble(totalTextField.getText());
         double insuranceDeduction = Double.parseDouble(insuranceDeductionTextField.getText());
+
+        boolean createdState = controller.createBill(visitId, date, time, subtotal, total, insuranceDeduction);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Bill Creation");
+
+        if (createdState) {
+            alert.setHeaderText("Bill created successfully");
+            alert.setContentText("You have created a bill successfully");
+        } else {
+            alert.setHeaderText("Bill NOT created successfully");
+            alert.setContentText("The system was unable to create the bill, check the information and try again!");
+        }
+
+        alert.showAndWait();
     }
 
     @FXML
