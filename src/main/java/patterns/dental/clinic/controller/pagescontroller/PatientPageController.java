@@ -8,10 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.visit.Visit;
 
 public class PatientPageController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button homeButton;

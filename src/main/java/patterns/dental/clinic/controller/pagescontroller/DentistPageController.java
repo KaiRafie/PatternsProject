@@ -8,9 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.model.visit.Visit;
 
 public class DentistPageController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private Button createVisitButton;
