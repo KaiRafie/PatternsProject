@@ -44,5 +44,25 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Button>
+      <Button fx:id="adminPageButton" layoutX="629.0" layoutY="500.0" mnemonicParsing="false" onAction="#adminPageButtonClick" prefHeight="36.0" prefWidth="107.0" text="Admin Page">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="refreshButton" layoutX="5.0" layoutY="400.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Refresh">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="restoreButton" layoutX="5.0" layoutY="500.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Restore">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveButton" layoutX="5.0" layoutY="448.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Save">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

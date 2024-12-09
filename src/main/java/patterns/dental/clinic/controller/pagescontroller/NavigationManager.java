@@ -9,6 +9,10 @@ public class NavigationManager {
     private Scene previousScene;
     private Stage primaryStage;
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
     private NavigationManager() {}
 
     public static NavigationManager getInstance() {
