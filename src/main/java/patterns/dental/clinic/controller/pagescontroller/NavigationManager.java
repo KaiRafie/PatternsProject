@@ -2,7 +2,6 @@ package patterns.dental.clinic.controller.pagescontroller;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lombok.Setter;
 
 public class NavigationManager {
 
