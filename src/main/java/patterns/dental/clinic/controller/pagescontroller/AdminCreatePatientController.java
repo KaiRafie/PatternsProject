@@ -35,6 +35,9 @@ public class AdminCreatePatientController {
     @FXML
     private Button previousButton;
 
+    /**
+     * Method that creates patient from inputted information from GUI
+     */
     @FXML
     void createButtonClick(ActionEvent event) {
         String firstName = firstNameTextField.getText();

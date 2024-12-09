@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+import patterns.dental.clinic.model.visit.*;
+import patterns.dental.clinic.model.user.*;
+import patterns.dental.clinic.model.bill.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import java.util.Arrays;
@@ -8,8 +11,8 @@ class BillFactoryTest {
     @Test
     void testCreatePatientBill() {
         // Arrange
-        long billId = 1L;
-        Visit visit = new Visit(101L, "Routine Checkup", "2024-12-01", "10:00 AM",
+        long billId = 1;
+        Visit visit = new Visit(101, "Routine Checkup", "2024-12-01", "10:00 AM",
                 new Patient("John", "Doe", 1001L, "password123", "1990-01-01"), null, null);
         String date = "2024-12-01";
         String time = "10:00 AM";
@@ -36,11 +39,11 @@ class BillFactoryTest {
     @Test
     void testCreateDentistBill() {
         // Arrange
-        long billId = 2L;
-        Patient patient = new Patient("Jane", "Smith", 1002L, "securepass", "1995-05-15");
-        Dentist dentist = new RegularDentist("Dr. Emily", "Brown", 2001L, "dentistpass", "1985-07-20",
+        long billId = 2;
+        Patient patient = new Patient("Jane", "Smith", 1002, "securepass", "1995-05-15");
+        Dentist dentist = new RegularDentist("Dr. Emily", "Brown", 2001, "dentistpass", "1985-07-20",
                 Arrays.asList("Cleaning", "Checkup"), "General Dentistry");
-        Visit visit = new Visit(102L, "Procedure", "2024-12-02", "2:00 PM", patient, dentist, "Filling");
+        Visit visit = new Visit(102, "Procedure", "2024-12-02", "2:00 PM", patient, dentist, "Filling");
         String date = "2024-12-02";
         String time = "2:00 PM";
         double subTotal = 200.0;
@@ -62,7 +65,7 @@ class BillFactoryTest {
         assertEquals(subTotal, bill.getSubTotal(), "Subtotal should match");
         assertEquals(total, bill.getTotal(), "Total should match");
         assertEquals(insuranceDeduction, bill.getInsuranceDeduction(), "Insurance deduction should match");
-        assertEquals(procedureInfo, ((DentistBill) bill).getProcedureInfo(), "Procedure info should match");
+        assertEquals(procedureInfo, ((DentistBill) bill).getProcedureInformation(), "Procedure info should match");
         assertEquals(patient.getFirstName() + " " + patient.getLastName(), ((DentistBill) bill).getPatientFullName(),
                 "Patient full name should match");
         assertEquals(dentist.getFirstName() + " " + dentist.getLastName(), ((DentistBill) bill).getDentistFullName(),

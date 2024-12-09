@@ -55,11 +55,10 @@ public class DentistPageController {
     @FXML
     private ListView<Visit> visitListView;
 
-    public void loadVisitsToViewBox(List<Visit> visits) {
-        // Temporary workaround to force UI refresh
-        visitListView.setItems(FXCollections.observableArrayList()); // Clear ListView
-        visitListView.setItems(FXCollections.observableArrayList(visits)); // Add updated items
+    public void loadVisitsToViewBox(java.util.List<Visit> visits) {
+        visitListView.getItems().clear();
 
+        visitListView.getItems().addAll(visits);
     }
 
     @FXML
