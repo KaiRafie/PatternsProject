@@ -17,15 +17,11 @@ import java.util.List;
 public class ClinicSystem {
     private static ClinicSystem clinicSystem;
 
-    @Getter
-    private List<User> usersList;
-    @Getter
+    private List<User> usersList; // not much needed but for being a temp history when loading the program for the first time
+    // and then check it manually later on when you want to check back some old modified data.
     private List<Patient> patientsList;
-    @Getter
     private List<Dentist> dentistsList;
-    @Getter
     private List<Bill> billsList;
-    @Getter
     private List<Visit> visitsList;
 
     private ClinicSystem() {
@@ -34,6 +30,26 @@ public class ClinicSystem {
         dentistsList = DatabaseController.queryAllDentistRecords();
         billsList = DatabaseController.queryAllBillRecords();
         visitsList = DatabaseController.queryAllVisitRecords();
+    }
+
+    public List<User> getUsersList() {
+        return usersList;
+    }
+
+    public List<Patient> getPatientsList() {
+        return patientsList;
+    }
+
+    public List<Dentist> getDentistsList() {
+        return dentistsList;
+    }
+
+    public List<Bill> getBillsList() {
+        return billsList;
+    }
+
+    public List<Visit> getVisitsList() {
+        return visitsList;
     }
 
     /**

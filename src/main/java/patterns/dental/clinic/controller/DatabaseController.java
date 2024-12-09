@@ -947,7 +947,7 @@ public class DatabaseController {
                 String dentistPassword = rs.getString("dentist_login_password");
 
                 Dentist dentist;
-                if (specialty.equalsIgnoreCase("apprentice")) {
+                if (specialty.toLowerCase().contains("apprentice")) {
                     dentist = new ApprenticeDentist(dentistFirstName, dentistLastName, dentistId, dentistPassword,
                             dentistBirthDate, allowedOperations, specialty);
                 } else {

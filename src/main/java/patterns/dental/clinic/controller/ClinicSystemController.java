@@ -7,11 +7,11 @@ import patterns.dental.clinic.model.bill.BillFactory;
 import patterns.dental.clinic.model.user.Dentist;
 import patterns.dental.clinic.model.user.Patient;
 import patterns.dental.clinic.model.user.User;
+import patterns.dental.clinic.model.user.UserFactory;
 import patterns.dental.clinic.model.visit.Visit;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ClinicSystemController {
@@ -80,6 +80,7 @@ public class ClinicSystemController {
 
             if (bill.getBillId() == billId) {
                 removedBill = clinicSystem.getBillsList().remove(i);
+                break;
             }
         }
         return removedBill;
@@ -92,7 +93,7 @@ public class ClinicSystemController {
         Dentist dentist = DatabaseController.queryLastDentistRecord();
 
         clinicSystem.getDentistsList().add(dentist);
-        clinicSystem.getUsersList().add((dentist));
+        clinicSystem.getUsersList().add(dentist);
 
     }
 
@@ -100,7 +101,17 @@ public class ClinicSystemController {
                               MyList<String> allowedOperations, String specialty, String password) {
         DatabaseController.updateDentistRecord(dentistId, firstName, lastName, birthDate, allowedOperations, specialty, password);
 
-        //TODO
+        for (int i = 0; i < clinicSystem.getDentistsList().size(); i++) {
+
+            Dentist dentist = clinicSystem.getDentistsList().get(i);
+
+            if (dentist.getUserID() == dentistId) {
+                Dentist updatedDentist = UserFactory.createDentist(dentistId, firstName, lastName, password, birthDate,
+                        specialty, allowedOperations);
+                clinicSystem.getDentistsList().set(i, updatedDentist);
+                break;
+            }
+        }
     }
 
     public Dentist removeDentist(long dentistId) {
@@ -108,29 +119,70 @@ public class ClinicSystemController {
 
         Dentist removedDentist = null;
 
-        for (int i = 0; i < clinicSystem.getBillsList().size(); i++) {
+        for (int i = 0; i < clinicSystem.getDentistsList().size(); i++) {
             Dentist dentist = clinicSystem.getDentistsList().get(i);
 
             if (dentist.getUserID() == dentistId) {
                 removedDentist = clinicSystem.getDentistsList().remove(i);
+                break;
             }
         }
         return removedDentist;
     }
 
-    public void createPatient() {
-        //TODO
+    public void createPatient(String firstName, String lastName, String birthDate, String password) {
+        DatabaseController.insertPatientRecord(firstName, lastName, birthDate, password);
+
+        User patient = DatabaseController.queryLastPatientRecord();
+
+        clinicSystem.getPatientsList().add((Patient) patient);
+        clinicSystem.getUsersList().add(patient);
     }
 
-    public void updatePatient() {
-        //TODO
+    public void updatePatient(long patientId, String firstName, String lastName, String birthDate, String password) {
+        DatabaseController.updatePatientRecord(patientId, firstName, lastName, birthDate, password);
+
+        for (int i = 0; i < clinicSystem.getPatientsList().size(); i++) {
+            User patient = clinicSystem.getPatientsList().get(i);
+
+            if (patient.getUserID() == patientId) {
+                User updatedPatient = UserFactory.createPatient(firstName, lastName, password, birthDate);
+
+                clinicSystem.getPatientsList().set(i, (Patient) updatedPatient);
+                break;
+            }
+        }
     }
 
-    public void removePatient() {
-        //TODO
+    public User removePatient(long patientId) {
+        DatabaseController.deletePatientRecord(patientId);
+
+        Patient removedPatient = null;
+
+        for (int i = 0; i < clinicSystem.getPatientsList().size(); i++) {
+            User patient = clinicSystem.getPatientsList().get(i);
+
+            if (patient.getUserID() == patientId) {
+                removedPatient = clinicSystem.getPatientsList().remove(i);
+                break;
+            }
+        }
+        return removedPatient;
     }
 
-    public void removeVisit() {
-        //TODO
+    public Visit removeVisit(long visitId) {
+        DatabaseController.deleteVisitRecord(visitId);
+
+        Visit removedVisit = null;
+
+        for (int i = 0; i < clinicSystem.getBillsList().size(); i++) {
+            Visit visit = clinicSystem.getVisitsList().get(i);
+
+            if (visit.getVisitId() == visitId) {
+                removedVisit = clinicSystem.getVisitsList().remove(i);
+                break;
+            }
+        }
+        return removedVisit;
     }
 }
