@@ -8,11 +8,14 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import patterns.dental.clinic.controller.ClinicSystemController;
 
 import java.io.IOException;
 
 
 public class PatientSignInController {
+    ClinicSystemController controller = new ClinicSystemController();
+
 
     @FXML
     private Button homeButton;

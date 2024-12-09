@@ -4,11 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import patterns.dental.clinic.controller.ClinicSystemController;
 
 public class AdminUpdatePatientController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private TextField dobTextField;
@@ -61,6 +64,20 @@ public class AdminUpdatePatientController {
         int id = Integer.parseInt(patientIdTextField.getText());
         String password = passwordTextField.getText();
         String dob = dobTextField.getText();
+
+        boolean updateState = controller.updatePatient(id, firstName, lastName, dob, password);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Patient Update");
+
+        if (updateState) {
+            alert.setHeaderText("Patient Updated successfully");
+            alert.setContentText("You have Updated a Patient account successfully");
+        } else {
+            alert.setHeaderText("Patient NOT Updated successfully");
+            alert.setContentText("The system was unable to Update the Patient account, check the information and try again!");
+        }
 
     }
 

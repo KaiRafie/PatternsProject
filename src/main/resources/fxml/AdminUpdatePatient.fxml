@@ -8,14 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontrollers.AdminUpdatePatientController">
    <children>
       <AnchorPane prefHeight="550.0" prefWidth="750.0">
          <children>
             <AnchorPane prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;">
                <children>
-                  <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="164.0" layoutY="30.0">
+                  <ImageView fitHeight="514.0" fitWidth="500.0" layoutX="164.0" layoutY="30.0">
                      <image>
                         <Image url="@../images/UpdatePatientNoBg.png" />
                      </image>
@@ -51,7 +50,7 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="updateButton" layoutX="558.0" layoutY="452.0" mnemonicParsing="false" onAction="#updateButtonClick" prefHeight="34.0" prefWidth="66.0" text="Update" />
+                  <Button fx:id="updateButton" layoutX="363.0" layoutY="481.0" mnemonicParsing="false" onAction="#updateButtonClick" prefHeight="34.0" prefWidth="66.0" text="Update" />
                   <TextField fx:id="patientIdTextField" layoutX="270.0" layoutY="263.0" prefHeight="42.0" prefWidth="252.0" promptText="Patient Id" />
                   <Label layoutX="189.0" layoutY="247.0" text="Patient Id">
                      <font>

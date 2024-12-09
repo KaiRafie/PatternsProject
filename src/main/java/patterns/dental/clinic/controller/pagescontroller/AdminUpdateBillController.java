@@ -4,13 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import patterns.dental.clinic.controller.ClinicSystemController;
 
 public class AdminUpdateBillController {
+    ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
     private TextField billIdTextField;
@@ -43,7 +46,7 @@ public class AdminUpdateBillController {
     private TextField visitIdTextField;
 
     @FXML
-    void createButtonClick(ActionEvent event) {
+    void updateButtonClick(ActionEvent event) {
         int billId = Integer.parseInt(billIdTextField.getText());
         int visitId = Integer.parseInt(visitIdTextField.getText());
         String date = dateTextField.getText();
@@ -51,6 +54,22 @@ public class AdminUpdateBillController {
         double subtotal = Double.parseDouble(subtotalTextField.getText());
         double total = Double.parseDouble(totalTextField.getText());
         double insuranceDeduction = Double.parseDouble(insuranceDeductionTextField.getText());
+
+        boolean updateState  = controller.updateBill(billId, visitId, date, time, subtotal, total, insuranceDeduction);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Bill Update");
+
+        if (updateState) {
+            alert.setHeaderText("Bill Updated successfully");
+            alert.setContentText("You have Updated a Bill successfully");
+        } else {
+            alert.setHeaderText("Bill NOT Updated successfully");
+            alert.setContentText("The system was unable to Update the Bill, check the information and try again!");
+        }
+
+        alert.showAndWait();
     }
 
     @FXML
