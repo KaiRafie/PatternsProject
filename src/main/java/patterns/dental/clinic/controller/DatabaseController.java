@@ -34,6 +34,12 @@ public class DatabaseController {
                 patient_last_name TEXT NOT NULL,
                 patient_birth_date TEXT NOT NULL,
                 patient_login_password TEXT NOT NULL
+                
+                -- Set starting value to 10000
+                INSERT INTO patient(patient_id, patient_first_name, patient_last_name, patient_birth_date, patient_login_password)
+                VALUES (9999, 'dummy', 'dummy', '2000-01-01', 'dummy');
+                
+                DELETE FROM patient WHERE patient_id = 9999;
                 )
                 """;
         try (Connection conn = connect();
@@ -111,6 +117,13 @@ public class DatabaseController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void initializeDatabase() {
+        createPatientTable();
+        createDentistTable();
+        createVisitTable();
+        createBillTable();
     }
 
     // Insert records into tables
