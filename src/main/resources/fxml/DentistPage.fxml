@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontroller.DentistPageController">
    <children>
       <AnchorPane prefHeight="550.0" prefWidth="750.0">
@@ -33,7 +32,7 @@
                            </font>
                         </Label>
                         <Button fx:id="viewButton" layoutX="310.0" layoutY="73.0" mnemonicParsing="false" onAction="#viewButtonClick" prefHeight="25.0" prefWidth="66.0" text="View" />
-                        <Button fx:id="createVisitButton" layoutX="371.0" layoutY="491.0" mnemonicParsing="false" onAction="#createVisitButtonClick" prefHeight="20.0" prefWidth="92.0" text="Create Visit">
+                        <Button fx:id="createVisitButton" layoutX="376.0" layoutY="491.0" mnemonicParsing="false" onAction="#createVisitButtonClick" prefHeight="20.0" prefWidth="92.0" text="Create Visit">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -69,6 +68,12 @@
                            </font>
                         </Label>
                         <Label layoutX="318.0" layoutY="421.0" prefHeight="17.0" prefWidth="149.0" text="Dentist Id">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="procedureInfoTextField" layoutX="521.0" layoutY="395.0" prefHeight="134.0" prefWidth="210.0" />
+                        <Label layoutX="520.0" layoutY="375.0" prefHeight="17.0" prefWidth="149.0" text="Procedure Info">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
