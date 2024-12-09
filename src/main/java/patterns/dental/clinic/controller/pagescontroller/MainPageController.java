@@ -45,4 +45,19 @@ public class MainPageController {
         }
     }
 
+    @FXML
+    void adminPageButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/fxml/AdminPage.fxml"));
+            AnchorPane root = loader.load();
+
+            Scene scene = new Scene(root);
+
+            NavigationManager.getInstance().navigateTo(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

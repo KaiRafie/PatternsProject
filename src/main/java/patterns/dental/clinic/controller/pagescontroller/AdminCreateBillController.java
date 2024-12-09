@@ -58,12 +58,7 @@ public class AdminCreateBillController {
 
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.setTitle("Dental Management System");
-
-            stage.show();
+            NavigationManager.getInstance().navigateTo(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }

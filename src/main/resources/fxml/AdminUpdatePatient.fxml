@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontrollers.AdminUpdatePatientController">
+   <children>
+      <AnchorPane prefHeight="550.0" prefWidth="750.0">
+         <children>
+            <AnchorPane prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;">
+               <children>
+                  <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="164.0" layoutY="30.0">
+                     <image>
+                        <Image url="@../images/UpdatePatientNoBg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="550.0" fitWidth="86.0" layoutY="1.0">
+                     <image>
+                        <Image url="@../images/sideBar.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="homeButton" layoutX="10.0" layoutY="435.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
+                  <Button fx:id="previousButton" layoutX="10.0" layoutY="487.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
+                  <TextField fx:id="firstNameTextField" layoutX="275.0" layoutY="94.0" prefHeight="42.0" prefWidth="252.0" promptText="First Name" />
+                  <TextField fx:id="dobTextField" layoutX="275.0" layoutY="427.0" prefHeight="42.0" prefWidth="252.0" promptText="1/1/1010" />
+                  <TextField fx:id="passwordTextField" layoutX="270.0" layoutY="340.0" prefHeight="42.0" prefWidth="252.0" promptText="Password" />
+                  <TextField fx:id="lastNameTextField" layoutX="275.0" layoutY="184.0" prefHeight="42.0" prefWidth="252.0" promptText="Last Name" />
+                  <Label layoutX="194.0" layoutY="78.0" text="First Name">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="194.0" layoutY="168.0" text="Last Name">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="189.0" layoutY="324.0" text="Password">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="189.0" layoutY="404.0" text="Date of birth">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="updateButton" layoutX="558.0" layoutY="452.0" mnemonicParsing="false" onAction="#updateButtonClick" prefHeight="34.0" prefWidth="66.0" text="Update" />
+                  <TextField fx:id="patientIdTextField" layoutX="270.0" layoutY="263.0" prefHeight="42.0" prefWidth="252.0" promptText="Patient Id" />
+                  <Label layoutX="189.0" layoutY="247.0" text="Patient Id">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

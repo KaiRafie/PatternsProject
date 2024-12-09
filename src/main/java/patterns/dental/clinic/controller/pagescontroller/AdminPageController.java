@@ -18,7 +18,7 @@ public class AdminPageController {
     private Button createDentistButton;
 
     @FXML
-    private Button deleteAppointmentButton;
+    private Button deleteVisitButton;
 
     @FXML
     private TextField dentistIdTextField;
@@ -33,12 +33,31 @@ public class AdminPageController {
     private Button removeDentistButton;
 
     @FXML
+    private Button removePatientButton;
+
+    @FXML
+    private Button updatePatientButton;
+
+    @FXML
+    private Button createPatientButton;
+
+    @FXML
     private Button updateBillButton;
 
     @FXML
     private Button updateDentistButton;
 
-    @FXML TextField appointmentIdTextField;
+    @FXML
+    private Button removeBillButton;
+
+    @FXML
+    private TextField patientIdTextField;
+
+    @FXML
+    private TextField billIdTextField;
+
+    @FXML
+    private TextField deleteVisitButtonIdTextField;
 
     @FXML
     void createBillButtonClick(ActionEvent event) {
@@ -49,12 +68,7 @@ public class AdminPageController {
 
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.setTitle("Dental Management System");
-
-            stage.show();
+            NavigationManager.getInstance().navigateTo(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,20 +83,15 @@ public class AdminPageController {
 
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.setTitle("Dental Management System");
-
-            stage.show();
+            NavigationManager.getInstance().navigateTo(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void deleteAppointmentClick(ActionEvent event) {
-        int id = Integer.parseInt(appointmentIdTextField.getText());
+    void deleteVisitButtonClick(ActionEvent event) {
+        int id = Integer.parseInt(deleteVisitButtonIdTextField.getText());
     }
 
     @FXML
@@ -94,12 +103,7 @@ public class AdminPageController {
 
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.setTitle("Dental Management System");
-
-            stage.show();
+            NavigationManager.getInstance().navigateTo(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -116,6 +120,46 @@ public class AdminPageController {
     }
 
     @FXML
+    void updatePatientButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/fxml/AdminUpdatePatient.fxml"));
+            AnchorPane root = loader.load();
+
+            Scene scene = new Scene(root);
+
+            NavigationManager.getInstance().navigateTo(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void removePatientButtonClick(ActionEvent event) {
+        int id = Integer.parseInt(patientIdTextField.getText());
+    }
+
+    @FXML
+    void removeBillButtonClick(ActionEvent ae){
+        int id = Integer.parseInt(billIdTextField.getText());
+    }
+
+    @FXML
+    void createPatientButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/fxml/AdminCreatePatient.fxml"));
+            AnchorPane root = loader.load();
+
+            Scene scene = new Scene(root);
+
+            NavigationManager.getInstance().navigateTo(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void updateBillButtonClick(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
@@ -124,12 +168,7 @@ public class AdminPageController {
 
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.setTitle("Dental Management System");
-
-            stage.show();
+            NavigationManager.getInstance().navigateTo(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -144,12 +183,7 @@ public class AdminPageController {
 
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.setTitle("Dental Management System");
-
-            stage.show();
+            NavigationManager.getInstance().navigateTo(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
