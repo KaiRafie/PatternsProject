@@ -41,6 +41,9 @@ public class DentistSignInController {
     private TextField userIdTextField;
 
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     private void initialize() {
         dentistSignInLabel.setText(LanguageController.getText("DentistSignInLabel"));
@@ -50,6 +53,13 @@ public class DentistSignInController {
         signInLabel.setText(LanguageController.getText("SignInLabel"));
     }
 
+    /**
+     * button that logs user in depending on user Id and password
+     * takes user Id from userIdTextField
+     * takes password from passwordTextField
+     *
+     * @param event
+     */
     @FXML
     void logInButtonClick(ActionEvent event) {
         long userId = Integer.parseInt(userIdTextField.getText());
@@ -85,8 +95,13 @@ public class DentistSignInController {
         }
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -100,6 +115,11 @@ public class DentistSignInController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();

@@ -84,6 +84,9 @@ public class AdminPageController {
     private Button updatePatientButton;
 
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     private void initialize() {
         createBillButton.setText(LanguageController.getText("CreateBillBtn"));
@@ -107,6 +110,11 @@ public class AdminPageController {
         updatePatientButton.setText(LanguageController.getText("UpdatePatientBtn"));
     }
 
+    /**
+     * Method that takes user to create bill page
+     *
+     * @param event
+     */
     @FXML
     void createBillButtonClick(ActionEvent event) {
         try {
@@ -122,6 +130,11 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Method that takes user to create dentist page
+     *
+     * @param event
+     */
     @FXML
     void createDentistButtonClick(ActionEvent event) {
         try {
@@ -137,11 +150,17 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Method to delete visit from visit table and list
+     * takes visit id from deleteVisitButtonIdTextField
+     *
+     * @param event
+     */
     @FXML
     void deleteVisitButtonClick(ActionEvent event) {
         int id = Integer.parseInt(deleteVisitButtonIdTextField.getText());
 
-         Visit visit = controller.removeVisit(id);
+        Visit visit = controller.removeVisit(id);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
@@ -157,8 +176,13 @@ public class AdminPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -172,11 +196,22 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
 
+    /**
+     * Method to remove dentist from dentist table and list
+     * takes dentist Id from dentistIdTextField
+     *
+     * @param event
+     */
     @FXML
     void removeDentistButtonClick(ActionEvent event) {
         int id = Integer.parseInt(dentistIdTextField.getText());
@@ -197,6 +232,11 @@ public class AdminPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to update patient page when clicking update patient button
+     *
+     * @param event
+     */
     @FXML
     void updatePatientButtonClick(ActionEvent event) {
         try {
@@ -212,6 +252,12 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Method to remove patient from patient table and list
+     * takes patient Id from patientIdTextField
+     *
+     * @param event
+     */
     @FXML
     void removePatientButtonClick(ActionEvent event) {
         int id = Integer.parseInt(patientIdTextField.getText());
@@ -232,8 +278,14 @@ public class AdminPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to remove bill from bill table and list
+     * takes bill Id from billIdTextField
+     *
+     * @param ae
+     */
     @FXML
-    void removeBillButtonClick(ActionEvent ae){
+    void removeBillButtonClick(ActionEvent ae) {
         int id = Integer.parseInt(billIdTextField.getText());
 
         Bill bill = controller.removeBill(id);
@@ -252,6 +304,11 @@ public class AdminPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to create patient page when clicking create patient button
+     *
+     * @param event
+     */
     @FXML
     void createPatientButtonClick(ActionEvent event) {
         try {
@@ -267,6 +324,11 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Method to take user to update bill page when clicking update bill button
+     *
+     * @param event
+     */
     @FXML
     void updateBillButtonClick(ActionEvent event) {
         try {
@@ -282,6 +344,11 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Method to take user to update dentist page when clicking update dentist button
+     *
+     * @param event
+     */
     @FXML
     void updateDentistButtonClick(ActionEvent event) {
         try {

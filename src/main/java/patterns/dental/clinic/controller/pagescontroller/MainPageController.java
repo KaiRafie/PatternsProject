@@ -55,20 +55,31 @@ public class MainPageController {
     @FXML
     private Label adminKeyLabel;
 
-
-
+    /**
+     * Method to change locale to english
+     *
+     * @param event
+     */
     @FXML
     void changeToEnglish(ActionEvent event) {
         LanguageController.setLocale("en", "CA");
         updateUI();
     }
 
+    /**
+     * Method to change locale to french
+     *
+     * @param event
+     */
     @FXML
     void changeToFrench(ActionEvent event) {
         LanguageController.setLocale("fr", "CA");
         updateUI();
     }
 
+    /**
+     * Method to update user interface elements depending on locale language
+     */
     private void updateUI() {
         dentistLogInButton.setText(LanguageController.getText("AsDentist"));
         patientLogInButton.setText(LanguageController.getText("AsPatientBtn"));
@@ -79,8 +90,13 @@ public class MainPageController {
         adminKeyLabel.setText(LanguageController.getText("AdminKeyLabel"));
     }
 
+    /**
+     * Method to take user to patient log in page
+     *
+     * @param ae
+     */
     @FXML
-    public void patientLogInButtonClick(ActionEvent ae){
+    public void patientLogInButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PatientSignIn.fxml"));
             AnchorPane root = loader.load();
@@ -93,8 +109,13 @@ public class MainPageController {
         }
     }
 
+    /**
+     * Method to take user to dentist log in page
+     *
+     * @param ae
+     */
     @FXML
-    public void dentistLogInButtonClick(ActionEvent ae){
+    public void dentistLogInButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/DentistSignIn.fxml"));
@@ -108,6 +129,12 @@ public class MainPageController {
         }
     }
 
+    /**
+     * Method that checks admin key and if correct sends user to admin page
+     * takes admin key from adminKeyTextField
+     *
+     * @param event
+     */
     @FXML
     public void adminPageButtonClick(ActionEvent event) {
         if (adminKeyTextField.getText().equals("12345678")) {
@@ -132,5 +159,33 @@ public class MainPageController {
 
             alert.showAndWait();
         }
+    }
+
+    /**
+     * Method to restore system to previous version
+     * Calls ClinicSystemController restore system method
+     *
+     * @param ae
+     */
+    @FXML
+    public void restoreSystem(ActionEvent ae) {
+        ClinicSystemController controller = new ClinicSystemController();
+        try {
+            controller.restoreSystemHistory();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Method to save system from current version
+     * Calls ClinicSystemController save system method
+     *
+     * @param ae
+     */
+    @FXML
+    public void saveSystem(ActionEvent ae) {
+        ClinicSystemController controller = new ClinicSystemController();
+        controller.saveSystemHistory();
     }
 }

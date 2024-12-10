@@ -91,8 +91,13 @@ public class AdminUpdateDentistController {
         updateButton.setText(LanguageController.getText("UpdateBtn"));
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -111,11 +116,26 @@ public class AdminUpdateDentistController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
 
+    /**
+     * Method to update Dentist information when clicking update button
+     * takes dentist id from dentistIdTextField
+     * takes first name from firstNameTextField
+     * takes last name from lastNameTextField
+     * takes password from passwordTextField
+     * takes date of birth from dobTextField
+     *
+     * @param event
+     */
     @FXML
     void updateButtonClick(ActionEvent event) {
         int id = Integer.parseInt(dentistIdTextField.getText());

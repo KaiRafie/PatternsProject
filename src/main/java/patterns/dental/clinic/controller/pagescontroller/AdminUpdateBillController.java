@@ -64,6 +64,9 @@ public class AdminUpdateBillController {
     @FXML
     private TextField visitIdTextField;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     private void initialize() {
         billIdLabel.setText(LanguageController.getText("BillId"));
@@ -85,6 +88,18 @@ public class AdminUpdateBillController {
         visitIdTextField.setPromptText(LanguageController.getText("VisitId"));
     }
 
+    /**
+     * Method to update bill information
+     * takes bill id from billIdTextField
+     * takes visit id from visitIdTextField
+     * takes date from dateTextField
+     * takes time from timeTextField
+     * takes subtotal from subtotalTextField
+     * takes total from totalTextField
+     * takes insuranceDeduction from insuranceDeductionTextField
+     *
+     * @param event
+     */
     @FXML
     void updateButtonClick(ActionEvent event) {
         int billId = Integer.parseInt(billIdTextField.getText());
@@ -95,7 +110,7 @@ public class AdminUpdateBillController {
         double total = Double.parseDouble(totalTextField.getText());
         double insuranceDeduction = Double.parseDouble(insuranceDeductionTextField.getText());
 
-        boolean updateState  = controller.updateBill(billId, visitId, date, time, subtotal, total, insuranceDeduction);
+        boolean updateState = controller.updateBill(billId, visitId, date, time, subtotal, total, insuranceDeduction);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
@@ -111,8 +126,13 @@ public class AdminUpdateBillController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -131,6 +151,11 @@ public class AdminUpdateBillController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
