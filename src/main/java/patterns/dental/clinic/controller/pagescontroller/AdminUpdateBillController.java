@@ -108,7 +108,6 @@ public class AdminUpdateBillController {
             alert.setHeaderText("Bill NOT Updated successfully");
             alert.setContentText("The system was unable to Update the Bill, check the information and try again!");
         }
-
         alert.showAndWait();
     }
 

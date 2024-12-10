@@ -107,8 +107,6 @@ public class AdminUpdatePatientController {
             alert.setHeaderText("Patient NOT Updated successfully");
             alert.setContentText("The system was unable to Update the Patient account, check the information and try again!");
         }
-
     }
-
 }
 

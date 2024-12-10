@@ -154,7 +154,6 @@ public class AdminPageController {
             alert.setHeaderText("Visit NOT deleted successfully");
             alert.setContentText("The system was unable to deleted the Visit, check the Visit ID and try again!");
         }
-
         alert.showAndWait();
     }
 
@@ -195,7 +194,6 @@ public class AdminPageController {
             alert.setHeaderText("Dentist NOT deleted successfully");
             alert.setContentText("The system was unable to deleted the dentist account, check the dentist ID and try again!");
         }
-
         alert.showAndWait();
     }
 
@@ -231,7 +229,6 @@ public class AdminPageController {
             alert.setHeaderText("Patient NOT deleted successfully");
             alert.setContentText("The system was unable to deleted the patient account, check the patient ID and try again!");
         }
-
         alert.showAndWait();
     }
 
@@ -252,7 +249,6 @@ public class AdminPageController {
             alert.setHeaderText("Dentist NOT deleted successfully");
             alert.setContentText("The system was unable to deleted the patient account, check the patient ID and try again!");
         }
-
         alert.showAndWait();
     }
 

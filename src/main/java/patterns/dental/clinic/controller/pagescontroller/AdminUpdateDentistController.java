@@ -124,6 +124,7 @@ public class AdminUpdateDentistController {
         String password = passwordTextField.getText();
         String dateOfBirth = dobTextField.getText();
         StringBuilder selectedOperations = new StringBuilder();
+
         for (CheckBox checkBox : operationsListView.getItems()) {
             if (checkBox.isSelected()) {
                 selectedOperations.append(checkBox.getText()).append(", ");
@@ -147,8 +148,6 @@ public class AdminUpdateDentistController {
             alert.setHeaderText("Dentist NOT Updated successfully");
             alert.setContentText("The system was unable to Update the Dentist account, check the information and try again!");
         }
-
         alert.showAndWait();
     }
-
 }

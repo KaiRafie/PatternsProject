@@ -1,7 +1,5 @@
 package patterns.dental.clinic.model;
 
-import lombok.Getter;
-import lombok.Setter;
 import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.controller.DatabaseController;
 import patterns.dental.clinic.memento.ClinicSystemMemento;

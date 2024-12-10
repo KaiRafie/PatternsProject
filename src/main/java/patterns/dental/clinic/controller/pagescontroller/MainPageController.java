@@ -127,42 +127,10 @@ public class MainPageController {
 
             alert.setTitle("Admin Authentication");
 
-                alert.setHeaderText("Authentication Failed");
-                alert.setContentText("You have entered a wrong admin key, please try again!");
-
+            alert.setHeaderText("Authentication Failed");
+            alert.setContentText("You have entered a wrong admin key, please try again!");
 
             alert.showAndWait();
         }
-
     }
-
-    @FXML
-    public void saveSystem(ActionEvent event) {
-        controller.saveSystemHistory();
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        alert.setTitle("System Save");
-
-        alert.setHeaderText("System has been saved");
-        alert.setContentText("The system has been saved temporarily for you session, all the data is safe if you want to " +
-                "go back.\n" +
-                "Keep in mind that closing the application will save all data permanently.");
-        alert.showAndWait();
-    }
-
-    @FXML
-    public void restoreSystem(ActionEvent event) {
-        controller.restoreSystemHistory();
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        alert.setTitle("System Restore");
-
-        alert.setHeaderText("System has been restored");
-        alert.setContentText("The system has temporarily restored for you session, make sure to write down what you needed " +
-                "and continue.");
-        alert.showAndWait();
-    }
-
 }
