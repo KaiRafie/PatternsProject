@@ -13,7 +13,8 @@ public class NavigationManager {
         this.primaryStage = primaryStage;
     }
 
-    private NavigationManager() {}
+    private NavigationManager() {
+    }
 
     public static NavigationManager getInstance() {
         if (instance == null) {
@@ -26,6 +27,12 @@ public class NavigationManager {
         return instance;
     }
 
+    /**
+     * Method to navigate to next scene while maintaining history
+     * stores current scene as previous sense before switching scenes
+     *
+     * @param newScene
+     */
     public void navigateTo(Scene newScene) {
         if (primaryStage.getScene() != null) {
             previousScene = primaryStage.getScene();
@@ -33,6 +40,9 @@ public class NavigationManager {
         primaryStage.setScene(newScene);
     }
 
+    /**
+     * Method to go back to previous scene
+     */
     public void navigateBack() {
         if (previousScene != null) {
             primaryStage.setScene(previousScene);

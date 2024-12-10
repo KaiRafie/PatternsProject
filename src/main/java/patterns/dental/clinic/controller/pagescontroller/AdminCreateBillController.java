@@ -4,13 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 
 public class AdminCreateBillController {
 
@@ -18,6 +16,9 @@ public class AdminCreateBillController {
 
     @FXML
     private Button createButton;
+
+    @FXML
+    private Label dateLabel;
 
     @FXML
     private TextField dateTextField;
@@ -29,20 +30,57 @@ public class AdminCreateBillController {
     private TextField insuranceDeductionTextField;
 
     @FXML
+    private Label insuranceLabel;
+
+    @FXML
     private Button previousButton;
+
+    @FXML
+    private Label subTotalLabel;
 
     @FXML
     private TextField subtotalTextField;
 
     @FXML
+    private Label timeLabel;
+
+    @FXML
     private TextField timeTextField;
+
+    @FXML
+    private Label totalLabel;
 
     @FXML
     private TextField totalTextField;
 
     @FXML
+    private Label visitIdLabel;
+
+    @FXML
     private TextField visitIdTextField;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
+    void initialize() {
+        createButton.setText(LanguageController.getText("CreateBtn"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+
+        dateLabel.setText(LanguageController.getText("Date"));
+        insuranceLabel.setText(LanguageController.getText("InsuranceDeduction"));
+        subTotalLabel.setText(LanguageController.getText("Subtotal"));
+        timeLabel.setText(LanguageController.getText("Time"));
+        totalLabel.setText(LanguageController.getText("Total"));
+        visitIdLabel.setText(LanguageController.getText("VisitId"));
+    }
+
+    /**
+     * Method that creates Bill upon clicking createButton
+     * Takes visit id, date, time, subtotal, total, and insurance deduction from respective text fields
+     *
+     * @param event
+     */
     @FXML
     void createButtonClick(ActionEvent event) {
         int visitId = Integer.parseInt(visitIdTextField.getText());
@@ -69,8 +107,13 @@ public class AdminCreateBillController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -84,6 +127,11 @@ public class AdminCreateBillController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();

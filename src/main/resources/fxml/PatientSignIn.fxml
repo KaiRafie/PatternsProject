@@ -15,14 +15,14 @@
             <Image url="@../images/sideBar.png" />
          </image>
       </ImageView>
-      <Label layoutX="285.0" layoutY="11.0" text="Patient Sign In">
+      <Label fx:id="patientSignInLabel" layoutX="285.0" layoutY="11.0" text="Patient Sign In">
          <font>
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Label>
       <ImageView fitHeight="354.0" fitWidth="360.0" layoutX="231.0" layoutY="182.0">
          <image>
-            <Image url="@../images/logInBoxNoBg.png" />
+            <Image url="@../images/BlueBox.png" />
          </image>
       </ImageView>
       <TextField fx:id="userIdField" layoutX="285.0" layoutY="305.0" prefHeight="42.0" prefWidth="252.0" promptText="UserID Ex. 123456" />
@@ -39,5 +39,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Label fx:id="signInLabel" layoutX="348.0" layoutY="209.0" text="Sign In">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

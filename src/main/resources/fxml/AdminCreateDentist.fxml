@@ -18,43 +18,43 @@
       </ImageView>
       <Button fx:id="homeButton" layoutX="10.0" layoutY="435.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
       <Button fx:id="previousButton" layoutX="10.0" layoutY="487.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
-      <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="175.0" layoutY="14.0">
+      <ImageView fitHeight="523.0" fitWidth="513.0" layoutX="162.0" layoutY="14.0">
          <image>
-            <Image url="@../images/CreateDentistNoBg.png" />
+            <Image url="@../images/BlueBox.png" />
          </image>
       </ImageView>
       <TextField fx:id="firstNameTextField" layoutX="275.0" layoutY="71.0" prefHeight="42.0" prefWidth="252.0" promptText="First Name" />
       <TextField fx:id="dobTextField" layoutX="275.0" layoutY="289.0" prefHeight="42.0" prefWidth="252.0" promptText="1/1/1010" />
       <TextField fx:id="passwordTextField" layoutX="275.0" layoutY="219.0" prefHeight="42.0" prefWidth="252.0" promptText="Password" />
       <TextField fx:id="lastNameTextField" layoutX="275.0" layoutY="145.0" prefHeight="42.0" prefWidth="252.0" promptText="Last Name" />
-      <Label layoutX="194.0" layoutY="55.0" text="First Name">
+      <Label fx:id="firstNameLabel" layoutX="194.0" layoutY="55.0" text="First Name">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="129.0" text="Last Name">
+      <Label fx:id="lastNameLabel" layoutX="194.0" layoutY="129.0" text="Last Name">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="203.0" text="Password">
+      <Label fx:id="PaswordLabel" layoutX="194.0" layoutY="203.0" text="Password">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="338.0" text="Operations">
+      <Label fx:id="operationsLAbel" layoutX="194.0" layoutY="338.0" text="Operations">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="273.0" text="Date of birth">
+      <Label fx:id="bdLabel" layoutX="194.0" layoutY="273.0" text="Date of birth">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
       <Button fx:id="createButton" layoutX="558.0" layoutY="452.0" mnemonicParsing="false" onAction="#createButtonClick" prefHeight="34.0" prefWidth="66.0" text="Create" />
       <TextField fx:id="specialityTextField" layoutX="275.0" layoutY="432.0" prefHeight="42.0" prefWidth="252.0" promptText="Specialty" />
-      <Label layoutX="194.0" layoutY="421.0" text="Specialty">
+      <Label fx:id="specialtyLabel" layoutX="194.0" layoutY="421.0" text="Specialty">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>

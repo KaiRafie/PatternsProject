@@ -42,4 +42,12 @@ public abstract class Dentist extends User {
     public List<String> getAllowedOperations() {
         return allowedOperations;
     }
+
+    @Override
+    public String toString() {
+        return "Dentist{" +
+                "specialty='" + specialty + '\'' +
+                ", allowedOperations=" + allowedOperations +
+                '}';
+    }
 }

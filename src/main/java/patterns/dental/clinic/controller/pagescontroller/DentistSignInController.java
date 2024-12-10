@@ -6,15 +6,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.user.Dentist;
+import patterns.dental.clinic.model.user.User;
 
 public class DentistSignInController {
     ClinicSystemController controller = new ClinicSystemController();
     ClinicSystem clinicSystem = ClinicSystem.getInstance();
+
+    @FXML
+    private Label dentistSignInLabel;
 
     @FXML
     private Button homeButton;
@@ -29,8 +35,31 @@ public class DentistSignInController {
     private Button previousButton;
 
     @FXML
+    private Label signInLabel;
+
+    @FXML
     private TextField userIdTextField;
 
+
+    /**
+     * Method to initialize all component texts for internalization
+     */
+    @FXML
+    private void initialize() {
+        dentistSignInLabel.setText(LanguageController.getText("DentistSignInLabel"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        logInButton.setText(LanguageController.getText("LoginBtn"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        signInLabel.setText(LanguageController.getText("SignInLabel"));
+    }
+
+    /**
+     * button that logs user in depending on user Id and password
+     * takes user Id from userIdTextField
+     * takes password from passwordTextField
+     *
+     * @param event
+     */
     @FXML
     void logInButtonClick(ActionEvent event) {
         long userId = Integer.parseInt(userIdTextField.getText());
@@ -38,45 +67,41 @@ public class DentistSignInController {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-        alert.setTitle("Patient Authentication");
+        alert.setTitle("Dentist Authentication");
 
         for (int i = 0; i < clinicSystem.getDentistsList().size(); i++) {
-            Dentist dentist = clinicSystem.getDentistsList().get(i);
+            User dentist = clinicSystem.getDentistsList().get(i);
             if (dentist.getUserID() == userId) {
                 if (password.equals(dentist.getLoginPass())) {
-                    alert.setHeaderText("Authentication successful");
-                    alert.setContentText("You have signed in successfully");
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                                "/fxml/MainPage.fxml"));
+                                "/fxml/DentistPage.fxml"));
                         AnchorPane root = loader.load();
 
                         Scene scene = new Scene(root);
 
                         NavigationManager.getInstance().navigateTo(scene);
-
-                        alert.showAndWait();
-                        break;
+                        return;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {
                     alert.setHeaderText("Authentication Failed");
-                    alert.setContentText("Incorrect password, please try again!");
+                    alert.setContentText("Incorrect Password and User Id combination!");
 
                     alert.showAndWait();
                 }
-            } else {
-                alert.setHeaderText("Authentication Failed");
-                alert.setContentText("Id not found, please try again!");
-
-                alert.showAndWait();
             }
         }
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -90,9 +115,13 @@ public class DentistSignInController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
-
 }

@@ -1,5 +1,6 @@
 package patterns.dental.clinic.controller;
 
+import javafx.scene.control.Alert;
 import patterns.dental.clinic.memento.ClinicSystemMemento;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.bill.Bill;
@@ -33,13 +34,33 @@ public class ClinicSystemController {
     public void saveSystemHistory() {
         ClinicSystemMemento memento = clinicSystem.saveSystemHistory();
         systemHistory.push(memento);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Save Confirmed");
+
+        alert.setHeaderText("Saving system data confirmed");
+        alert.setContentText("You have saved your current data!");
+        alert.showAndWait();
     }
 
     public void restoreSystemHistory() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         if (!systemHistory.isEmpty()) {
             ClinicSystemMemento memento = systemHistory.pop();
             clinicSystem.restoreSystemState(memento);
+            alert.setTitle("Restoration Confirmed");
+
+            alert.setHeaderText("Restoring temporary system confirmed");
+            alert.setContentText("You have reverted to the previous save!");
+            alert.showAndWait();
         } else {
+            alert.setTitle("Restoration Failed");
+
+            alert.setHeaderText("Restoring temporary system failed");
+            alert.setContentText("You have reverted to the oldest temporary save!");
+            alert.showAndWait();
+
             throw new NoSuchElementException("No system state to restore.");
         }
     }

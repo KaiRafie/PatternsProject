@@ -8,16 +8,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontroller.AdminCreateBillController">
    <children>
       <AnchorPane layoutY="1.0" prefHeight="550.0" prefWidth="750.0">
          <children>
             <AnchorPane prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;">
                <children>
-                  <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="175.0" layoutY="14.0">
+                  <ImageView fitHeight="521.0" fitWidth="500.0" layoutX="151.0" layoutY="11.0">
                      <image>
-                        <Image url="@../images/CreateBillNoBg.png" />
+                        <Image url="@../images/BlueBox.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="550.0" fitWidth="86.0" layoutY="1.0">
@@ -31,35 +30,35 @@
                   <TextField fx:id="subtotalTextField" layoutX="275.0" layoutY="289.0" prefHeight="42.0" prefWidth="252.0" promptText="100.10" />
                   <TextField fx:id="timeTextField" layoutX="275.0" layoutY="219.0" prefHeight="42.0" prefWidth="252.0" promptText="00:00:00" />
                   <TextField fx:id="dateTextField" layoutX="275.0" layoutY="145.0" prefHeight="42.0" prefWidth="252.0" promptText="1/1/1010" />
-                  <Label layoutX="194.0" layoutY="55.0" text="Vist Id">
+                  <Label fx:id="visitIdLabel" layoutX="194.0" layoutY="55.0" text="Vist Id">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="194.0" layoutY="129.0" text="Date">
+                  <Label fx:id="dateLabel" layoutX="194.0" layoutY="129.0" text="Date">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="194.0" layoutY="203.0" text="Time">
+                  <Label fx:id="timeLabel" layoutX="194.0" layoutY="203.0" text="Time">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="194.0" layoutY="273.0" text="Subtotal">
+                  <Label fx:id="subTotalLabel" layoutX="194.0" layoutY="273.0" text="Subtotal">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
                   <Button fx:id="createButton" layoutX="375.0" layoutY="453.0" mnemonicParsing="false" onAction="#createButtonClick" prefHeight="34.0" prefWidth="66.0" text="Create" />
                   <TextField fx:id="totalTextField" layoutX="275.0" layoutY="350.0" prefHeight="42.0" prefWidth="252.0" promptText="100.10" />
-                  <Label layoutX="194.0" layoutY="334.0" text="Total">
+                  <Label fx:id="totalLabel" layoutX="194.0" layoutY="334.0" text="Total">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
                   <TextField fx:id="insuranceDeductionTextField" layoutX="275.0" layoutY="407.0" prefHeight="42.0" prefWidth="252.0" promptText="100.10" />
-                  <Label layoutX="194.0" layoutY="391.0" text="Insurance Deducation">
+                  <Label fx:id="insuranceLabel" layoutX="194.0" layoutY="391.0" text="Insurance Deducation">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>

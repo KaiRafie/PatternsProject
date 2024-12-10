@@ -4,22 +4,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 
 public class AdminUpdateBillController {
     ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
+    private Label billIdLabel;
+
+    @FXML
     private TextField billIdTextField;
 
     @FXML
-    private Button createButton;
+    private Label dateLabel;
 
     @FXML
     private TextField dateTextField;
@@ -31,20 +32,74 @@ public class AdminUpdateBillController {
     private TextField insuranceDeductionTextField;
 
     @FXML
+    private Label insuranceLabel;
+
+    @FXML
     private Button previousButton;
+
+    @FXML
+    private Label subtotalLabel;
 
     @FXML
     private TextField subtotalTextField;
 
     @FXML
+    private Label timeLabel;
+
+    @FXML
     private TextField timeTextField;
+
+    @FXML
+    private Label totalLabel;
 
     @FXML
     private TextField totalTextField;
 
     @FXML
+    private Button updateButton;
+
+    @FXML
+    private Label visitIdLabel;
+
+    @FXML
     private TextField visitIdTextField;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
+    @FXML
+    private void initialize() {
+        billIdLabel.setText(LanguageController.getText("BillId"));
+        billIdTextField.setPromptText(LanguageController.getText("BillId"));
+        dateLabel.setText(LanguageController.getText("Date"));
+        dateTextField.setPromptText(LanguageController.getText("Date"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        insuranceDeductionTextField.setPromptText(LanguageController.getText("InsuranceDeduction"));
+        insuranceLabel.setText(LanguageController.getText("InsuranceDeduction"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        subtotalLabel.setText(LanguageController.getText("Subtotal"));
+        subtotalTextField.setPromptText(LanguageController.getText("Subtotal"));
+        timeLabel.setText(LanguageController.getText("Time"));
+        timeTextField.setPromptText(LanguageController.getText("Time"));
+        totalLabel.setText(LanguageController.getText("Total"));
+        totalTextField.setPromptText(LanguageController.getText("Total"));
+        updateButton.setText(LanguageController.getText("UpdateBtn"));
+        visitIdLabel.setText(LanguageController.getText("VisitId"));
+        visitIdTextField.setPromptText(LanguageController.getText("VisitId"));
+    }
+
+    /**
+     * Method to update bill information
+     * takes bill id from billIdTextField
+     * takes visit id from visitIdTextField
+     * takes date from dateTextField
+     * takes time from timeTextField
+     * takes subtotal from subtotalTextField
+     * takes total from totalTextField
+     * takes insuranceDeduction from insuranceDeductionTextField
+     *
+     * @param event
+     */
     @FXML
     void updateButtonClick(ActionEvent event) {
         int billId = Integer.parseInt(billIdTextField.getText());
@@ -55,7 +110,7 @@ public class AdminUpdateBillController {
         double total = Double.parseDouble(totalTextField.getText());
         double insuranceDeduction = Double.parseDouble(insuranceDeductionTextField.getText());
 
-        boolean updateState  = controller.updateBill(billId, visitId, date, time, subtotal, total, insuranceDeduction);
+        boolean updateState = controller.updateBill(billId, visitId, date, time, subtotal, total, insuranceDeduction);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
@@ -68,12 +123,16 @@ public class AdminUpdateBillController {
             alert.setHeaderText("Bill NOT Updated successfully");
             alert.setContentText("The system was unable to Update the Bill, check the information and try again!");
         }
-
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -92,6 +151,11 @@ public class AdminUpdateBillController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();

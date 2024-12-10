@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 import patterns.dental.clinic.model.user.Operations;
 
 import java.util.Arrays;
@@ -18,10 +19,19 @@ public class AdminUpdateDentistController {
     ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
+    private Label dentistIdLabel;
+
+    @FXML
     private TextField dentistIdTextField;
 
     @FXML
+    private Label dobLabel;
+
+    @FXML
     private TextField dobTextField;
+
+    @FXML
+    private Label firstNameLabel;
 
     @FXML
     private TextField firstNameTextField;
@@ -30,10 +40,19 @@ public class AdminUpdateDentistController {
     private Button homeButton;
 
     @FXML
+    private Label lastNameLabel;
+
+    @FXML
     private TextField lastNameTextField;
 
     @FXML
-    private ComboBox<Operations> operationsComboBox;
+    private Label operationsLabel;
+
+    @FXML
+    private VBox operationsListBox;
+
+    @FXML
+    private Label passwordLabel;
 
     @FXML
     private TextField passwordTextField;
@@ -45,12 +64,12 @@ public class AdminUpdateDentistController {
     private TextField specialityTextField;
 
     @FXML
-    private VBox operationsListBox;
-
-    private final ListView<CheckBox> operationsListView = new ListView<>();
+    private Label specialtyLabel;
 
     @FXML
     private Button updateButton;
+
+    private final ListView<CheckBox> operationsListView = new ListView<>();
 
     @FXML
     public void initialize() {
@@ -59,10 +78,26 @@ public class AdminUpdateDentistController {
             operationsListView.getItems().add(checkBox);
         }
         operationsListBox.getChildren().add(operationsListView);
+
+        dentistIdLabel.setText(LanguageController.getText("DentistId"));
+        dobLabel.setText(LanguageController.getText("DateOfBirth"));
+        firstNameLabel.setText(LanguageController.getText("FirstName"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        lastNameLabel.setText(LanguageController.getText("LastName"));
+        operationsLabel.setText(LanguageController.getText("Operations"));
+        passwordLabel.setText(LanguageController.getText("Password"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        specialtyLabel.setText(LanguageController.getText("Specialty"));
+        updateButton.setText(LanguageController.getText("UpdateBtn"));
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -81,11 +116,26 @@ public class AdminUpdateDentistController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
 
+    /**
+     * Method to update Dentist information when clicking update button
+     * takes dentist id from dentistIdTextField
+     * takes first name from firstNameTextField
+     * takes last name from lastNameTextField
+     * takes password from passwordTextField
+     * takes date of birth from dobTextField
+     *
+     * @param event
+     */
     @FXML
     void updateButtonClick(ActionEvent event) {
         int id = Integer.parseInt(dentistIdTextField.getText());
@@ -94,6 +144,7 @@ public class AdminUpdateDentistController {
         String password = passwordTextField.getText();
         String dateOfBirth = dobTextField.getText();
         StringBuilder selectedOperations = new StringBuilder();
+
         for (CheckBox checkBox : operationsListView.getItems()) {
             if (checkBox.isSelected()) {
                 selectedOperations.append(checkBox.getText()).append(", ");
@@ -117,8 +168,6 @@ public class AdminUpdateDentistController {
             alert.setHeaderText("Dentist NOT Updated successfully");
             alert.setContentText("The system was unable to Update the Dentist account, check the information and try again!");
         }
-
         alert.showAndWait();
     }
-
 }

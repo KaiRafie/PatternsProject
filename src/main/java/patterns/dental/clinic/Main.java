@@ -18,8 +18,13 @@ import patterns.dental.clinic.model.visit.VisitFactory;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Main extends Application {
+    private static Locale current = Locale.of("en", "CA");
+    private static ResourceBundle bundle = ResourceBundle.getBundle("languages/language", current);
+
     public static void main(String[] args) {
         DatabaseController.initializeDatabase();
         launch(args);
@@ -30,11 +35,10 @@ public class Main extends Application {
         try {
             NavigationManager.getInstance().setPrimaryStage(stage);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainPage.fxml"));
+
+            loader.setResources(bundle);
             AnchorPane root = loader.load();
-
             Scene scene = new Scene(root);
-
-
             stage.setScene(scene);
             stage.setTitle("Dental Management System");
 
@@ -44,5 +48,19 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Locale getCurrent() {
+        return current;
+    }
+
+    public static void setCurrent(Locale current) {
+        Main.current = current;
+        Main.bundle = ResourceBundle.getBundle("language", current);
+        System.out.println("Language changed to: " + current);
+    }
+
+    public static ResourceBundle getBundle() {
+        return bundle;
     }
 }

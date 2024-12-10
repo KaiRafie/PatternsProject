@@ -26,7 +26,7 @@
                         <Button fx:id="previousButton" layoutX="10.0" layoutY="487.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
                         <ListView fx:id="visitListView" layoutX="145.0" layoutY="112.0" prefHeight="218.0" prefWidth="461.0" />
                         <TextField fx:id="patientIdTextField" layoutX="145.0" layoutY="73.0" promptText="Patient Id" />
-                        <Label layoutX="145.0" layoutY="44.0" prefHeight="17.0" prefWidth="149.0" text="View Patient's Visits">
+                        <Label fx:id="viewPatientVisitsLabel" layoutX="145.0" layoutY="44.0" prefHeight="17.0" prefWidth="149.0" text="View Patient's Visits">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -42,42 +42,43 @@
                         <TextField fx:id="dateTextField" layoutX="169.0" layoutY="441.0" />
                         <TextField fx:id="patientVisitIdTextField" layoutX="342.0" layoutY="385.0" />
                         <TextField fx:id="timeTextField" layoutX="169.0" layoutY="506.0" />
-                        <Label layoutX="143.0" layoutY="367.0" prefHeight="17.0" prefWidth="149.0" text="Visit Type">
+                        <Label fx:id="visitTypeLabel" layoutX="143.0" layoutY="367.0" prefHeight="17.0" prefWidth="149.0" text="Visit Type">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="133.0" layoutY="330.0" prefHeight="17.0" prefWidth="149.0" text="Create Visit">
+                        <Label fx:id="createVisitLabel" layoutX="133.0" layoutY="330.0" prefHeight="17.0" prefWidth="149.0" text="Create Visit">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="143.0" layoutY="421.0" prefHeight="17.0" prefWidth="149.0" text="Date">
+                        <Label fx:id="dateLabel" layoutX="143.0" layoutY="421.0" prefHeight="17.0" prefWidth="149.0" text="Date">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="143.0" layoutY="487.0" prefHeight="17.0" prefWidth="149.0" text="Time">
+                        <Label fx:id="timeLabel" layoutX="143.0" layoutY="487.0" prefHeight="17.0" prefWidth="149.0" text="Time">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="318.0" layoutY="367.0" prefHeight="17.0" prefWidth="149.0" text="Patient Id">
+                        <Label fx:id="patientIdLabel" layoutX="318.0" layoutY="367.0" prefHeight="17.0" prefWidth="149.0" text="Patient Id">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="318.0" layoutY="421.0" prefHeight="17.0" prefWidth="149.0" text="Dentist Id">
+                        <Label fx:id="dentistIdLabel" layoutX="318.0" layoutY="421.0" prefHeight="17.0" prefWidth="149.0" text="Dentist Id">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <TextField fx:id="procedureInfoTextField" layoutX="521.0" layoutY="395.0" prefHeight="134.0" prefWidth="210.0" />
-                        <Label layoutX="520.0" layoutY="375.0" prefHeight="17.0" prefWidth="149.0" text="Procedure Info">
+                        <Label fx:id="procedureInfoLabel" layoutX="520.0" layoutY="375.0" prefHeight="17.0" prefWidth="149.0" text="Procedure Info">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
+                        <Button fx:id="refreshButton" layoutX="10.0" layoutY="112.0" mnemonicParsing="false" onAction="#refreshButtonClick" prefHeight="34.0" prefWidth="66.0" text="Refresh" />
                      </children>
                   </AnchorPane>
                </children>

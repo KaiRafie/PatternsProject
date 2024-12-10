@@ -105,19 +105,20 @@ public class DatabaseControllerTest {
     String procedure
      */
     void testInsertAndQueryBillRecord() {
-        DatabaseController.insertVisitRecord(102, 105, "Cavity Checkup", "15/12/2024", "11:10:15", "Teeth Cleaning");
+        User patient = DatabaseController.queryLastPatientRecord();
+        Dentist dentist = DatabaseController.queryLastDentistRecord();
+        DatabaseController.insertVisitRecord(dentist.getUserID(), patient.getUserID(), "Cavity Checkup", "15/12/2024", "11:10:15", "Teeth Cleaning");
         Visit visit = DatabaseController.queryLastVisit();
         String billDate = "2024-12-02";
         String billTime = "3:00 PM";
         double subTotal = 100.0;
         double total = 120.0;
         double insuranceDeduction = 20.0;
-
         DatabaseController.insertBillRecord(visit.getVisitId(), billDate, billTime, subTotal, total, insuranceDeduction);
         List<Bill> bills = DatabaseController.queryAllBillRecords();
 
         assertFalse(bills.isEmpty(), "The bill list should not be empty");
-        Bill bill = bills.get(bills.size() - 1);
+        Bill bill = bills.getLast();
         assertEquals(visit.getVisitId(), bill.getVisit().getVisitId(), "Bill visit ID should match");
         assertEquals(billDate, bill.getDate(), "Bill date should match");
         assertEquals(billTime, bill.getTime(), "Bill time should match");
@@ -140,5 +141,67 @@ public class DatabaseControllerTest {
         assertEquals(updatedFirstName, updatedPatient.getFirstName(), "Updated first name should match");
         assertEquals(updatedLastName, updatedPatient.getLastName(), "Updated last name should match");
         assertEquals(updatedBirthDate, updatedPatient.getDateOfBirth(), "Updated birth date should match");
+    }
+
+    @Test
+    void testQueryLastPatientRecord() {
+        User patient = DatabaseController.queryLastPatientRecord();
+
+        assertNotNull(patient, "The patient record should not be null.");
+        assertEquals("John", patient.getFirstName(), "First name mismatch.");
+        assertEquals("Doe", patient.getLastName(), "Last name mismatch.");
+        assertEquals(1, patient.getUserID(), "User ID mismatch.");
+        assertEquals("password123", patient.getLoginPass(), "Password mismatch.");
+        assertEquals("1990-01-01", patient.getDateOfBirth(), "Birthdate mismatch.");
+    }
+
+    @Test
+    void testQueryLastDentistRecord() {
+        Dentist dentist = DatabaseController.queryLastDentistRecord();
+
+        assertNotNull(dentist, "The dentist record should not be null.");
+        assertEquals("Jane", dentist.getFirstName(), "First name mismatch.");
+        assertEquals("Smith", dentist.getLastName(), "Last name mismatch.");
+        assertEquals(1, dentist.getUserID(), "User ID mismatch.");
+        assertEquals("specialty123", dentist.getSpecialty(), "Specialty mismatch.");
+        assertTrue(dentist.getAllowedOperations().contains("Cleaning"), "Allowed operations mismatch.");
+    }
+
+    @Test
+    void testQueryLastBill() {
+        Bill bill = DatabaseController.queryLastBill();
+
+        assertNotNull(bill, "The bill record should not be null.");
+        assertEquals(1, bill.getBillId(), "Bill ID mismatch.");
+        assertEquals(100.0, bill.getSubTotal(), "SubTotal mismatch.");
+        assertEquals(110.0, bill.getTotal(), "Total mismatch.");
+        assertEquals(10.0, bill.getInsuranceDeduction(), "Insurance deduction mismatch.");
+        assertNotNull(bill.getVisit(), "Visit should not be null.");
+    }
+
+    @Test
+    void testQueryLastVisit() {
+        Visit visit = DatabaseController.queryLastVisit();
+
+        assertNotNull(visit, "The visit record should not be null.");
+        assertEquals(1, visit.getVisitId(), "Visit ID mismatch.");
+        assertEquals("Consultation", visit.getVisitType(), "Visit type mismatch.");
+        assertEquals("2024-12-01", visit.getDate(), "Visit date mismatch.");
+        assertEquals("14:30", visit.getTime(), "Visit time mismatch.");
+        assertNotNull(visit.getPatient(), "Patient should not be null.");
+        assertNotNull(visit.getDentist(), "Dentist should not be null.");
+    }
+
+    @Test
+    void testQueryVisitByBillId() {
+        long testBillId = 1;
+        Visit visit = DatabaseController.queryVisitByBillId(testBillId);
+
+        assertNotNull(visit, "The visit record should not be null.");
+        assertEquals(1, visit.getVisitId(), "Visit ID mismatch.");
+        assertEquals("Consultation", visit.getVisitType(), "Visit type mismatch.");
+        assertEquals("2024-12-01", visit.getDate(), "Visit date mismatch.");
+        assertEquals("14:30", visit.getTime(), "Visit time mismatch.");
+        assertEquals(testBillId, visit.getVisitId(), "Bill ID mismatch in the visit.");
     }
 }
