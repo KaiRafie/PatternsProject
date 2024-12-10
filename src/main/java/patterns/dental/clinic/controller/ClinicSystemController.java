@@ -1,5 +1,6 @@
 package patterns.dental.clinic.controller;
 
+import javafx.scene.control.Alert;
 import patterns.dental.clinic.memento.ClinicSystemMemento;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.bill.Bill;
@@ -40,7 +41,17 @@ public class ClinicSystemController {
             ClinicSystemMemento memento = systemHistory.pop();
             clinicSystem.restoreSystemState(memento);
         } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("Restoration Failed");
+
+            alert.setHeaderText("Restoring temporary system failed");
+            alert.setContentText("You have reverted to the oldest temporary save!");
+            alert.showAndWait();
+
             throw new NoSuchElementException("No system state to restore.");
+
+
         }
     }
 

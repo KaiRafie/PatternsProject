@@ -10,19 +10,34 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #E0F2F5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patterns.dental.clinic.controller.pagescontroller.AdminPageController">
    <children>
-      <ImageView fitHeight="550.0" fitWidth="86.0">
+      <ImageView fitHeight="208.0" fitWidth="246.0" layoutX="128.0" layoutY="355.0">
+         <image>
+            <Image url="@../images/BlueBox.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="246.0" fitWidth="246.0" layoutX="459.0" layoutY="326.0">
+         <image>
+            <Image url="@../images/BlueBox.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="100.0" layoutY="60.0">
+         <image>
+            <Image url="@../images/BlueBox.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="572.0" fitWidth="86.0">
          <image>
             <Image url="@../images/sideBar.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="100.0" layoutY="56.0">
          <image>
-            <Image url="@../images/DentistManagementNoBg.png" />
+            <Image url="@../images/BlueBox.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="435.0" layoutY="60.0">
+      <ImageView fitHeight="276.0" fitWidth="300.0" layoutX="435.0" layoutY="60.0">
          <image>
-            <Image url="@../images/BillManagementNoBg.png" />
+            <Image url="@../images/BlueBox.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="200.0" fitWidth="192.0" layoutX="207.0" layoutY="346.0">
@@ -35,66 +50,86 @@
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="createDentistButton" layoutX="178.0" layoutY="133.0" mnemonicParsing="false" onAction="#createDentistButtonClick" prefHeight="39.0" prefWidth="123.0" text="Create Dentist">
+      <Button fx:id="createDentistButton" layoutX="189.0" layoutY="128.0" mnemonicParsing="false" onAction="#createDentistButtonClick" prefHeight="39.0" prefWidth="123.0" text="Create Dentist">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="updateDentistButton" layoutX="178.0" layoutY="187.0" mnemonicParsing="false" onAction="#updateDentistButtonClick" prefHeight="39.0" prefWidth="123.0" text="Update Dentist">
+      <Button fx:id="updateDentistButton" layoutX="189.0" layoutY="182.0" mnemonicParsing="false" onAction="#updateDentistButtonClick" prefHeight="39.0" prefWidth="123.0" text="Update Dentist">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="createBillButton" layoutX="510.0" layoutY="133.0" mnemonicParsing="false" onAction="#createBillButtonClick" prefHeight="39.0" prefWidth="144.0" text="Create Bill">
+      <Button fx:id="createBillButton" layoutX="512.0" layoutY="112.0" mnemonicParsing="false" onAction="#createBillButtonClick" prefHeight="39.0" prefWidth="144.0" text="Create Bill">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="updateBillButton" layoutX="510.0" layoutY="187.0" mnemonicParsing="false" onAction="#updateBillButtonClick" prefHeight="39.0" prefWidth="144.0" text="Update Bill">
+      <Button fx:id="updateBillButton" layoutX="512.0" layoutY="166.0" mnemonicParsing="false" onAction="#updateBillButtonClick" prefHeight="39.0" prefWidth="144.0" text="Update Bill">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="deleteVisitButton" layoutX="220.0" layoutY="464.0" mnemonicParsing="false" onAction="#deleteVisitButtonClick" prefHeight="34.0" prefWidth="162.0" text="Delete Visit">
+      <Button fx:id="deleteVisitButton" layoutX="170.0" layoutY="472.0" mnemonicParsing="false" onAction="#deleteVisitButtonClick" prefHeight="34.0" prefWidth="162.0" text="Delete Visit">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="homeButton" layoutX="10.0" layoutY="434.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
-      <Button fx:id="previousButton" layoutX="10.0" layoutY="486.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
-      <Button fx:id="removeDentistButton" layoutX="178.0" layoutY="290.0" mnemonicParsing="false" onAction="#removeDentistButtonClick" prefHeight="39.0" prefWidth="123.0" text="Remove Dentist">
+      <Button fx:id="homeButton" layoutX="10.0" layoutY="456.0" mnemonicParsing="false" onAction="#homeButtonClick" prefHeight="34.0" prefWidth="66.0" text="Home" />
+      <Button fx:id="previousButton" layoutX="10.0" layoutY="513.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
+      <Button fx:id="removeDentistButton" layoutX="189.0" layoutY="285.0" mnemonicParsing="false" onAction="#removeDentistButtonClick" prefHeight="39.0" prefWidth="123.0" text="Remove Dentist">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="dentistIdTextField" layoutX="178.0" layoutY="241.0" prefHeight="34.0" prefWidth="123.0" promptText="Dentist id to remove" />
-      <TextField fx:id="deleteVisitButtonIdTextField" layoutX="220.0" layoutY="412.0" prefHeight="34.0" prefWidth="162.0" promptText="Visit id to remove" />
-      <Button fx:id="removeBillButton" layoutX="513.0" layoutY="290.0" mnemonicParsing="false" onAction="#removeBillButtonClick" prefHeight="39.0" prefWidth="144.0" text="Remove Bill">
+      <TextField fx:id="dentistIdTextField" layoutX="189.0" layoutY="236.0" prefHeight="34.0" prefWidth="123.0" promptText="Dentist id to remove" />
+      <TextField fx:id="deleteVisitButtonIdTextField" layoutX="170.0" layoutY="420.0" prefHeight="34.0" prefWidth="162.0" promptText="Visit id to remove" />
+      <Button fx:id="removeBillButton" layoutX="515.0" layoutY="269.0" mnemonicParsing="false" onAction="#removeBillButtonClick" prefHeight="39.0" prefWidth="144.0" text="Remove Bill">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="200.0" fitWidth="195.0" layoutX="422.0" layoutY="346.0">
+      <ImageView fitHeight="208.0" fitWidth="195.0" layoutX="484.0" layoutY="355.0">
          <image>
             <Image url="@../images/PatientManagementNoBg.png" />
          </image>
       </ImageView>
-      <Button fx:id="createPatientButton" layoutX="448.0" layoutY="367.0" mnemonicParsing="false" onAction="#createPatientButtonClick" prefHeight="39.0" prefWidth="144.0" text="Create Patient">
+      <Button fx:id="createPatientButton" layoutX="510.0" layoutY="376.0" mnemonicParsing="false" onAction="#createPatientButtonClick" prefHeight="39.0" prefWidth="144.0" text="Create Patient">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="updatePatientButton" layoutX="448.0" layoutY="419.0" mnemonicParsing="false" onAction="#updatePatientButtonClick" prefHeight="39.0" prefWidth="144.0" text="Update Patient">
+      <Button fx:id="updatePatientButton" layoutX="510.0" layoutY="428.0" mnemonicParsing="false" onAction="#updatePatientButtonClick" prefHeight="39.0" prefWidth="144.0" text="Update Patient">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="removePatientButton" layoutX="448.0" layoutY="501.0" mnemonicParsing="false" onAction="#removePatientButtonClick" prefHeight="39.0" prefWidth="144.0" text="Remove Patient">
+      <Button fx:id="removePatientButton" layoutX="510.0" layoutY="510.0" mnemonicParsing="false" onAction="#removePatientButtonClick" prefHeight="39.0" prefWidth="144.0" text="Remove Patient">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="patientIdTextField" layoutX="448.0" layoutY="464.0" prefHeight="34.0" prefWidth="144.0" promptText="Patient Id to remove" />
-      <TextField fx:id="billIdTextField" layoutX="513.0" layoutY="241.0" prefHeight="34.0" prefWidth="144.0" promptText="Bill Id to remove" />
+      <TextField fx:id="patientIdTextField" layoutX="510.0" layoutY="473.0" prefHeight="34.0" prefWidth="144.0" promptText="Patient Id to remove" />
+      <TextField fx:id="billIdTextField" layoutX="515.0" layoutY="220.0" prefHeight="34.0" prefWidth="144.0" promptText="Bill Id to remove" />
+      <Label fx:id="createDentistLabel" layoutX="170.0" layoutY="85.0" text="Create Dentist">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="createBillLabel" layoutX="524.0" layoutY="76.0" text="Create Bill">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="deleteVisitLabel" layoutX="181.0" layoutY="368.0" text="Delete Visit">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="createPatientLabel" layoutX="501.0" layoutY="339.0" text="Create Patient">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

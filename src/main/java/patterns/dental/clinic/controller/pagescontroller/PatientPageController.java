@@ -5,11 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.controller.DatabaseController;
+import patterns.dental.clinic.controller.LanguageController;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.visit.Visit;
 
@@ -19,16 +21,28 @@ public class PatientPageController {
     ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
-    private Button homeButton;
+    private TextField amountPaidTextField;
 
     @FXML
-    private TextField billIdTextField;
+    private ListView<Bill> billListView;
+
+    @FXML
+    private TextField billTextField;
+
+    @FXML
+    private Button homeButton;
 
     @FXML
     private TextField patientIdTextField;
 
     @FXML
+    private Label payYourBillLabel;
+
+    @FXML
     private Button previousButton;
+
+    @FXML
+    private Button refreshButton;
 
     @FXML
     private Button submitButton;
@@ -40,13 +54,26 @@ public class PatientPageController {
     private Button viewVisitButton;
 
     @FXML
-    private TextField amountPaidTextField;
+    private Label viewYourBillLabel;
+
+    @FXML
+    private Label viewYourVisitsLabel;
 
     @FXML
     private ListView<Visit> visitListView;
 
     @FXML
-    private ListView<Bill> billListView;
+    private void initialize() {
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        payYourBillLabel.setText(LanguageController.getText("PayYourBillLabel"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        refreshButton.setText(LanguageController.getText("RefreshBtn"));
+        submitButton.setText(LanguageController.getText("SubmitBtn"));
+        viewBillButton.setText(LanguageController.getText("ViewBillBtn"));
+        viewVisitButton.setText(LanguageController.getText("ViewVisitBtn"));
+        viewYourBillLabel.setText(LanguageController.getText("ViewYourBillLabel"));
+        viewYourVisitsLabel.setText(LanguageController.getText("ViewYourVisitsLabel"));
+    }
 
     @FXML
     public void homeButtonClick(ActionEvent ae){
@@ -84,7 +111,7 @@ public class PatientPageController {
 
     @FXML
     void submitButtonClick(ActionEvent event) {
-        int billId = Integer.parseInt(billIdTextField.getText());
+        int billId = Integer.parseInt(billTextField.getText());
         double amountPaid = Double.parseDouble(amountPaidTextField.getText());
     }
 

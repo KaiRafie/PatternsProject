@@ -6,15 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.user.Dentist;
 
 public class DentistSignInController {
     ClinicSystemController controller = new ClinicSystemController();
     ClinicSystem clinicSystem = ClinicSystem.getInstance();
+
+    @FXML
+    private Label dentistSignInLabel;
 
     @FXML
     private Button homeButton;
@@ -29,7 +34,20 @@ public class DentistSignInController {
     private Button previousButton;
 
     @FXML
+    private Label signInLabel;
+
+    @FXML
     private TextField userIdTextField;
+
+
+    @FXML
+    private void initialize() {
+        dentistSignInLabel.setText(LanguageController.getText("DentistSignInLabel"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        logInButton.setText(LanguageController.getText("LoginBtn"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        signInLabel.setText(LanguageController.getText("SignInLabel"));
+    }
 
     @FXML
     void logInButtonClick(ActionEvent event) {

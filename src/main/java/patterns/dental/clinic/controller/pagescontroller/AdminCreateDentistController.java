@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import patterns.dental.clinic.controller.ClinicSystemController;
 
+import patterns.dental.clinic.controller.LanguageController;
 import patterns.dental.clinic.model.user.Operations;
 import java.util.Arrays;
 import java.util.List;
@@ -19,10 +20,19 @@ public class AdminCreateDentistController {
     ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
+    private Label PaswordLabel;
+
+    @FXML
+    private Label bdLabel;
+
+    @FXML
     private Button createButton;
 
     @FXML
     private TextField dobTextField;
+
+    @FXML
+    private Label firstNameLabel;
 
     @FXML
     private TextField firstNameTextField;
@@ -31,7 +41,16 @@ public class AdminCreateDentistController {
     private Button homeButton;
 
     @FXML
+    private Label lastNameLabel;
+
+    @FXML
     private TextField lastNameTextField;
+
+    @FXML
+    private Label operationsLAbel;
+
+    @FXML
+    private VBox operationsListBox;
 
     @FXML
     private TextField passwordTextField;
@@ -40,16 +59,27 @@ public class AdminCreateDentistController {
     private Button previousButton;
 
     @FXML
-    private VBox operationsListBox;
+    private TextField specialityTextField;
 
     @FXML
-    private TextField specialityTextField;
+    private Label specialtyLabel;
 
 
     private final ListView<CheckBox> operationsListView = new ListView<>();
 
     @FXML
     public void initialize() {
+        PaswordLabel.setText(LanguageController.getText("Password"));
+        bdLabel.setText(LanguageController.getText("DateOfBirth"));
+        firstNameLabel.setText(LanguageController.getText("FirstName"));
+        lastNameLabel.setText(LanguageController.getText("LastName"));
+        operationsLAbel.setText(LanguageController.getText("Operations"));
+        specialtyLabel.setText(LanguageController.getText("Specialty"));
+
+        createButton.setText(LanguageController.getText("CreateBtn"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+
         for (Operations operation : Operations.values()) {
             CheckBox checkBox = new CheckBox(operation.name());
             operationsListView.getItems().add(checkBox);

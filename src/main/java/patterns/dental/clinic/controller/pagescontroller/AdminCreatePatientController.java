@@ -5,11 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 
 public class AdminCreatePatientController {
     ClinicSystemController controller = new ClinicSystemController();
@@ -18,7 +20,13 @@ public class AdminCreatePatientController {
     private Button createButton;
 
     @FXML
+    private Label dobLabel;
+
+    @FXML
     private TextField dobTextField;
+
+    @FXML
+    private Label firstNameLabel;
 
     @FXML
     private TextField firstNameTextField;
@@ -27,13 +35,31 @@ public class AdminCreatePatientController {
     private Button homeButton;
 
     @FXML
+    private Label lastNameLabel;
+
+    @FXML
     private TextField lastNameTextField;
+
+    @FXML
+    private Label passwordLabel;
 
     @FXML
     private TextField passwordTextField;
 
     @FXML
     private Button previousButton;
+
+    @FXML
+    public void initialize() {
+        dobLabel.setText(LanguageController.getText("DateOfBirth"));
+        firstNameLabel.setText(LanguageController.getText("FirstName"));
+        lastNameLabel.setText(LanguageController.getText("LastName"));
+        passwordLabel.setText(LanguageController.getText("Password"));
+
+        createButton.setText(LanguageController.getText("CreateBtn"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+    }
 
     /**
      * Method that creates patient from inputted information from GUI

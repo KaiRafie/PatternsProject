@@ -5,11 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.user.Dentist;
@@ -22,13 +24,34 @@ public class AdminPageController {
     ClinicSystem clinicSystem = ClinicSystem.getInstance();
 
     @FXML
+    private TextField billIdTextField;
+
+    @FXML
     private Button createBillButton;
+
+    @FXML
+    private Label createBillLabel;
 
     @FXML
     private Button createDentistButton;
 
     @FXML
+    private Label createDentistLabel;
+
+    @FXML
+    private Button createPatientButton;
+
+    @FXML
+    private Label createPatientLabel;
+
+    @FXML
     private Button deleteVisitButton;
+
+    @FXML
+    private TextField deleteVisitButtonIdTextField;
+
+    @FXML
+    private Label deleteVisitLabel;
 
     @FXML
     private TextField dentistIdTextField;
@@ -37,7 +60,13 @@ public class AdminPageController {
     private Button homeButton;
 
     @FXML
+    private TextField patientIdTextField;
+
+    @FXML
     private Button previousButton;
+
+    @FXML
+    private Button removeBillButton;
 
     @FXML
     private Button removeDentistButton;
@@ -46,28 +75,37 @@ public class AdminPageController {
     private Button removePatientButton;
 
     @FXML
-    private Button updatePatientButton;
-
-    @FXML
-    private Button createPatientButton;
-
-    @FXML
     private Button updateBillButton;
 
     @FXML
     private Button updateDentistButton;
 
     @FXML
-    private Button removeBillButton;
+    private Button updatePatientButton;
+
 
     @FXML
-    private TextField patientIdTextField;
-
-    @FXML
-    private TextField billIdTextField;
-
-    @FXML
-    private TextField deleteVisitButtonIdTextField;
+    private void initialize() {
+        createBillButton.setText(LanguageController.getText("CreateBillBtn"));
+        createBillLabel.setText(LanguageController.getText("CreateBillLabel"));
+        createDentistButton.setText(LanguageController.getText("CreateDentistBtn"));
+        createDentistLabel.setText(LanguageController.getText("CreateDentistLabel"));
+        createPatientButton.setText(LanguageController.getText("CreatePatientBtn"));
+        createPatientLabel.setText(LanguageController.getText("CreatePatientLabel"));
+        deleteVisitButton.setText(LanguageController.getText("DeleteVisitBtn"));
+        deleteVisitLabel.setText(LanguageController.getText("DeleteVisitLabel"));
+        deleteVisitButtonIdTextField.setPromptText(LanguageController.getText("VisitId"));
+        dentistIdTextField.setPromptText(LanguageController.getText("DentistId"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        patientIdTextField.setPromptText(LanguageController.getText("PatientId"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        removeBillButton.setText(LanguageController.getText("RemoveBillBtn"));
+        removeDentistButton.setText(LanguageController.getText("RemoveDentistBtn"));
+        removePatientButton.setText(LanguageController.getText("RemovePatientBtn"));
+        updateBillButton.setText(LanguageController.getText("UpdateBillBtn"));
+        updateDentistButton.setText(LanguageController.getText("UpdateDentistBtn"));
+        updatePatientButton.setText(LanguageController.getText("UpdatePatientBtn"));
+    }
 
     @FXML
     void createBillButtonClick(ActionEvent event) {

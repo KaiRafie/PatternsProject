@@ -4,22 +4,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import patterns.dental.clinic.controller.ClinicSystemController;
+import patterns.dental.clinic.controller.LanguageController;
 
 public class AdminUpdateBillController {
     ClinicSystemController controller = new ClinicSystemController();
 
     @FXML
+    private Label billIdLabel;
+
+    @FXML
     private TextField billIdTextField;
 
     @FXML
-    private Button createButton;
+    private Label dateLabel;
 
     @FXML
     private TextField dateTextField;
@@ -31,19 +32,58 @@ public class AdminUpdateBillController {
     private TextField insuranceDeductionTextField;
 
     @FXML
+    private Label insuranceLabel;
+
+    @FXML
     private Button previousButton;
+
+    @FXML
+    private Label subtotalLabel;
 
     @FXML
     private TextField subtotalTextField;
 
     @FXML
+    private Label timeLabel;
+
+    @FXML
     private TextField timeTextField;
+
+    @FXML
+    private Label totalLabel;
 
     @FXML
     private TextField totalTextField;
 
     @FXML
+    private Button updateButton;
+
+    @FXML
+    private Label visitIdLabel;
+
+    @FXML
     private TextField visitIdTextField;
+
+    @FXML
+    private void initialize() {
+        billIdLabel.setText(LanguageController.getText("BillId"));
+        billIdTextField.setPromptText(LanguageController.getText("BillId"));
+        dateLabel.setText(LanguageController.getText("Date"));
+        dateTextField.setPromptText(LanguageController.getText("Date"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        insuranceDeductionTextField.setPromptText(LanguageController.getText("InsuranceDeduction"));
+        insuranceLabel.setText(LanguageController.getText("InsuranceDeduction"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        subtotalLabel.setText(LanguageController.getText("Subtotal"));
+        subtotalTextField.setPromptText(LanguageController.getText("Subtotal"));
+        timeLabel.setText(LanguageController.getText("Time"));
+        timeTextField.setPromptText(LanguageController.getText("Time"));
+        totalLabel.setText(LanguageController.getText("Total"));
+        totalTextField.setPromptText(LanguageController.getText("Total"));
+        updateButton.setText(LanguageController.getText("UpdateBtn"));
+        visitIdLabel.setText(LanguageController.getText("VisitId"));
+        visitIdTextField.setPromptText(LanguageController.getText("VisitId"));
+    }
 
     @FXML
     void updateButtonClick(ActionEvent event) {

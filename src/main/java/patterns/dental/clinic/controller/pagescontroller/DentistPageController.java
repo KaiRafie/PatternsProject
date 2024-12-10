@@ -5,13 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.controller.DatabaseController;
+import patterns.dental.clinic.controller.LanguageController;
 import patterns.dental.clinic.model.visit.Visit;
 
 import java.util.List;
@@ -23,37 +21,77 @@ public class DentistPageController {
     private Button createVisitButton;
 
     @FXML
-    private Button homeButton;
+    private Label createVisitLabel;
 
     @FXML
-    private TextField patientIdTextField;
-
-    @FXML
-    private Button previousButton;
+    private Label dateLabel;
 
     @FXML
     private TextField dateTextField;
 
     @FXML
-    private TextField visitTypeTextField;
-
-    @FXML
-    private TextField timeTextField;
+    private Label dentistIdLabel;
 
     @FXML
     private TextField dentistIdTextField;
 
     @FXML
+    private Button homeButton;
+
+    @FXML
+    private Label patientIdLabel;
+
+    @FXML
+    private TextField patientIdTextField;
+
+    @FXML
     private TextField patientVisitIdTextField;
 
     @FXML
-    private Button viewButton;
+    private Button previousButton;
+
+    @FXML
+    private Label procedureInfoLabel;
 
     @FXML
     private TextField procedureInfoTextField;
 
     @FXML
+    private Label timeLabel;
+
+    @FXML
+    private TextField timeTextField;
+
+    @FXML
+    private Button viewButton;
+
+    @FXML
+    private Label viewPatientVisitsLabel;
+
+    @FXML
     private ListView<Visit> visitListView;
+
+    @FXML
+    private Label visitTypeLabel;
+
+    @FXML
+    private TextField visitTypeTextField;
+
+    @FXML
+    private void initialize() {
+        createVisitButton.setText(LanguageController.getText("CreateVisitlabel"));
+        createVisitLabel.setText(LanguageController.getText("CreateVisitlabel"));
+        dateLabel.setText(LanguageController.getText("Date"));
+        dentistIdLabel.setText(LanguageController.getText("DentistId"));
+        homeButton.setText(LanguageController.getText("HomeBtn"));
+        patientIdLabel.setText(LanguageController.getText("PatientId"));
+        previousButton.setText(LanguageController.getText("PreviousBtn"));
+        procedureInfoLabel.setText(LanguageController.getText("ProcedureInfoLabel"));
+        timeLabel.setText(LanguageController.getText("Time"));
+        viewButton.setText(LanguageController.getText("ViewBtn"));
+        viewPatientVisitsLabel.setText(LanguageController.getText("ViewPatientVisitLabel"));
+        visitTypeLabel.setText(LanguageController.getText("VisitTypeLabel"));
+    }
 
     public void loadVisitsToViewBox(java.util.List<Visit> visits) {
         visitListView.getItems().clear();

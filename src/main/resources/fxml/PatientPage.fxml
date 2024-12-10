@@ -28,21 +28,21 @@
                               <Button fx:id="previousButton" layoutX="10.0" layoutY="487.0" mnemonicParsing="false" onAction="#previousButtonClick" prefHeight="34.0" prefWidth="66.0" text="Previous" />
                               <ListView fx:id="visitListView" layoutX="147.0" layoutY="120.0" prefHeight="132.0" prefWidth="461.0" />
                               <TextField fx:id="patientIdTextField" layoutX="139.0" layoutY="20.0" promptText="Patient Id" />
-                              <Label layoutX="143.0" layoutY="55.0" prefHeight="17.0" prefWidth="149.0" text="View Your Visits">
+                              <Label fx:id="viewYourVisitsLabel" layoutX="143.0" layoutY="55.0" prefHeight="17.0" prefWidth="149.0" text="View Your Visits">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Button fx:id="viewVisitButton" layoutX="147.0" layoutY="79.0" mnemonicParsing="false" onAction="#viewVisitButtonClick" prefHeight="25.0" prefWidth="66.0" text="View" />
                               <ListView fx:id="billListView" layoutX="143.0" layoutY="323.0" prefHeight="132.0" prefWidth="461.0" />
-                              <Label layoutX="143.0" layoutY="255.0" prefHeight="17.0" prefWidth="149.0" text="View Your Bill">
+                              <Label fx:id="viewYourBillLabel" layoutX="143.0" layoutY="255.0" prefHeight="17.0" prefWidth="149.0" text="View Your Bill">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Button fx:id="viewBillButton" layoutX="143.0" layoutY="284.0" mnemonicParsing="false" onAction="#viewBillButtonClick" prefHeight="25.0" prefWidth="66.0" text="View" />
                               <TextField fx:id="billTextField" layoutX="143.0" layoutY="504.0" promptText="Bill Id" />
-                              <Label layoutX="143.0" layoutY="462.0" prefHeight="17.0" prefWidth="149.0" text="Pay Your Bill">
+                              <Label fx:id="payYourBillLabel" layoutX="143.0" layoutY="462.0" prefHeight="17.0" prefWidth="149.0" text="Pay Your Bill">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
