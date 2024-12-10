@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.controller.DatabaseController;
+import patterns.dental.clinic.model.bill.Bill;
 import patterns.dental.clinic.model.visit.Visit;
 
 import java.util.List;
@@ -47,6 +48,9 @@ public class DentistPageController {
     private TextField patientVisitIdTextField;
 
     @FXML
+    private Button refreshButton;
+
+    @FXML
     private Button viewButton;
 
     @FXML
@@ -57,8 +61,22 @@ public class DentistPageController {
 
     public void loadVisitsToViewBox(java.util.List<Visit> visits) {
         visitListView.getItems().clear();
-
         visitListView.getItems().addAll(visits);
+    }
+
+    @FXML
+    public void refreshButtonClick(ActionEvent ae){
+        if (patientIdTextField.getText() != null) {
+            int patientId = Integer.parseInt(patientIdTextField.getText());
+            List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
+            loadVisitsToViewBox(visits);
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Refresh Error");
+        alert.setHeaderText("Patient Id is Null");
+        alert.setContentText("Patient Id Cannot be Empty, Must Contain Data to Refresh");
+        alert.showAndWait();
     }
 
     @FXML
@@ -83,7 +101,6 @@ public class DentistPageController {
             alert.setHeaderText("Visit NOT created successfully");
             alert.setContentText("The system was unable to create the Visit, check the information and try again!");
         }
-
         alert.showAndWait();
     }
 
@@ -109,10 +126,16 @@ public class DentistPageController {
 
     @FXML
     void viewButtonClick(ActionEvent event) {
-        int id = Integer.parseInt(patientIdTextField.getText());
-
-        List<Visit> visit = DatabaseController.queryVisitsByPatientId(id);
-        loadVisitsToViewBox(visit);
+        if (patientIdTextField.getText() != null) {
+            int id = Integer.parseInt(patientIdTextField.getText());
+            List<Visit> visit = DatabaseController.queryVisitsByPatientId(id);
+            loadVisitsToViewBox(visit);
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("View Error");
+        alert.setHeaderText("Patient Id is Null");
+        alert.setContentText("Patient Id Cannot be Empty, Must Contain Data to Refresh");
+        alert.showAndWait();
     }
-
 }

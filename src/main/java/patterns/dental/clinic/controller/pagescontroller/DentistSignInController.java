@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import patterns.dental.clinic.controller.ClinicSystemController;
 import patterns.dental.clinic.model.ClinicSystem;
 import patterns.dental.clinic.model.user.Dentist;
+import patterns.dental.clinic.model.user.User;
 
 public class DentistSignInController {
     ClinicSystemController controller = new ClinicSystemController();
@@ -38,37 +39,30 @@ public class DentistSignInController {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-        alert.setTitle("Patient Authentication");
+        alert.setTitle("Dentist Authentication");
 
         for (int i = 0; i < clinicSystem.getDentistsList().size(); i++) {
-            Dentist dentist = clinicSystem.getDentistsList().get(i);
+            User dentist = clinicSystem.getDentistsList().get(i);
             if (dentist.getUserID() == userId) {
                 if (password.equals(dentist.getLoginPass())) {
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                                "/fxml/MainPage.fxml"));
+                                "/fxml/DentistPage.fxml"));
                         AnchorPane root = loader.load();
 
                         Scene scene = new Scene(root);
 
                         NavigationManager.getInstance().navigateTo(scene);
-
-                        alert.showAndWait();
-                        break;
+                        return;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {
                     alert.setHeaderText("Authentication Failed");
-                    alert.setContentText("Incorrect password, please try again!");
+                    alert.setContentText("Incorrect Password and User Id combination!");
 
                     alert.showAndWait();
                 }
-            } else {
-                alert.setHeaderText("Authentication Failed");
-                alert.setContentText("Id not found, please try again!");
-
-                alert.showAndWait();
             }
         }
     }
@@ -92,5 +86,4 @@ public class DentistSignInController {
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
-
 }

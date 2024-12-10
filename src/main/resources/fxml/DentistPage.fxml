@@ -78,6 +78,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
+                        <Button fx:id="refreshButton" layoutX="10.0" layoutY="112.0" mnemonicParsing="false" onAction="#refreshButtonClick" prefHeight="34.0" prefWidth="66.0" text="Refresh" />
                      </children>
                   </AnchorPane>
                </children>

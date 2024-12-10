@@ -870,8 +870,6 @@ public class DatabaseController {
                 //String firstName, String lastName, long userID, String loginPass, Date dateOfBirth
                 patient = new Patient(firstName, lastName, patientId, password, birthDate);
             }
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -907,12 +905,10 @@ public class DatabaseController {
                     dentist = new RegularDentist(firstName, lastName, dentistId, password, birthDate, allowedOperations,
                             specialty);
                 }
-
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return dentist;
     }
 

@@ -42,6 +42,9 @@ public class PatientPageController {
     private Button viewVisitButton;
 
     @FXML
+    private Button refreshButton;
+
+    @FXML
     private TextField amountPaidTextField;
 
     @FXML
@@ -51,7 +54,7 @@ public class PatientPageController {
     private ListView<Bill> billListView;
 
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -76,7 +79,7 @@ public class PatientPageController {
     }
 
     @FXML
-    public void refreshButtonClick(ActionEvent ae){
+    public void refreshButtonClick(ActionEvent ae) {
         int patientId = Integer.parseInt(patientIdTextField.getText());
         List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
         List<Bill> bills = DatabaseController.queryBillsByPatientId(patientId);
@@ -91,35 +94,57 @@ public class PatientPageController {
 
     @FXML
     void submitButtonClick(ActionEvent event) {
-        long billId = Long.parseLong(billIdTextField.getText());
-        double amountPaid = Double.parseDouble(amountPaidTextField.getText());
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Patient Authentication");
-        if (DatabaseController.updateBillTotalsWithPayment(billId, amountPaid)){
-            alert.setHeaderText("Payment Confirmation");
-            alert.setContentText("The amount of " + amountPaid + "has been paid to Bill " + billId);
-            alert.showAndWait();
-        } else {
-            alert.setHeaderText("Payment Failed");
-            alert.setContentText("The amount of " + amountPaid + "failed to be paid to Bill " + billId);
-            alert.showAndWait();
+        if (billIdTextField.getText() != null && patientIdTextField.getText() != null) {
+            long billId = Long.parseLong(billIdTextField.getText());
+            double amountPaid = Double.parseDouble(amountPaidTextField.getText());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Patient Authentication");
+            if (DatabaseController.updateBillTotalsWithPayment(billId, amountPaid)) {
+                alert.setHeaderText("Payment Confirmation");
+                alert.setContentText("The amount of " + amountPaid + " has been paid to Bill " + billId);
+                alert.showAndWait();
+            } else {
+                alert.setHeaderText("Payment Failed");
+                alert.setContentText("The amount of " + amountPaid + " failed to be paid to Bill " + billId);
+                alert.showAndWait();
+            }
+            return;
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Submission Error");
+        alert.setHeaderText("Cannot Load Patient Id and Bill Id");
+        alert.setContentText("Patient Id and Dentist Id Cannot be Empty, Must Contain Data to Submit");
+        alert.showAndWait();
     }
 
     @FXML
     void viewBillButtonClick(ActionEvent event) {
-        int patientId = Integer.parseInt(patientIdTextField.getText());
-
-        List<Bill> bills = DatabaseController.queryBillsByPatientId(patientId);
-        loadBillsToListView(bills);
+        if (patientIdTextField.getText() != null) {
+            int patientId = Integer.parseInt(patientIdTextField.getText());
+            List<Bill> bills = DatabaseController.queryBillsByPatientId(patientId);
+            loadBillsToListView(bills);
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("View Bill Error");
+        alert.setHeaderText("Cannot Load Patient Id");
+        alert.setContentText("Patient Id Cannot be Empty, Must Contain Data to View Bill(s)");
+        alert.showAndWait();
     }
 
     @FXML
     void viewVisitButtonClick(ActionEvent event) {
-        int patientId = Integer.parseInt(patientIdTextField.getText());
-
-        List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
-        loadVisitsToListView(visits);
+        if (patientIdTextField.getText() != null) {
+            int patientId = Integer.parseInt(patientIdTextField.getText());
+            List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
+            loadVisitsToListView(visits);
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("View Bill Error");
+        alert.setHeaderText("Cannot Load Patient Id");
+        alert.setContentText("Patient Id Cannot be Empty, Must Contain Data to View Bill(s)");
+        alert.showAndWait();
     }
 
 }

@@ -71,13 +71,10 @@ public class MainPageController {
 
             alert.setTitle("Admin Authentication");
 
-                alert.setHeaderText("Authentication Failed");
-                alert.setContentText("You have entered a wrong admin key, please try again!");
-
+            alert.setHeaderText("Authentication Failed");
+            alert.setContentText("You have entered a wrong admin key, please try again!");
 
             alert.showAndWait();
         }
-
     }
-
 }
