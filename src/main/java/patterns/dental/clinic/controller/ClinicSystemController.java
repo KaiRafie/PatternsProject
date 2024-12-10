@@ -34,15 +34,27 @@ public class ClinicSystemController {
     public void saveSystemHistory() {
         ClinicSystemMemento memento = clinicSystem.saveSystemHistory();
         systemHistory.push(memento);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Save Confirmed");
+
+        alert.setHeaderText("Saving system data confirmed");
+        alert.setContentText("You have saved your current data!");
+        alert.showAndWait();
     }
 
     public void restoreSystemHistory() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         if (!systemHistory.isEmpty()) {
             ClinicSystemMemento memento = systemHistory.pop();
             clinicSystem.restoreSystemState(memento);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Restoration Confirmed");
 
+            alert.setHeaderText("Restoring temporary system confirmed");
+            alert.setContentText("You have reverted to the previous save!");
+            alert.showAndWait();
+        } else {
             alert.setTitle("Restoration Failed");
 
             alert.setHeaderText("Restoring temporary system failed");
@@ -50,8 +62,6 @@ public class ClinicSystemController {
             alert.showAndWait();
 
             throw new NoSuchElementException("No system state to restore.");
-
-
         }
     }
 

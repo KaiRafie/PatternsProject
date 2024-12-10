@@ -59,6 +59,9 @@ public class AdminCreateBillController {
     @FXML
     private TextField visitIdTextField;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     void initialize() {
         createButton.setText(LanguageController.getText("CreateBtn"));
         homeButton.setText(LanguageController.getText("HomeBtn"));
@@ -71,6 +74,13 @@ public class AdminCreateBillController {
         totalLabel.setText(LanguageController.getText("Total"));
         visitIdLabel.setText(LanguageController.getText("VisitId"));
     }
+
+    /**
+     * Method that creates Bill upon clicking createButton
+     * Takes visit id, date, time, subtotal, total, and insurance deduction from respective text fields
+     *
+     * @param event
+     */
     @FXML
     void createButtonClick(ActionEvent event) {
         int visitId = Integer.parseInt(visitIdTextField.getText());
@@ -97,8 +107,13 @@ public class AdminCreateBillController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -112,6 +127,11 @@ public class AdminCreateBillController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();

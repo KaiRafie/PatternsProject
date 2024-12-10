@@ -70,9 +70,6 @@ public class DentistPageController {
     private TextField timeTextField;
 
     @FXML
-    private Button viewButton;
-
-    @FXML
     private Label viewPatientVisitsLabel;
 
     @FXML
@@ -84,6 +81,9 @@ public class DentistPageController {
     @FXML
     private TextField visitTypeTextField;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     private void initialize() {
         createVisitButton.setText(LanguageController.getText("CreateVisitlabel"));
@@ -100,13 +100,23 @@ public class DentistPageController {
         visitTypeLabel.setText(LanguageController.getText("VisitTypeLabel"));
     }
 
+    /**
+     * Method to load visit list into viewListView
+     *
+     * @param visits to be loaded in listView
+     */
     public void loadVisitsToViewBox(java.util.List<Visit> visits) {
         visitListView.getItems().clear();
         visitListView.getItems().addAll(visits);
     }
 
+    /**
+     * Method to refresh all list views and reload its information
+     *
+     * @param ae
+     */
     @FXML
-    public void refreshButtonClick(ActionEvent ae){
+    public void refreshButtonClick(ActionEvent ae) {
         if (patientIdTextField.getText() != null) {
             int patientId = Integer.parseInt(patientIdTextField.getText());
             List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
@@ -120,6 +130,16 @@ public class DentistPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to create visit if create button is clicked
+     * takes procedure info from procedureInfoTextField
+     * takes visitType from visitTypeTextField
+     * takes date from dateTextField
+     * takes time from timeTextField
+     * takes patient id from patientVisit
+     *
+     * @param event
+     */
     @FXML
     void createVisitButtonClick(ActionEvent event) {
         String procedureInfo = procedureInfoTextField.getText();
@@ -145,8 +165,13 @@ public class DentistPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -160,11 +185,23 @@ public class DentistPageController {
         }
     }
 
+
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
 
+    /**
+     * button to view patient visit history based on patient id
+     * takes patient id from patientIdTextField
+     *
+     * @param event
+     */
     @FXML
     void viewButtonClick(ActionEvent event) {
         if (patientIdTextField.getText() != null) {

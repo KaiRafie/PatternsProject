@@ -54,6 +54,9 @@ public class AdminUpdatePatientController {
     @FXML
     private Button updateButton;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     private void initialize() {
         dobLabel.setText(LanguageController.getText("DateOfBirth"));
@@ -66,6 +69,11 @@ public class AdminUpdatePatientController {
         updateButton.setText(LanguageController.getText("UpdateBtn"));
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
     public void homeButtonClick(ActionEvent ae){
         try {
@@ -81,11 +89,24 @@ public class AdminUpdatePatientController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
 
+    /**
+     * Method that updates patient info in patient table
+     * takes first name from firstNameTextField
+     * takes last name from lastNameTextField
+     * takes password from passwordTextField
+     * takes date of birth from dobTextField
+     * @param event
+     */
     @FXML
     void updateButtonClick(ActionEvent event) {
         String firstName = firstNameTextField.getText();

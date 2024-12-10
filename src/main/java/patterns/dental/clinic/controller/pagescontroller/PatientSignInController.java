@@ -41,6 +41,9 @@ public class PatientSignInController {
     @FXML
     private Label patientSignInLabel;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     private void initialize() {
         homeButton.setText(LanguageController.getText("HomeBtn"));
@@ -50,6 +53,11 @@ public class PatientSignInController {
         patientSignInLabel.setText(LanguageController.getText("PatientSginInLabel"));
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
     public void homeButtonClick(ActionEvent ae){
         try {
@@ -65,11 +73,22 @@ public class PatientSignInController {
         }
     }
 
+    /**
+     * Method to take user to previous page
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
 
+    /**
+     * Method to authenticate user log in
+     * takes user Id from userIdField
+     * takes password from passwordField
+     * @param ae
+     */
     @FXML
     public void authenticateButton(ActionEvent ae) {
         long userId = Integer.parseInt(userIdField.getText());

@@ -68,6 +68,9 @@ public class AdminCreateDentistController {
 
     private final ListView<CheckBox> operationsListView = new ListView<>();
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     public void initialize() {
         PaswordLabel.setText(LanguageController.getText("Password"));
@@ -88,6 +91,12 @@ public class AdminCreateDentistController {
         operationsListBox.getChildren().add(operationsListView);
     }
 
+    /**
+     * Method that creates Bill upon clicking createButton
+     * Takes first name, last name, password, date of birth, and selected operations from respective text fields and choicebox
+     *
+     * @param event
+     */
     @FXML
     void createButtonClick(ActionEvent event) {
         if (firstNameTextField.getText() != null && lastNameTextField.getText() != null && passwordTextField.getText() != null
@@ -129,6 +138,11 @@ public class AdminCreateDentistController {
         }
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
     public void homeButtonClick(ActionEvent ae) {
         try {
@@ -144,6 +158,11 @@ public class AdminCreateDentistController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();

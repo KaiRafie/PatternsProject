@@ -62,14 +62,11 @@ public class PatientPageController {
     private Label viewYourVisitsLabel;
 
     @FXML
-    private Button refreshButton;
-
-    @FXML
-    private TextField amountPaidTextField;
-
-    @FXML
     private ListView<Visit> visitListView;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     private void initialize() {
         homeButton.setText(LanguageController.getText("HomeBtn"));
@@ -83,6 +80,11 @@ public class PatientPageController {
         viewYourVisitsLabel.setText(LanguageController.getText("ViewYourVisitsLabel"));
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
     public void homeButtonClick(ActionEvent ae) {
         try {
@@ -98,36 +100,70 @@ public class PatientPageController {
         }
     }
 
+    /**
+     * Method to load visit list into viewListView
+     *
+     * @param visits to be loaded in viewListView
+     */
     public void loadVisitsToListView(java.util.List<Visit> visits) {
         visitListView.getItems().clear();
         visitListView.getItems().addAll(visits);
     }
 
+    /**
+     * Method to load bills list into billListView
+     *
+     * @param bills to be loaded in billListView
+     */
     public void loadBillsToListView(java.util.List<Bill> bills) {
         billListView.getItems().clear();
         billListView.getItems().addAll(bills);
     }
 
+    /**
+     * Method to refresh visit and bill lists according to patient id
+     * takes patient id from patientIdTextField
+     *
+     * @param ae
+     */
     @FXML
     public void refreshButtonClick(ActionEvent ae) {
-        int patientId = Integer.parseInt(patientIdTextField.getText());
-        List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
-        List<Bill> bills = DatabaseController.queryBillsByPatientId(patientId);
-        loadBillsToListView(bills);
-        loadVisitsToListView(visits);
+        if (patientIdTextField.getText() != null) {
+            int patientId = Integer.parseInt(patientIdTextField.getText());
+            List<Visit> visits = DatabaseController.queryVisitsByPatientId(patientId);
+            List<Bill> bills = DatabaseController.queryBillsByPatientId(patientId);
+            loadBillsToListView(bills);
+            loadVisitsToListView(visits);
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Refresh Error");
+        alert.setHeaderText("Cannot Load Patient Id");
+        alert.setContentText("Patient Id and Dentist Id Cannot be Empty, Must Contain Data to Submit");
+        alert.showAndWait();
     }
 
+    /**
+     * Method to take user to previous page
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
     }
 
+    /**
+     * Method that submits payment
+     * takes bill id from billIdTextField
+     * takes amount paid from amountPaidTextField
+     *
+     * @param event
+     */
     @FXML
     void submitButtonClick(ActionEvent event) {
-        int billId = Integer.parseInt(billTextField.getText());
-        double amountPaid = Double.parseDouble(amountPaidTextField.getText());
-        if (billIdTextField.getText() != null && patientIdTextField.getText() != null) {
-            long billId = Long.parseLong(billIdTextField.getText());
+        if (billTextField.getText() != null && patientIdTextField.getText() != null) {
+            long billId = Long.parseLong(billTextField.getText());
             double amountPaid = Double.parseDouble(amountPaidTextField.getText());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Patient Authentication");
@@ -149,6 +185,12 @@ public class PatientPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to view bills of patient according to patient id
+     * takes patient id from patientIdTextField
+     *
+     * @param event
+     */
     @FXML
     void viewBillButtonClick(ActionEvent event) {
         if (patientIdTextField.getText() != null) {
@@ -164,6 +206,12 @@ public class PatientPageController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to view visits according to patient id
+     * takes patient id from patientIdTextField
+     *
+     * @param event
+     */
     @FXML
     void viewVisitButtonClick(ActionEvent event) {
         if (patientIdTextField.getText() != null) {
@@ -178,5 +226,4 @@ public class PatientPageController {
         alert.setContentText("Patient Id Cannot be Empty, Must Contain Data to View Bill(s)");
         alert.showAndWait();
     }
-
 }

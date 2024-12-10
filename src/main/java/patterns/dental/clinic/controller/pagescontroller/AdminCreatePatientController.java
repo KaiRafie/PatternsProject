@@ -49,13 +49,15 @@ public class AdminCreatePatientController {
     @FXML
     private Button previousButton;
 
+    /**
+     * Method to initialize all component texts for internalization
+     */
     @FXML
     public void initialize() {
         dobLabel.setText(LanguageController.getText("DateOfBirth"));
         firstNameLabel.setText(LanguageController.getText("FirstName"));
         lastNameLabel.setText(LanguageController.getText("LastName"));
         passwordLabel.setText(LanguageController.getText("Password"));
-
         createButton.setText(LanguageController.getText("CreateBtn"));
         homeButton.setText(LanguageController.getText("HomeBtn"));
         previousButton.setText(LanguageController.getText("PreviousBtn"));
@@ -63,6 +65,10 @@ public class AdminCreatePatientController {
 
     /**
      * Method that creates patient from inputted information from GUI
+     * takes first name from firstNameTextField
+     * takes last name from lastNameTextField
+     * takes password from passwordTextField
+     * takes date of birth from dobTextField
      */
     @FXML
     void createButtonClick(ActionEvent event) {
@@ -88,8 +94,13 @@ public class AdminCreatePatientController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to take user to home page when clicking home button
+     *
+     * @param ae
+     */
     @FXML
-    public void homeButtonClick(ActionEvent ae){
+    public void homeButtonClick(ActionEvent ae) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/fxml/MainPage.fxml"));
@@ -103,6 +114,11 @@ public class AdminCreatePatientController {
         }
     }
 
+    /**
+     * Method to take user to previous page when clicking previous button
+     *
+     * @param ae
+     */
     @FXML
     public void previousButtonClick(ActionEvent ae) {
         NavigationManager.getInstance().navigateBack();
